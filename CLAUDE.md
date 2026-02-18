@@ -770,8 +770,6 @@ The app syncs HubSpot customers to Supabase daily via a CRON job configured in `
 
 ```env
 # Test Credentials for Playwright
-TEST_EMAIL=nathan@zing-work.com
-TEST_PASSWORD=ZingAdmin2025!
 ```
 
 **Usage**:
