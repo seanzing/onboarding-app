@@ -254,6 +254,48 @@ export async function GET(
       throw new Error(`Supabase upsert failed: ${upsertError.message}`);
     }
 
+    // Fetch duda_site_code from associated deals
+    try {
+      const assocResponse = await fetch(
+        `https://api.hubapi.com/crm/v3/objects/contacts/${hubspotId}/associations/deals`,
+        { headers: { 'Authorization': `Bearer ${HUBSPOT_ACCESS_TOKEN}` } }
+      );
+      if (assocResponse.ok) {
+        const assocData = await assocResponse.json();
+        const dealIds: string[] = (assocData.results || []).map((r: { id: string }) => r.id);
+
+        if (dealIds.length > 0) {
+          // Fetch deals with duda_site_code property
+          const dealParams = new URLSearchParams({ properties: 'duda_site_code' });
+          for (const dealId of dealIds) {
+            const dealResponse = await fetch(
+              `https://api.hubapi.com/crm/v3/objects/deals/${dealId}?${dealParams}`,
+              { headers: { 'Authorization': `Bearer ${HUBSPOT_ACCESS_TOKEN}` } }
+            );
+            if (!dealResponse.ok) continue;
+            const deal = await dealResponse.json();
+            const dudaSiteCode = deal.properties?.duda_site_code;
+            if (dudaSiteCode) {
+              const { error: identityError } = await supabase
+                .from('service_identity_map')
+                .upsert(
+                  { hubspot_contact_id: hubspotId, duda_site_code: dudaSiteCode },
+                  { onConflict: 'hubspot_contact_id' }
+                );
+              if (identityError) {
+                console.warn('[API] Failed to sync duda_site_code to identity map:', identityError);
+              } else {
+                console.log(`[API] Synced duda_site_code "${dudaSiteCode}" from deal ${dealId}`);
+              }
+              break; // Use first deal that has a duda_site_code
+            }
+          }
+        }
+      }
+    } catch (dealError) {
+      console.warn('[API] Failed to fetch deals for duda_site_code:', dealError);
+    }
+
     console.log('[API] Successfully synced contact');
 
     return NextResponse.json({
@@ -411,6 +453,47 @@ export async function POST(
 
     if (upsertError) {
       throw new Error(`Supabase upsert failed: ${upsertError.message}`);
+    }
+
+    // Fetch duda_site_code from associated deals
+    try {
+      const assocResponse = await fetch(
+        `https://api.hubapi.com/crm/v3/objects/contacts/${hubspotId}/associations/deals`,
+        { headers: { 'Authorization': `Bearer ${HUBSPOT_ACCESS_TOKEN}` } }
+      );
+      if (assocResponse.ok) {
+        const assocData = await assocResponse.json();
+        const dealIds: string[] = (assocData.results || []).map((r: { id: string }) => r.id);
+
+        if (dealIds.length > 0) {
+          const dealParams = new URLSearchParams({ properties: 'duda_site_code' });
+          for (const dealId of dealIds) {
+            const dealResponse = await fetch(
+              `https://api.hubapi.com/crm/v3/objects/deals/${dealId}?${dealParams}`,
+              { headers: { 'Authorization': `Bearer ${HUBSPOT_ACCESS_TOKEN}` } }
+            );
+            if (!dealResponse.ok) continue;
+            const deal = await dealResponse.json();
+            const dudaSiteCode = deal.properties?.duda_site_code;
+            if (dudaSiteCode) {
+              const { error: identityError } = await supabase
+                .from('service_identity_map')
+                .upsert(
+                  { hubspot_contact_id: hubspotId, duda_site_code: dudaSiteCode },
+                  { onConflict: 'hubspot_contact_id' }
+                );
+              if (identityError) {
+                console.warn('[API POST] Failed to sync duda_site_code to identity map:', identityError);
+              } else {
+                console.log(`[API POST] Synced duda_site_code "${dudaSiteCode}" from deal ${dealId}`);
+              }
+              break;
+            }
+          }
+        }
+      }
+    } catch (dealError) {
+      console.warn('[API POST] Failed to fetch deals for duda_site_code:', dealError);
     }
 
     console.log(`[API POST] ✅ Sync completed for contact ${providedId} (HubSpot ID: ${hubspotId})`);
