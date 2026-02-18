@@ -49,8 +49,8 @@ supabase db dump \
 node -e "
 const { createClient } = require('@supabase/supabase-js');
 const supabase = createClient(
-  'https://olywxnqoaazoujgpdlyw.supabase.co',
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9seXd4bnFvYWF6b3VqZ3BkbHl3Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2NDY5NjYyMiwiZXhwIjoyMDgwMjcyNjIyfQ.U_53q5X_iQ11UekQEfP35JzjhKT-URyIyjkelrclcj0'
+  'https://project-id.supabase.co',
+  'eyJ...'
 );
 ['contacts', 'clients', 'enriched_businesses'].forEach(async t => {
   const { error } = await supabase.from(t).select('*').limit(1);
