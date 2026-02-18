@@ -63,14 +63,22 @@ export async function POST(
 
       const send = (data: Record<string, unknown>) => {
         if (closed) return
-        controller.enqueue(encoder.encode(`data: ${JSON.stringify(data)}\n\n`))
+        try {
+          controller.enqueue(encoder.encode(`data: ${JSON.stringify(data)}\n\n`))
+        } catch {
+          closed = true
+        }
       }
 
       const close = () => {
         if (closed) return
         closed = true
         if (heartbeatTimer) clearInterval(heartbeatTimer)
-        controller.close()
+        try {
+          controller.close()
+        } catch {
+          // Already closed
+        }
       }
 
       // Send initial event
