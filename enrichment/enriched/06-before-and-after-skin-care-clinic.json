@@ -1,0 +1,81 @@
+{
+  "hubspotContactId": "23492793467",
+  "hubspotUrl": "https://app.hubspot.com/contacts/39784316/record/0-1/23492793467",
+
+  "businessName": "Before and After Skin Care Clinic",
+  "businessNameAlternate": "Before & After Skincare Clinic",
+
+  "phone": "(714) 508-7333",
+  "phoneSecondary": "(949) 334-5577",
+  "email": "beforenafterskin@gmail.com",
+  "website": "https://www.beforeandafterskin.com/",
+
+  "streetAddress": "14161 Newport Ave, Suite A",
+  "city": "Tustin",
+  "state": "California",
+  "zipCode": "92780",
+  "country": "United States",
+  "serviceArea": "20 mile radius - Orange County - Newport Beach, Irvine, Santa Ana, Costa Mesa, Orange",
+
+  "shortDescription": "Non-surgical med spa specializing in Korean skincare (K-Beauty). Signature Korean hand technique facial. Morpheus8 Verified Provider. 22+ years experience.",
+  "longDescription": "Established in 2002, Before and After Skincare Clinic is a full-service non-surgical med spa founded by South Korean skincare expert Sarah Lee. Specializing in Korean beauty (K-Beauty) techniques, the clinic offers the signature Korean hand technique facial with acupressure that has earned them a devoted following. The clinic combines traditional Korean skincare methods with the latest technological advances in anti-aging and skin rejuvenation, including laser, radio-frequency, and ultrasound treatments. As a Morpheus8 Verified Provider, they deliver exceptional results with minimal downtime. Services include Korean Facials (1.5 hours including scalp, face, shoulders, back, arms, hands massage), Botox, Fillers, PRP, Morpheus8, Thermage, Pico Laser, HIFU, and more. Team includes Sarah Lee (Owner/Director), Karen Lee RN, and Dr. Kevin Do MD (Medical Director). Trilingual service available in English, Korean, and Spanish.",
+  "categories": ["Medical Spa", "Skincare Clinic", "Facial Spa", "K-Beauty Spa"],
+
+  "businessHours": {
+    "monday": "9:30 AM - 5:00 PM",
+    "tuesday": "9:30 AM - 5:00 PM",
+    "wednesday": "9:30 AM - 5:00 PM",
+    "thursday": "9:30 AM - 5:00 PM",
+    "friday": "9:30 AM - 5:00 PM",
+    "saturday": "9:30 AM - 5:00 PM",
+    "sunday": "Closed"
+  },
+
+  "logo": "public/images/brightlocal/before-and-after-skincare/logo.png",
+  "images": [
+    "public/images/brightlocal/before-and-after-skincare/image1-clinic.jpg"
+  ],
+  "imagesNote": null,
+
+  "socialMedia": {
+    "facebook": "https://www.facebook.com/BeforeandAfterSkincareClinic",
+    "instagram": "https://www.instagram.com/beforeandafterskincareclinic",
+    "twitter": null,
+    "linkedin": null,
+    "yelp": "https://www.yelp.com/biz/before-and-after-skincare-clinic-tustin",
+    "tiktok": null
+  },
+
+  "attributes": {
+    "languages": ["English", "Korean", "Spanish"],
+    "paymentMethods": ["Cash", "Credit Card", "Apple Pay"],
+    "accessibility": "Yes",
+    "parking": "Yes",
+    "yearsInBusiness": "22+",
+    "license": null
+  },
+
+  "services": [
+    "Korean Hand Technique Facial",
+    "Botox",
+    "Fillers",
+    "PRP (Platelet Rich Plasma)",
+    "Morpheus8",
+    "Thermage",
+    "Pico Laser",
+    "HIFU",
+    "Tattoo Removal",
+    "Skin Tightening",
+    "Scalp Treatments",
+    "Hair Removal"
+  ],
+
+  "certifications": [
+    "Morpheus8 Verified Provider"
+  ],
+  "notes": "EVIDENCE LINKING: HubSpot contact ID 23492793467 confirmed via: (1) Phone (714) 508-7333 in HubSpot matches website and Yelp listing, (2) Email beforeandafterskincare@yahoo.com in HubSpot aligns with beforenafterskin@gmail.com (business contact variation), (3) Address '14161 Newport Ave Suite A, Tustin, CA 92780' in HubSpot matches exactly on website, MapQuest, and Yelp. InModeMD provider directory confirms Morpheus8 Verified Provider status at this address. Established 2002, specialized in K-Beauty techniques.",
+
+  "enrichmentDate": "2025-11-28",
+  "enrichmentSources": ["HubSpot CRM", "beforeandafterskin.com", "InModeMD", "Yelp", "MapQuest", "Firecrawl web search"],
+  "dataSource": "hubspot + web enrichment"
+}

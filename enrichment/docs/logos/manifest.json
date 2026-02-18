@@ -1,0 +1,54 @@
+{
+  "downloadedAt": "2025-11-28T09:23:56.665Z",
+  "outputDirectory": "data/enriched-hubspot/logos",
+  "logos": [
+    {
+      "businessName": "The Dog Tutor",
+      "filename": "01-the-dog-tutor.png",
+      "sourceUrl": "https://lirp.cdn-website.com/b78b46be/dms3rep/multi/opt/LOGO+2-1920w.png"
+    },
+    {
+      "businessName": "Mountain Asphalt LLC",
+      "filename": "04-mountain-asphalt-llc.png",
+      "sourceUrl": "https://lirp.cdn-website.com/36e72b37/dms3rep/multi/opt/Mountain-logo-2ca38b53-1920w.png"
+    },
+    {
+      "businessName": "Decorative Film Crew",
+      "filename": "05-decorative-film-crew.png",
+      "sourceUrl": "https://lirp.cdn-website.com/da99e91e/dms3rep/multi/opt/1-f2da992e-d105b710-1920w.png"
+    },
+    {
+      "businessName": "Before & After Skin Care",
+      "filename": "06-before-and-after-skin-care.png",
+      "sourceUrl": "https://lirp.cdn-website.com/74457aa6/dms3rep/multi/opt/c3ef3b57-bd53-4ce1-bb01-28f79b561ce4-upload_design_files-b-a-sign-1920w.png"
+    },
+    {
+      "businessName": "Rich's Rainbow Renovations",
+      "filename": "08-richs-rainbow-renovations.jpg",
+      "sourceUrl": "https://lirp.cdn-website.com/5593ce9f/dms3rep/multi/opt/Richs+Rainbow+Renovations+%281%29-28--1920w.jpg"
+    },
+    {
+      "businessName": "Balance Your Books LLC",
+      "filename": "10-balance-your-books-llc.png",
+      "sourceUrl": "https://lirp.cdn-website.com/3da407a3/dms3rep/multi/opt/Screenshot+2025-06-10+at+11.05.33-AM-1920w.png"
+    }
+  ],
+  "noLogo": [
+    {
+      "businessName": "PipeworX Plumbing",
+      "reason": "Needs new website"
+    },
+    {
+      "businessName": "Millman Realty",
+      "reason": "Needs new website"
+    },
+    {
+      "businessName": "Highlander Chimney",
+      "reason": "Uses text-based header"
+    },
+    {
+      "businessName": "Accurately Yours",
+      "reason": "Uses text-based header"
+    }
+  ]
+}

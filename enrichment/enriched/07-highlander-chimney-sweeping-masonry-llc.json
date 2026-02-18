@@ -1,0 +1,78 @@
+{
+  "hubspotContactId": "18887077223",
+  "hubspotUrl": "https://app.hubspot.com/contacts/39784316/record/0-1/18887077223",
+
+  "businessName": "Highlander Chimney Sweeping & Masonry, LLC",
+  "businessNameAlternate": "Highlander Chimney Sweeping",
+
+  "phone": "(971) 425-2339",
+  "phoneSecondary": "(971) 279-3002",
+  "email": "colin@highlanderchimney.com",
+  "website": "https://www.highlanderchimney.com/",
+
+  "streetAddress": "2007 SE Oak Grove Blvd",
+  "city": "Oak Grove",
+  "state": "Oregon",
+  "zipCode": "97267",
+  "country": "United States",
+  "serviceArea": "Portland metropolitan area - 30 mile radius including Milwaukie, Lake Oswego, Clackamas, Gresham, Beaverton, Tigard (Oregon only, not Washington State)",
+
+  "shortDescription": "Expert chimney sweeping & masonry services. Licensed, Bonded, Insured (CCB #250143). FREE estimates. Serving Portland metro area. Family-owned business.",
+  "longDescription": "Highlander Chimney Sweeping & Masonry, LLC is a local, family-owned business led by Colin Swartz, offering professional chimney services throughout the Portland metropolitan area. With experience sweeping and repairing several thousand chimneys, Highlander provides a full-service solution for all chimney needs. Services include chimney sweeping (cleaning) for brick fireplaces and wood stoves, chimney safety inspections, leak inspections, brick and mortar repair, rain cap installation, waterproofing, damper repair and installation, pellet stove cleaning, and dryer vent cleaning. Serving both commercial and residential properties. Licensed, Bonded, and Insured with Oregon CCB License #250143. Company motto in Scottish Gaelic: 'Losgadh sàbhailte - Losgadh glic - Losgadh an-asgaidh' meaning BURN SAFE - BURN SMART - BURN FREE.",
+  "categories": ["Chimney Sweep", "Masonry Contractor", "Chimney Repair", "Fireplace Services"],
+
+  "businessHours": {
+    "monday": "8:30 AM - 4:30 PM",
+    "tuesday": "8:30 AM - 4:30 PM",
+    "wednesday": "8:30 AM - 4:30 PM",
+    "thursday": "8:30 AM - 4:30 PM",
+    "friday": "8:30 AM - 4:30 PM",
+    "saturday": "Closed",
+    "sunday": "Closed"
+  },
+
+  "logo": "public/images/brightlocal/highlander-chimney/og-image.jpg",
+  "images": [
+    "public/images/brightlocal/highlander-chimney/image1-chimney-inspection.jpeg",
+    "public/images/brightlocal/highlander-chimney/image2-brick-repair.jpeg",
+    "public/images/brightlocal/highlander-chimney/image3-roof-work.jpeg"
+  ],
+  "imagesNote": null,
+
+  "socialMedia": {
+    "facebook": "https://facebook.com/people/Highlander-Chimney-Sweeping-Masonry-LLC/61559235635459/",
+    "instagram": null,
+    "twitter": null,
+    "linkedin": null,
+    "yelp": null,
+    "tiktok": null
+  },
+
+  "attributes": {
+    "languages": ["English"],
+    "paymentMethods": ["Credit Card", "Debit Card", "Check", "Cash"],
+    "accessibility": null,
+    "parking": null,
+    "yearsInBusiness": null,
+    "license": "CCB #250143"
+  },
+
+  "services": [
+    "Chimney Sweeping",
+    "Chimney Safety Inspections",
+    "Leak Inspections",
+    "Brick and Mortar Repair",
+    "Rain Cap Installation",
+    "Waterproofing",
+    "Damper Repair and Installation",
+    "Pellet Stove Cleaning",
+    "Dryer Vent Cleaning"
+  ],
+
+  "certifications": [],
+  "notes": "EVIDENCE LINKING: HubSpot contact ID 18887077223 confirmed via: (1) HubSpot phone (971) 425-2339 matches website contact, secondary (971) 279-3002 also matches, (2) HubSpot email colingswartz@gmail.com matches owner Colin Swartz shown on website colin@highlanderchimney.com, (3) Address '2007 SE Oak Grove Blvd, Portland, OR 97267' in HubSpot matches website (city listed as Oak Grove on website, Portland metro). Oregon CCB License #250143 verified on website. Facebook business page confirms same contact details.",
+
+  "enrichmentDate": "2025-11-28",
+  "enrichmentSources": ["HubSpot CRM", "highlanderchimney.com", "Facebook", "Oregon CCB", "Firecrawl web search"],
+  "dataSource": "hubspot + web enrichment"
+}

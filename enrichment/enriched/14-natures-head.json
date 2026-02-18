@@ -1,0 +1,111 @@
+{
+  "hubspotContactId": "1111",
+  "hubspotUrl": "https://app.hubspot.com/contacts/46544827/record/0-1/1111",
+  "businessName": "Nature's Head, Inc.",
+  "businessNameAlternate": "Nature's Head Composting Toilet",
+  "phone": "+1 251-295-3043",
+  "phoneSecondary": null,
+  "email": "sales@natureshead.net",
+  "emailSecondary": "accountspayable@natureshead.net",
+  "website": "https://natureshead.net",
+  "streetAddress": "503 Joe E Brown Avenue",
+  "city": "Holgate",
+  "state": "Ohio",
+  "zipCode": "43527",
+  "country": "United States",
+  "serviceArea": "United States, Canada, Europe, Australia, New Zealand - ships worldwide",
+  "shortDescription": "American-made self-contained composting toilets for marine, RV, tiny home, cabin, and off-grid applications. Waterless, odorless, and eco-friendly.",
+  "longDescription": "The Nature's Head Composting Toilet is self-contained, urine diverting and the waterless operation allows for ease of use for many applications. Also called a dry toilet, the Nature's Head is lightweight, odorless and compact making it a perfect fit for your home, cabin, tiny house, RV, workshop, boat and survival application. This eco friendly toilet with its stainless steel hardware, robust construction and user friendliness has been designed to withstand the harshest of conditions. Designed in 2006 by two long time sailors who sought to create a more user friendly version than anything else on the market. We take great pride in offering a product which we manufacture in the United States and strive to provide exceptional customer service.",
+  "categories": [
+    "Composting Toilet Manufacturer",
+    "Eco-Friendly Products",
+    "Marine Equipment",
+    "RV Accessories",
+    "Off-Grid Living Supplies"
+  ],
+  "businessHours": {
+    "monday": "Business hours",
+    "tuesday": "Business hours",
+    "wednesday": "Business hours",
+    "thursday": "Business hours",
+    "friday": "Business hours",
+    "saturday": "Closed",
+    "sunday": "Closed",
+    "note": "Same day shipping available"
+  },
+  "logo": "https://cdn11.bigcommerce.com/s-ejubukuvvj/product_images/favicon.ico",
+  "images": [
+    "https://cdn11.bigcommerce.com/s-ejubukuvvj/images/stencil/1280w/products/114/446/nh-spd-toilet-side__16760.1745501877.png",
+    "https://cdn11.bigcommerce.com/s-ejubukuvvj/images/stencil/1280w/products/116/449/wkndr-toilet-side__74383.1745501256.png"
+  ],
+  "imagesNote": "Product photos available on website for all toilet models",
+  "socialMedia": {
+    "facebook": null,
+    "instagram": null,
+    "twitter": null,
+    "youtube": null,
+    "linkedin": null
+  },
+  "attributes": {
+    "yearFounded": "2006",
+    "firstSale": "2007",
+    "owners": "Matt & Ruth Cochran",
+    "madeInUSA": true,
+    "manufacturingLocation": "Holgate, Ohio",
+    "accountingLocation": "LaGrange, GA",
+    "unitsSold": "Hundreds of thousands",
+    "warranty": "5-year warranty",
+    "languages": ["English"],
+    "paymentMethods": ["Credit Card", "Debit Card"]
+  },
+  "services": [
+    "Composting Toilet Manufacturing",
+    "Direct Sales",
+    "Wholesale Distribution",
+    "Customer Support",
+    "Replacement Parts",
+    "Same Day Shipping"
+  ],
+  "products": [
+    {
+      "name": "Nature's Head Spider Handle Toilet",
+      "price": "$995.00"
+    },
+    {
+      "name": "Nature's Head Foot Spider Handle Toilet",
+      "price": "$995.00"
+    },
+    {
+      "name": "The Weekender Toilet",
+      "price": "$995.00",
+      "note": "Compact version for smaller spaces"
+    },
+    {
+      "name": "Urine Diverter Kit",
+      "price": "$100.00"
+    },
+    {
+      "name": "Blemished Units",
+      "price": "$875.00"
+    }
+  ],
+  "applications": [
+    "Marine/Boats",
+    "RVs and Campers",
+    "Tiny Homes",
+    "Cabins",
+    "Off-Grid Living",
+    "Workshops",
+    "Barns",
+    "Yurts",
+    "Survival Shelters",
+    "Disaster Preparedness",
+    "Vans/Schoolies"
+  ],
+  "certifications": [],
+  "notableClients": ["US Military"],
+  "notes": "HubSpot contact is for accounting department in LaGrange, GA. Manufacturing and main operations in Holgate, Ohio. First to offer 5-year warranty on composting toilets. Designed by two experienced sailors. Has distributors in US, Canada, Europe, Australia and New Zealand. Google Top Quality Store designation.",
+  "enrichmentDate": "2025-12-07",
+  "enrichmentSources": ["HubSpot", "natureshead.net", "Lehman's"],
+  "dataSource": "hubspot + web enrichment via Claude Code MCP"
+}

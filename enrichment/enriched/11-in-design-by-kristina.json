@@ -1,0 +1,77 @@
+{
+  "hubspotContactId": "536151",
+  "hubspotUrl": "https://app.hubspot.com/contacts/39784316/record/0-1/536151",
+
+  "businessName": "In Design by Kristina",
+  "businessNameAlternate": "In Design by K",
+
+  "phone": "(309) 214-1477",
+  "phoneSecondary": null,
+  "email": "indesignbykristina@gmail.com",
+  "website": "https://www.indesignbykristina.com/",
+
+  "streetAddress": "902 E Marietta Ave",
+  "city": "Peoria Heights",
+  "state": "Illinois",
+  "zipCode": "61616",
+  "country": "United States",
+  "serviceArea": "Central Illinois - Peoria, Springfield, Bloomington, Champaign, and surrounding areas",
+
+  "shortDescription": "Creative photography & design studio specializing in weddings, engagements, family portraits, and graphic design. 6+ years experience. Serving Central Illinois.",
+  "longDescription": "In Design by Kristina is a creative studio founded by Kristina Velpel, specializing in photography, videography, and graphic design. With over 6 years of experience and 15+ events covered, the studio is built on a passion for capturing once-in-a-lifetime moments and transforming them into photos you'll treasure forever. Services include wedding photography, engagement sessions, couple sessions, family portraits, individual/portrait sessions, senior photos, and custom graphic design including logo design. Known for artistic compositions and attention to detail, Kristina brings a warm, personable approach to every shoot, ensuring clients feel comfortable and confident. The studio serves Central Illinois including Peoria, Springfield, Bloomington, and Champaign areas.",
+  "categories": ["Photographer", "Wedding Photographer", "Graphic Designer", "Portrait Photographer"],
+
+  "businessHours": {
+    "monday": "9:00 AM - 12:00 AM",
+    "tuesday": "9:00 AM - 12:00 AM",
+    "wednesday": "9:00 AM - 12:00 AM",
+    "thursday": "9:00 AM - 12:00 AM",
+    "friday": "9:00 AM - 12:00 AM",
+    "saturday": "9:00 AM - 12:00 AM",
+    "sunday": "9:00 AM - 12:00 AM"
+  },
+
+  "logo": "public/images/brightlocal/in-design-kristina/logo.png",
+  "images": [
+    "public/images/brightlocal/in-design-kristina/wedding-primary1.jpg",
+    "public/images/brightlocal/in-design-kristina/wedding-primary2.jpg",
+    "public/images/brightlocal/in-design-kristina/kristina-primary3.jpg"
+  ],
+  "imagesNote": null,
+
+  "socialMedia": {
+    "facebook": "https://facebook.com/profile.php?id=61552623096822",
+    "instagram": "https://instagram.com/in_design_by_k/",
+    "twitter": null,
+    "linkedin": null,
+    "yelp": "https://yelp.com/biz/in-design-by-kristina-peoria-heights",
+    "tiktok": null
+  },
+
+  "attributes": {
+    "languages": ["English"],
+    "paymentMethods": ["Cash", "Visa", "Mastercard", "American Express", "Discover", "PayPal", "Check"],
+    "accessibility": null,
+    "parking": null,
+    "yearsInBusiness": "6+",
+    "license": null
+  },
+
+  "services": [
+    "Wedding Photography",
+    "Engagement Sessions",
+    "Couple Sessions",
+    "Family Portraits",
+    "Individual/Portrait Sessions",
+    "Senior Photos",
+    "Graphic Design",
+    "Logo Design"
+  ],
+
+  "certifications": [],
+  "notes": "EVIDENCE LINKING: HubSpot contact ID 536151 confirmed via: (1) Phone (309) 214-1477 in HubSpot matches website contact, (2) HubSpot personal email kvelps74@gmail.com links to owner Kristina Velpel (surname Velpel matches email), business email indesignbykristina@gmail.com matches domain, (3) Address '902 E Marietta Ave, Peoria Heights, IL 61616' in HubSpot matches Google Business Profile location. Instagram @in_design_by_k and Facebook profile 61552623096822 confirm same business. Yelp listing at 'in-design-by-kristina-peoria-heights' matches all details.",
+
+  "enrichmentDate": "2025-11-28",
+  "enrichmentSources": ["HubSpot CRM", "indesignbykristina.com", "Google Business Profile", "Facebook", "Instagram", "Yelp", "BrightLocal"],
+  "dataSource": "hubspot + web enrichment"
+}

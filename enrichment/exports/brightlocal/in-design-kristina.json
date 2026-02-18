@@ -1,0 +1,110 @@
+{
+  "metadata": {
+    "source": "brightlocal",
+    "exportedAt": "2024-11-27T16:30:00.000Z",
+    "exportedBy": "claude-code-automation"
+  },
+  "identifiers": {
+    "brightlocalLocationId": 3915264,
+    "hubspotContactId": "536151",
+    "uniqueLocationReference": "536151",
+    "citationBuilderCampaignId": 915111,
+    "brightlocalClientId": 450193
+  },
+  "business": {
+    "name": "In Design by Kristina",
+    "isServiceAreaBusiness": true,
+    "primaryCategory": "Photographer",
+    "extraCategories": ["Wedding photographer", "Graphic designer"],
+    "websiteUrl": "https://www.indesignbykristina.com/",
+    "primaryPhone": "+13092141477",
+    "description": "In Design by Kristina is a creative studio specializing in photography, videography, and graphic design. Founded by Kristina Velpel, the studio is all about capturing once-in-a-lifetime moments and turning them into photos you'll treasure forever. With 6+ years of experience and 15+ events covered, services include wedding photography, engagements, family portraits, senior photos, and custom logo design. Serving Central Illinois including Peoria, Springfield, Bloomington, and Champaign."
+  },
+  "address": {
+    "line1": "902 E Marietta Ave",
+    "line2": null,
+    "city": "Peoria Heights",
+    "state": "Illinois",
+    "zipCode": "61616",
+    "country": "United States"
+  },
+  "contact": {
+    "firstName": "Kristina",
+    "lastName": "Velpel",
+    "email": "indesignbykristina@gmail.com",
+    "mobilePhone": null,
+    "fax": null,
+    "numberOfEmployees": null
+  },
+  "hours": {
+    "monday": { "open": "09:00", "close": "00:00", "isOpen": true },
+    "tuesday": { "open": "09:00", "close": "00:00", "isOpen": true },
+    "wednesday": { "open": "09:00", "close": "00:00", "isOpen": true },
+    "thursday": { "open": "09:00", "close": "00:00", "isOpen": true },
+    "friday": { "open": "09:00", "close": "00:00", "isOpen": true },
+    "saturday": { "open": "09:00", "close": "00:00", "isOpen": true },
+    "sunday": { "open": "09:00", "close": "00:00", "isOpen": true }
+  },
+  "socialMedia": {
+    "facebook": "https://facebook.com/profile.php?id=61552623096822",
+    "instagram": "https://instagram.com/in_design_by_k/",
+    "linkedin": null,
+    "twitter": null,
+    "pinterest": null,
+    "youtube": null,
+    "tiktok": null
+  },
+  "images": {
+    "logo": {
+      "slot": "logo",
+      "s3Url": "https://brightlocal-cl.s3.amazonaws.com/prod/tmp/450193/ImageToolUploader.php/new_0/6928db0a61074/6928db0a61076.jpg",
+      "localFile": "logo-square.jpg",
+      "dimensions": "500x500",
+      "sizeKb": 15.9,
+      "description": "Square 'In Design by Kristina' logo with green bar design"
+    },
+    "primary1": {
+      "slot": "primary1",
+      "s3Url": "https://brightlocal-cl.s3.amazonaws.com/prod/tmp/450193/ImageToolUploader.php/new_0/6928db0a90ad5/6928db0a90ad8.jpg",
+      "localFile": "wedding-primary1.jpg",
+      "dimensions": "444x449",
+      "sizeKb": 89.8,
+      "description": "Wedding B&W - Couple under willow tree"
+    },
+    "primary2": {
+      "slot": "primary2",
+      "s3Url": "https://brightlocal-cl.s3.amazonaws.com/prod/tmp/450193/ImageToolUploader.php/new_0/6928db0b4f835/6928db0b4f837.jpg",
+      "localFile": "wedding-primary2.jpg",
+      "dimensions": "1918x1279",
+      "sizeKb": 690,
+      "description": "Wedding Color - Couple standing in grass/nature setting"
+    },
+    "primary3": {
+      "slot": "primary3",
+      "s3Url": "https://brightlocal-cl.s3.amazonaws.com/prod/tmp/450193/ImageToolUploader.php/new_0/6928db0b8cd12/6928db0b8cd14.jpg",
+      "localFile": "kristina-primary3.jpg",
+      "dimensions": "410x549",
+      "sizeKb": 44,
+      "description": "Kristina's professional headshot (smiling, casual)"
+    }
+  },
+  "paymentMethods": {
+    "cash": true,
+    "visa": true,
+    "mastercard": true,
+    "americanExpress": true,
+    "personalCheck": true,
+    "invoice": true,
+    "insurance": true,
+    "atmDebit": true,
+    "travelersChecks": true,
+    "financingAvailable": true,
+    "paypal": true,
+    "discover": true
+  },
+  "campaign": {
+    "id": 915111,
+    "status": "on_hold",
+    "statusReason": "Pending BrightLocal support review - business hours were previously all closed, now fixed to 9AM-midnight"
+  }
+}

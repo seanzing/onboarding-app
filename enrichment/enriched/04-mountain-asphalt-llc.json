@@ -1,0 +1,75 @@
+{
+  "hubspotContactId": "116464176022",
+  "hubspotUrl": "https://app.hubspot.com/contacts/39784316/record/0-1/116464176022",
+
+  "businessName": "Mountain Asphalt LLC",
+  "businessNameAlternate": "Mountain Asphalt",
+
+  "phone": "(541) 280-0689",
+  "phoneSecondary": null,
+  "email": "mountainasphalt1@gmail.com",
+  "website": "https://www.mountainasphaltllc.com/",
+
+  "streetAddress": "380 SW 5th St #432",
+  "city": "Madras",
+  "state": "Oregon",
+  "zipCode": "97741",
+  "country": "United States",
+  "serviceArea": "Central Oregon ~100 mile radius - Bend, Redmond, Prineville, Sisters, La Pine, Sunriver, Tumalo, Terrebonne, Madras",
+
+  "shortDescription": "Professional asphalt seal coating & hot rubber crack repair. 35+ years Central Oregon experience. Family-owned. 100% 5-Star reviews. Military Veteran Discount.",
+  "longDescription": "Raised in Central Oregon, Mountain Asphalt LLC knows this land like the back of their hand. Over the past three decades, they've built a strong reputation by combining local knowledge with proven asphalt techniques. Family-owned and operated, they don't just pave surfaces — they build lasting relationships with customers. Every project is completed as if it were for their own family, with a focus on clear communication, honesty, and attention to every detail. Services include Asphalt Sealcoating (protects pavement from UV rays, water, oil, and chemicals, extends lifespan 5-10 years) and Hot Rubber Asphalt Crack Repair (stops water intrusion, prevents potholes). They never dilute their seal coating like some contractors, ensuring longer-lasting results. Residential and commercial services available.",
+  "categories": ["Asphalt Contractor", "Sealcoating", "Driveway Contractor", "Parking Lot Maintenance"],
+
+  "businessHours": {
+    "monday": "24 Hours",
+    "tuesday": "24 Hours",
+    "wednesday": "24 Hours",
+    "thursday": "24 Hours",
+    "friday": "24 Hours",
+    "saturday": "24 Hours",
+    "sunday": "24 Hours"
+  },
+
+  "logo": "public/images/brightlocal/mountain-asphalt/logo.png",
+  "images": [
+    "public/images/brightlocal/mountain-asphalt/image1-houses.jpeg",
+    "public/images/brightlocal/mountain-asphalt/image2-driveway-before.jpg",
+    "public/images/brightlocal/mountain-asphalt/image3-driveway-after.jpg"
+  ],
+  "imagesNote": null,
+
+  "socialMedia": {
+    "facebook": "https://facebook.com/61553719681775",
+    "instagram": null,
+    "twitter": null,
+    "linkedin": null,
+    "yelp": "https://yelp.com/biz/mountain-asphalt-madras",
+    "tiktok": null
+  },
+
+  "attributes": {
+    "languages": ["English"],
+    "paymentMethods": ["Check", "Cash", "Zelle", "PayPal", "Cash App"],
+    "accessibility": null,
+    "parking": null,
+    "yearsInBusiness": "35+",
+    "license": null
+  },
+
+  "services": [
+    "Asphalt Sealcoating",
+    "Hot Rubber Crack Repair",
+    "Driveway Sealing",
+    "Parking Lot Maintenance",
+    "Residential Asphalt Services",
+    "Commercial Asphalt Services"
+  ],
+
+  "certifications": [],
+  "notes": "EVIDENCE LINKING: HubSpot contact ID 116464176022 confirmed via: (1) Phone (541) 280-0689 in HubSpot matches website, Yelp listing, and Facebook page, (2) Email mountainasphalt1@gmail.com in HubSpot matches website contact form, (3) Address '380 SW 5th St #432, Madras, OR 97741' in HubSpot matches Yelp business location. 100% 5-star reviews on Google verified via web search. Family-owned business serving Central Oregon for 35+ years.",
+
+  "enrichmentDate": "2025-11-28",
+  "enrichmentSources": ["HubSpot CRM", "mountainasphaltllc.com", "Yelp", "Facebook", "Firecrawl web search"],
+  "dataSource": "hubspot + web enrichment"
+}

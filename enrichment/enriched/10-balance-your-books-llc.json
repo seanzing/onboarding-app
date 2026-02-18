@@ -1,0 +1,85 @@
+{
+  "hubspotContactId": "110690018078",
+  "hubspotUrl": "https://app.hubspot.com/contacts/39784316/record/0-1/110690018078",
+
+  "businessName": "Balance Your Books LLC",
+  "businessNameAlternate": "Balance Your Books",
+
+  "phone": "(702) 575-9735",
+  "phoneSecondary": null,
+  "email": "jackie@balanceyourbooksllc.com",
+  "website": "https://www.balanceyourbooksllc.com/",
+
+  "streetAddress": "157 Tapatio Street",
+  "city": "Henderson",
+  "state": "Nevada",
+  "zipCode": "89074",
+  "country": "United States",
+  "serviceArea": "Henderson, Las Vegas, North Las Vegas, Boulder City, and surrounding Clark County communities. Remote services available nationwide.",
+
+  "shortDescription": "Expert bookkeeping services with 35+ years of accounting experience. QuickBooks ProAdvisor, BBB A+ Rated. Free consultations. Serving Henderson, Nevada and nationwide remotely.",
+  "longDescription": "Balance Your Books LLC brings over 35 years of accounting experience and offers a comprehensive range of services including data entry, bank reconciliations, journal entries, inventory valuations, depreciation schedules, accounts payable, accounts receivable, adjusting journal entries, and preparation of financial statements. We specialize in month-end and year-end closing procedures. As a QuickBooks ProAdvisor, we are experts in QuickBooks and QuickBooks Point of Sale, and also have extensive experience with a variety of other accounting software platforms such as Timberline, MAS 90, PC Advisor, American Contractor, Micros/Aloha, and Compete, just to name a few. Our commitment is to perform the tasks entrusted to us with professional skill, integrity and accuracy. Services can be done at our office or at your location. We include free accounting support when you have questions or get stuck on something. We meet deadlines and make sure your financials and tax returns are filed correctly and on time. We are proud to be A+ rated with the Better Business Bureau.",
+  "categories": ["Bookkeeping Service", "Accountant", "Financial Services", "Tax Preparation"],
+
+  "businessHours": {
+    "monday": "9:00 AM - 5:00 PM",
+    "tuesday": "9:00 AM - 5:00 PM",
+    "wednesday": "9:00 AM - 5:00 PM",
+    "thursday": "9:00 AM - 5:00 PM",
+    "friday": "9:00 AM - 5:00 PM",
+    "saturday": "Closed",
+    "sunday": "Closed"
+  },
+
+  "logo": "public/images/brightlocal/balance-your-books/logo.png",
+  "images": [
+    "public/images/brightlocal/balance-your-books/certifications.png"
+  ],
+  "imagesNote": "Certifications badge image showing BBB and QuickBooks ProAdvisor credentials",
+
+  "socialMedia": {
+    "facebook": "https://www.facebook.com/JackieCRoeder/",
+    "instagram": null,
+    "twitter": null,
+    "linkedin": "https://www.linkedin.com/in/jackieroeder/",
+    "yelp": "https://www.yelp.com/biz/balance-your-books-henderson-2",
+    "tiktok": null
+  },
+
+  "attributes": {
+    "languages": ["English"],
+    "paymentMethods": ["Cash", "Check", "Zelle", "PayPal", "Visa", "Mastercard", "Discover", "American Express"],
+    "accessibility": "N/A (Home office)",
+    "parking": "N/A (Home office)",
+    "yearsInBusiness": "35+",
+    "license": null
+  },
+
+  "services": [
+    "Bank/Credit Card Reconciliations",
+    "Accounts Payable/Receivable",
+    "Billing and Customer Statements",
+    "Inventory Valuation and Adjustments",
+    "General Journal Entries",
+    "Cost of Goods Sold Analyses",
+    "Payroll and Related Tax Filings",
+    "Nevada Sales Tax Reconciling and Filing",
+    "Fixed Assets and Depreciation Schedules",
+    "Budgets and Variance Analyses",
+    "Job Costing and Cost Allocations",
+    "Audit Preparation",
+    "Financial Reports",
+    "Month-End/Year-End Closing",
+    "QuickBooks Services"
+  ],
+
+  "certifications": [
+    "QuickBooks ProAdvisor",
+    "BBB A+ Rating"
+  ],
+  "notes": "EVIDENCE LINKING: HubSpot contact ID 110690018078 confirmed via: (1) Phone (702) 575-9735 in HubSpot matches website exactly, (2) Email jackie@balanceyourbooksllc.com in HubSpot matches website contact and owner Jackie Roeder, (3) Website URL balanceyourbooksllc.com in HubSpot is the actual business site, (4) Address '157 Tapatio Street, Henderson, NV 89074' in HubSpot matches business location. LinkedIn profile linkedin.com/in/jackieroeder/ and Yelp listing confirm same contact. BBB A+ rating verified. Free client consultation available, services can be performed at client location or remotely.",
+
+  "enrichmentDate": "2025-11-28",
+  "enrichmentSources": ["HubSpot CRM", "balanceyourbooksllc.com", "Facebook", "LinkedIn", "Yelp", "BBB"],
+  "dataSource": "hubspot + web enrichment"
+}

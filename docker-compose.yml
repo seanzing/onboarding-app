@@ -1,0 +1,25 @@
+# Zing Directory App - Docker Compose
+# Run with: docker compose --env-file .env.local up -d
+
+services:
+  app:
+    build:
+      context: .
+      args:
+        # NEXT_PUBLIC_* vars are embedded at build time
+        # These come from .env.local via --env-file flag
+        NEXT_PUBLIC_SUPABASE_URL: ${NEXT_PUBLIC_SUPABASE_URL}
+        NEXT_PUBLIC_SUPABASE_ANON_KEY: ${NEXT_PUBLIC_SUPABASE_ANON_KEY}
+        NEXT_PUBLIC_PIPEDREAM_GBP_OAUTH_APP_ID: ${NEXT_PUBLIC_PIPEDREAM_GBP_OAUTH_APP_ID}
+        NEXT_PUBLIC_APP_URL: http://localhost:3000
+    env_file: .env.local
+    ports:
+      - "3000:3000"
+    healthcheck:
+      # Use node for healthcheck since wget/curl not available in alpine by default
+      # Check /login which is publicly accessible (/ redirects to login for unauthenticated users)
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/login', (r) => process.exit(r.statusCode >= 200 && r.statusCode < 400 ? 0 : 1)).on('error', () => process.exit(1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s

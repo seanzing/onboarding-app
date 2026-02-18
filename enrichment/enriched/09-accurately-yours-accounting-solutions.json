@@ -1,0 +1,79 @@
+{
+  "hubspotContactId": "101011128681",
+  "hubspotUrl": "https://app.hubspot.com/contacts/39784316/record/0-1/101011128681",
+
+  "businessName": "Accurately Yours Accounting Solutions",
+  "businessNameAlternate": "Accurately Yours",
+
+  "phone": "(916) 397-1606",
+  "phoneSecondary": null,
+  "email": "cconklin@accuratelyyours.com",
+  "website": "https://www.accuratelyyours.com/",
+
+  "streetAddress": "6381 Auburn Blvd., Ste. C",
+  "city": "Citrus Heights",
+  "state": "California",
+  "zipCode": "95621",
+  "country": "United States",
+  "serviceArea": "Citrus Heights, Sacramento, Roseville, Folsom, Elk Grove, and surrounding Sacramento County communities within 50 miles",
+
+  "shortDescription": "Personalized accounting, bookkeeping, and tax services since 1988. Woman-owned business with 40+ years experience. Elite QuickBooks ProAdvisor, IRS Licensed, CTEC Approved.",
+  "longDescription": "Founded in 1988 by the committed and passionate Cindy Conklin, Accurately Yours Accounting Solutions embarked on a mission to redefine client relationships in the accounting world. Disillusioned by the impersonal approach of larger firms, Cindy wanted more than numbers on a balance sheet—she wanted genuine connections. Over the years, her belief that every client is unique and not just a transaction has shaped our ethos. From fledgling startups to established businesses, we take pride in educating our clients and equipping them with best practices in bookkeeping and accounting tailored to their needs. With over 40 years of accounting experience, Cindy has left indelible marks in private and public accounting sectors. She is a certified Elite QuickBooks ProAdvisor, ensuring clients get the best software deals. Licensed by the IRS and approved by CTEC to prepare taxes, Cindy ensures her knowledge is evergreen, always updated, and always ready to serve.",
+  "categories": ["Accountant", "Tax Preparation Service", "Bookkeeping Service", "Tax Consultant"],
+
+  "businessHours": {
+    "monday": "8:00 AM - 5:00 PM",
+    "tuesday": "8:00 AM - 5:00 PM",
+    "wednesday": "8:00 AM - 5:00 PM",
+    "thursday": "8:00 AM - 5:00 PM",
+    "friday": "8:00 AM - 5:00 PM",
+    "saturday": "Closed",
+    "sunday": "Closed"
+  },
+
+  "logo": "public/images/brightlocal/accurately-yours-accounting/og-image.jpg",
+  "images": [],
+  "imagesNote": "Text-based logo only - accounting business typically doesn't need project photos",
+
+  "socialMedia": {
+    "facebook": "https://www.facebook.com/accuratelyyours/",
+    "instagram": null,
+    "twitter": null,
+    "linkedin": "https://www.linkedin.com/in/accuratelyyours",
+    "yelp": "https://www.yelp.com/biz/accurately-yours-accounting-solutions-citrus-heights",
+    "tiktok": null
+  },
+
+  "attributes": {
+    "languages": ["English"],
+    "paymentMethods": ["Cash", "Credit Card", "Debit Card", "Check", "Invoice"],
+    "accessibility": "Wheelchair Accessible",
+    "parking": "Off-street parking available",
+    "yearsInBusiness": "37+ (Founded 1988)",
+    "license": "IRS Licensed, CTEC Approved"
+  },
+
+  "services": [
+    "Accounting",
+    "Bookkeeping",
+    "Business Tax Preparation",
+    "Personal Tax Preparation",
+    "Tax Planning",
+    "Unpaid Back Taxes Resolution",
+    "Non-Filed Tax Returns",
+    "Payroll Tax Solutions",
+    "QuickBooks ProAdvisor Services"
+  ],
+
+  "certifications": [
+    "IRS Licensed",
+    "CTEC Approved",
+    "Elite QuickBooks ProAdvisor",
+    "BBB Accredited"
+  ],
+  "notes": "EVIDENCE LINKING: HubSpot contact ID 101011128681 confirmed via: (1) Phone (916) 397-1606 in HubSpot matches website contact exactly, (2) Email cconklin@accuratelyyours.com in HubSpot matches owner Cindy Conklin shown on website, (3) Website URL accuratelyyours.com in HubSpot is the actual business site, (4) Address '6381 Auburn Blvd Ste C, Citrus Heights, CA 95608' in HubSpot matches website and Yelp. Yelp, Facebook, LinkedIn all confirm same business details. Woman-owned small business since 1988. Offers free quotes via Calendly online booking.",
+
+  "enrichmentDate": "2025-11-28",
+  "enrichmentSources": ["HubSpot CRM", "accuratelyyours.com", "Facebook", "LinkedIn", "Yelp"],
+  "dataSource": "hubspot + web enrichment"
+}

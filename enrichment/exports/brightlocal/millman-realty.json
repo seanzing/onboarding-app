@@ -1,0 +1,110 @@
+{
+  "metadata": {
+    "source": "brightlocal",
+    "exportedAt": "2025-11-27T18:00:00.000Z",
+    "exportedBy": "claude-code-automation",
+    "researchSources": ["website", "linkedin", "zillow", "realtor.com", "facebook"]
+  },
+  "identifiers": {
+    "brightlocalLocationId": 3914388,
+    "hubspotContactId": "65417486087",
+    "uniqueLocationReference": "HS-65417486087",
+    "brightlocalClientId": 273678
+  },
+  "business": {
+    "name": "Millman Realty",
+    "isServiceAreaBusiness": false,
+    "primaryCategory": "Real Estate Agency",
+    "primaryCategoryId": 580,
+    "extraCategories": ["Real Estate Agent", "Property Management Company"],
+    "extraCategoryIds": [578, 9196],
+    "websiteUrl": "https://www.millmanrealty.com/",
+    "primaryPhone": "+17146178560",
+    "founded": "1985",
+    "yearsInBusiness": "40+",
+    "shortDescription": "Millman Realty is a full-service real estate agency in Orange County, CA offering residential and commercial property sales, leasing, and property management.",
+    "fullDescription": "Millman Realty has been serving Orange County, California since 1985. As a full-service real estate agency, we specialize in residential and commercial property sales, leasing, and property management. Our experienced team of licensed real estate agents provides personalized service to buyers, sellers, landlords, and tenants. We have deep knowledge of the local market and are committed to helping our clients achieve their real estate goals. Whether you're buying your first home, investing in commercial property, or need property management services, Millman Realty is here to help."
+  },
+  "address": {
+    "line1": "3145 East Imperial Highway",
+    "line2": "Suite B",
+    "city": "Brea",
+    "state": "California",
+    "stateCode": "CA",
+    "zipCode": "92821",
+    "country": "United States"
+  },
+  "contact": {
+    "firstName": "Dana",
+    "lastName": "Millman",
+    "email": "dana@millmanrealty.com",
+    "phone": "+17146178560",
+    "mobilePhone": "+17146178560",
+    "fax": null,
+    "title": "Broker/Owner"
+  },
+  "hours": {
+    "monday": { "open": "09:00", "close": "18:00", "isOpen": true },
+    "tuesday": { "open": "09:00", "close": "18:00", "isOpen": true },
+    "wednesday": { "open": "09:00", "close": "18:00", "isOpen": true },
+    "thursday": { "open": "09:00", "close": "18:00", "isOpen": true },
+    "friday": { "open": "09:00", "close": "18:00", "isOpen": true },
+    "saturday": { "open": "10:00", "close": "16:00", "isOpen": true },
+    "sunday": { "open": null, "close": null, "isOpen": false },
+    "note": "By appointment",
+    "source": "website"
+  },
+  "services": [
+    "Residential Sales",
+    "Commercial Sales",
+    "Property Leasing",
+    "Property Management",
+    "Investment Properties",
+    "First-Time Buyer Services",
+    "Relocation Services",
+    "Market Analysis",
+    "Home Valuation",
+    "Tenant Screening"
+  ],
+  "socialMedia": {
+    "facebook": "https://www.facebook.com/MillmanRealty/",
+    "instagram": null,
+    "linkedin": "https://www.linkedin.com/company/millman-realty/",
+    "twitter": null,
+    "pinterest": null,
+    "youtube": null,
+    "tiktok": null,
+    "yelp": null
+  },
+  "images": {
+    "logo": {
+      "slot": "logo",
+      "sourceUrl": "https://www.millmanrealty.com/images/logo.png",
+      "localFile": "public/images/brightlocal/millman-realty/logo.png",
+      "description": "Millman Realty logo"
+    }
+  },
+  "paymentMethods": {
+    "cash": false,
+    "visa": false,
+    "mastercard": false,
+    "americanExpress": false,
+    "personalCheck": true,
+    "invoice": true,
+    "insurance": false,
+    "atmDebit": false,
+    "travelersChecks": false,
+    "financingAvailable": false,
+    "paypal": false,
+    "discover": false
+  },
+  "certifications": [
+    "California DRE Licensed",
+    "Realtor Association Member",
+    "NAR Member"
+  ],
+  "serviceAreas": {
+    "california": ["Brea", "Fullerton", "Placentia", "Yorba Linda", "Anaheim", "Orange", "La Habra", "Diamond Bar", "Chino Hills", "Rowland Heights"]
+  },
+  "createdByZing": true
+}

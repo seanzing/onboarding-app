@@ -1,0 +1,97 @@
+{
+  "hubspotContactId": "1055",
+  "hubspotUrl": "https://app.hubspot.com/contacts/46544827/record/0-1/1055",
+  "businessName": "Frana Construction, LLC",
+  "businessNameAlternate": null,
+  "phone": "+1 239-823-6503",
+  "phoneSecondary": "+1 507-339-3949",
+  "email": "franaconstruction@gmail.com",
+  "website": null,
+  "streetAddress": "7906 Sandelwood Circle W",
+  "city": "Fort Myers",
+  "state": "Florida",
+  "zipCode": "33908",
+  "country": "United States",
+  "serviceArea": "Fort Myers, Fort Myers Beach, Lee County, Florida",
+  "shortDescription": "Licensed residential and building contractor in Fort Myers, FL specializing in home renovations, window replacements, and general construction.",
+  "longDescription": "Frana Construction, LLC is a certified residential and building contractor based in Fort Myers, Florida. With a verified license from the Florida Construction Industry License Board, the company has completed 23 building permits totaling over $834,800 in project value. Specializing in residential construction and renovations, Frana Construction handles projects including window replacements, structural alterations, and general home improvements. Owner Matthew Frana brings expertise to every project with a focus on quality workmanship.",
+  "categories": [
+    "General Contractor",
+    "Residential Contractor",
+    "Building Contractor",
+    "Home Renovation",
+    "Construction"
+  ],
+  "businessHours": {
+    "monday": "Business hours",
+    "tuesday": "Business hours",
+    "wednesday": "Business hours",
+    "thursday": "Business hours",
+    "friday": "Business hours",
+    "saturday": "By appointment",
+    "sunday": "Closed",
+    "note": "Contact for scheduling"
+  },
+  "logo": null,
+  "images": [],
+  "imagesNote": "No official website or social media presence found",
+  "socialMedia": {
+    "facebook": null,
+    "instagram": null,
+    "twitter": null,
+    "youtube": null,
+    "linkedin": null
+  },
+  "attributes": {
+    "owner": "Matthew Frana",
+    "yearEstablished": "2018",
+    "floridaLLCNumber": "L18000284577",
+    "feiEinNumber": "27-2261672",
+    "buildZoomScore": 102,
+    "totalProjects": 23,
+    "totalProjectValue": "$834,800",
+    "languages": ["English"],
+    "paymentMethods": ["Cash", "Check", "Credit Card"]
+  },
+  "licenses": [
+    {
+      "number": "66140",
+      "type": "Construction Business Information",
+      "status": "Active",
+      "certifications": [
+        "Certified Residential Contractor",
+        "Certified Building Contractor"
+      ],
+      "issuingAuthority": "Florida Construction Industry License Board"
+    }
+  ],
+  "services": [
+    "Residential Construction",
+    "Building Construction",
+    "Home Renovations",
+    "Window Installation",
+    "Window Replacement",
+    "Structural Alterations",
+    "General Contracting",
+    "Remodeling"
+  ],
+  "recentProjects": [
+    {
+      "description": "Relocate family room windows replace with new",
+      "type": "Window Replacement"
+    }
+  ],
+  "certifications": [
+    "Certified Residential Contractor (Florida)",
+    "Certified Building Contractor (Florida)"
+  ],
+  "insurance": {
+    "workersCompensation": "Required by Florida law",
+    "publicLiability": "Required by Florida DBPR",
+    "propertyDamage": "Required by Florida DBPR"
+  },
+  "notes": "HubSpot had minimal data (just gmail + 'Florida'). Phone 507-339-3949 in HubSpot is Minnesota area code - likely owner's personal cell from before relocating to Florida. Primary business phone is 239-823-6503 (Fort Myers area). No website exists. Registered contractor with Fort Myers and Fort Myers Beach. Background check and fingerprinting completed per 2007 Florida DBPR requirements.",
+  "enrichmentDate": "2025-12-07",
+  "enrichmentSources": ["HubSpot", "BuildZoom", "Florida Sunbiz", "Lee County Contractor List", "Fort Myers Beach Contractor Registry", "Fort Myers City Records"],
+  "dataSource": "hubspot + web enrichment via Claude Code MCP"
+}

@@ -1,0 +1,81 @@
+{
+  "hubspotContactId": "9758596866",
+  "hubspotUrl": "https://app.hubspot.com/contacts/39784316/record/0-1/9758596866",
+
+  "businessName": "Decorative Film Crew",
+  "businessNameAlternate": "Interior Guards Window Tinting, LLC",
+
+  "phone": "(301) 807-3389",
+  "phoneSecondary": "(240) 778-9643",
+  "email": "info@decorativefilmcrew-md.com",
+  "website": "https://www.decorativefilmcrew-md.com/",
+
+  "streetAddress": "638 Lofstrand Lane, Suite A",
+  "city": "Rockville",
+  "state": "Maryland",
+  "zipCode": "20850",
+  "country": "United States",
+  "serviceArea": "MD, VA, DC, PA, DE, WV - Up to 75 miles from Rockville",
+
+  "shortDescription": "Professional window film installation since 1991. Prestige 3M Film dealer. Top 25 Architectural Window Tinters. Pentagon, FDA, World Bank clients. Free estimates.",
+  "longDescription": "Decorative Film Crew, operating alongside Interior Guards Window Tinting, LLC, is a family-owned business established in 1991 by Laurence Streidel. With over 34 years of experience and recognition as one of the top 25 Architectural Window Tinters in the industry, they have grown into one of the largest and strongest window film companies in the Maryland, Virginia & Washington DC regions. The 14-person team is fully licensed as a Class A Contractor and never uses subcontractors. They have installed over a million square feet of window film throughout the United States, including prestigious installations at the Pentagon, FDA, The World Bank, RFK Stadium, O'Hare Airport, IMF Building, and Nationals Stadium. Services include Decorative Window Film, Commercial Window Tinting, 3M Dusted/Frosted Privacy Film, Safety and Security Film, Casper Cloaking Technology for digital screen privacy, and Residential Window Tinting. Project range: $1,000 to $5,000,000.",
+  "categories": ["Window Tinting", "Glass Coating", "Commercial Contractor", "Security Film Installation"],
+
+  "businessHours": {
+    "monday": "9:00 AM - 5:00 PM",
+    "tuesday": "9:00 AM - 5:00 PM",
+    "wednesday": "9:00 AM - 5:00 PM",
+    "thursday": "9:00 AM - 5:00 PM",
+    "friday": "9:00 AM - 5:00 PM",
+    "saturday": "9:00 AM - 5:00 PM",
+    "sunday": "Closed"
+  },
+
+  "logo": "public/images/brightlocal/interior-guards/logo.png",
+  "images": [
+    "public/images/brightlocal/interior-guards/image1-building-windows.png",
+    "public/images/brightlocal/interior-guards/image2-conference-room.png",
+    "public/images/brightlocal/interior-guards/image3-glass-walls.png"
+  ],
+  "imagesNote": null,
+
+  "socialMedia": {
+    "facebook": null,
+    "instagram": null,
+    "twitter": "https://twitter.com/InteriorGuards",
+    "linkedin": "https://www.linkedin.com/in/laurence-streidel-2499b954",
+    "yelp": "https://www.yelp.com/biz/decorative-film-crew-rockville",
+    "tiktok": null
+  },
+
+  "attributes": {
+    "languages": ["English", "Spanish"],
+    "paymentMethods": ["Visa", "Mastercard", "American Express", "Discover", "Venmo", "Zelle"],
+    "accessibility": "Yes",
+    "parking": "Yes",
+    "yearsInBusiness": "34+",
+    "license": "Class A Contractor"
+  },
+
+  "services": [
+    "Decorative Window Film",
+    "Commercial Window Tinting",
+    "3M Dusted/Frosted Privacy Film",
+    "Safety and Security Film",
+    "Casper Cloaking Technology",
+    "Residential Window Tinting",
+    "Solar Control Film",
+    "Anti-Graffiti Film"
+  ],
+
+  "certifications": [
+    "Prestige 3M Film Dealer",
+    "Top 25 Architectural Window Tinters",
+    "Class A Licensed Contractor"
+  ],
+  "notes": "EVIDENCE LINKING: HubSpot contact ID 9758596866 is for owner Laurence Streidel (personal name in CRM). Confirmed via: (1) HubSpot phone (301) 807-3389 matches business website contact, (2) HubSpot address '638 Lofstrand Lane, Rockville, MD 20850' matches business address exactly, (3) LinkedIn profile linkedin.com/in/laurence-streidel-2499b954 confirms owner of Decorative Film Crew/Interior Guards. HubSpot personal email lstreidel@gmail.com linked to business email info@decorativefilmcrew-md.com via The Blue Book contractor listing. Operates two brands: Decorative Film Crew and Interior Guards Window Tinting, LLC.",
+
+  "enrichmentDate": "2025-11-28",
+  "enrichmentSources": ["HubSpot CRM", "decorativefilmcrew-md.com", "interiorguards.com", "Angi", "The Blue Book", "LinkedIn", "Firecrawl web search"],
+  "dataSource": "hubspot + web enrichment"
+}

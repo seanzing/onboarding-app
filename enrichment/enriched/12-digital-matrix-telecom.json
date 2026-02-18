@@ -1,0 +1,77 @@
+{
+  "hubspotContactId": "501",
+  "hubspotUrl": "https://app.hubspot.com/contacts/46544827/record/0-1/501",
+  "businessName": "Digital Matrix Telecom, LLC",
+  "businessNameAlternate": "Dialer Matrix",
+  "phone": "+1 858-499-9009",
+  "phoneSecondary": null,
+  "email": "josh@dmediatel.com",
+  "website": "https://dialermatrix.com",
+  "streetAddress": "7968 Arjons Dr Ste 109",
+  "city": "San Diego",
+  "state": "California",
+  "zipCode": "92126",
+  "country": "United States",
+  "serviceArea": "Worldwide - remote telecom services",
+  "shortDescription": "Advanced telecom solutions provider specializing in VoIP systems, call center software, and cloud communication for businesses of all sizes.",
+  "longDescription": "At Digital Matrix, we specialize in delivering advanced telecom solutions that help businesses communicate smarter, operate efficiently, and grow faster. With years of industry expertise, we understand the challenges modern businesses face and provide tailored services to meet those needs. Our team of experts—engineers, developers, and support professionals—work around the clock to ensure seamless communication, reliability, and innovation. We don't just provide services; we build long-term partnerships that empower our clients to succeed in a competitive world.",
+  "categories": [
+    "Telecommunications",
+    "VoIP Services",
+    "Call Center Solutions",
+    "Business Phone Systems",
+    "Cloud Communications"
+  ],
+  "businessHours": {
+    "monday": "24 hours",
+    "tuesday": "24 hours",
+    "wednesday": "24 hours",
+    "thursday": "24 hours",
+    "friday": "24 hours",
+    "saturday": "24 hours",
+    "sunday": "24 hours",
+    "note": "24/7 technical support available"
+  },
+  "logo": "https://dialermatrix.com/wp-content/uploads/2025/08/cropped-DialerMatrix-2-270x270.png",
+  "images": [
+    "https://dialermatrix.com/wp-content/uploads/2025/08/IMG-20250825-WA0015.jpg",
+    "https://dialermatrix.com/wp-content/uploads/2022/05/our-team.webp"
+  ],
+  "imagesNote": "Team photo and office images available on website",
+  "socialMedia": {
+    "linkedin": "https://www.linkedin.com/in/josh-olinger-2429a2325",
+    "facebook": null,
+    "instagram": null,
+    "twitter": null,
+    "youtube": null
+  },
+  "attributes": {
+    "yearFounded": "2023",
+    "owner": "Josh Olinger",
+    "languages": ["English"],
+    "paymentMethods": ["Credit Card", "Bank Transfer"],
+    "certifications": []
+  },
+  "services": [
+    "VoIP Phone Systems",
+    "PBX (Private Branch Exchange)",
+    "Predictive Auto Dialer",
+    "Preview Dialer",
+    "Power Dialer",
+    "Progressive Dialer",
+    "Voice Broadcasting",
+    "Click-to-Call Dialer",
+    "Inbound & Outbound Dialers",
+    "AI Chatbots",
+    "24/7 Technical Support",
+    "Local Caller ID Display",
+    "Call Center Solutions",
+    "Network & Infrastructure",
+    "Custom Telecom Solutions"
+  ],
+  "certifications": [],
+  "notes": "Primary domain dmediatel.com appears defunct; business operates via dialermatrix.com. Owner Josh Olinger founded company in July 2023. 90+ projects completed per website.",
+  "enrichmentDate": "2025-12-07",
+  "enrichmentSources": ["HubSpot", "dialermatrix.com", "LinkedIn"],
+  "dataSource": "hubspot + web enrichment via Claude Code MCP"
+}

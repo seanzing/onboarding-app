@@ -1,0 +1,77 @@
+{
+  "hubspotContactId": "114805918075",
+  "hubspotUrl": "https://app.hubspot.com/contacts/39784316/record/0-1/114805918075",
+
+  "businessName": "The Dog Tutor",
+  "businessNameAlternate": "The Doggie Tutor",
+
+  "phone": "(914) 755-7478",
+  "phoneSecondary": null,
+  "email": "doggietutor@aol.com",
+  "website": "https://www.thedoggietutor.net/",
+
+  "streetAddress": "8 Evergreen Way",
+  "city": "Pawling",
+  "state": "New York",
+  "zipCode": "12564",
+  "country": "United States",
+  "serviceArea": "25 mile radius - Pawling NY, Patterson, Brewster, Danbury CT, Sherman CT, New Fairfield CT",
+
+  "shortDescription": "Professional dog training, walking & pet care with 30+ years experience. Licensed, Bonded, Insured. Serving CT/NY border region. 24/7 emergency availability.",
+  "longDescription": "The Dog Tutor, led by Don Henderson with over 30 years of experience, provides professional dog training, exercise, and care services in the CT/NY border region. Don was professionally trained by K-9 Patrol Dogs in Yonkers, NY and is certified in canine CPR and medication administration. His partner Mia Henderson, with a degree in Business Administration, specializes in puppy crate training. They are Licensed, Bonded, and Fully Insured, and members of Rover.com, Pet Sitters Associates LLC, and supporters of the Humane Society. Services include puppy crate training, obedience training, aggressive behavior correction, trail walks at local parks, house sitting, cat sitting, overnight care, and exotic pet care.",
+  "categories": ["Dog Trainer", "Pet Sitter", "Dog Walker", "Pet Care Services"],
+
+  "businessHours": {
+    "monday": "7:30 AM - 9:00 PM",
+    "tuesday": "7:30 AM - 9:00 PM",
+    "wednesday": "7:30 AM - 9:00 PM",
+    "thursday": "7:30 AM - 9:00 PM",
+    "friday": "7:30 AM - 9:00 PM",
+    "saturday": "7:30 AM - 9:00 PM",
+    "sunday": "7:30 AM - 9:00 PM"
+  },
+
+  "logo": "public/images/brightlocal/the-dog-tutor/logo.png",
+  "images": [
+    "public/images/brightlocal/the-dog-tutor/image1-dogs-field.jpg",
+    "public/images/brightlocal/the-dog-tutor/image2-dogs-outdoor.jpg",
+    "public/images/brightlocal/the-dog-tutor/image3-training.jpg"
+  ],
+  "imagesNote": null,
+
+  "socialMedia": {
+    "facebook": null,
+    "instagram": null,
+    "twitter": "https://twitter.com/DonHenders22009",
+    "linkedin": null,
+    "yelp": null,
+    "tiktok": null
+  },
+
+  "attributes": {
+    "languages": ["English"],
+    "paymentMethods": ["Venmo", "Check", "Cash"],
+    "accessibility": null,
+    "parking": null,
+    "yearsInBusiness": "30+",
+    "license": null
+  },
+
+  "services": [
+    "Puppy Crate Training",
+    "Obedience Training",
+    "Aggressive Behavior Correction",
+    "Trail Walks",
+    "House Sitting",
+    "Cat Sitting",
+    "Overnight Care",
+    "Exotic Pet Care"
+  ],
+
+  "certifications": [],
+  "notes": "EVIDENCE LINKING: HubSpot contact ID 114805918075 confirmed via: (1) Phone +1(914)755-7478 in HubSpot matches website contact page, (2) Email doggietutor@aol.com in HubSpot matches website, (3) Address '8 Evergreen Way, Pawling, NY 12564' in HubSpot matches website footer. Website thedoggietutor.net displays owner Don Henderson with 30+ years experience, matching business profile. Alternative name 'The Doggie Tutor' matches domain name.",
+
+  "enrichmentDate": "2025-11-28",
+  "enrichmentSources": ["HubSpot CRM", "thedoggietutor.net", "Firecrawl web search"],
+  "dataSource": "hubspot + web enrichment"
+}

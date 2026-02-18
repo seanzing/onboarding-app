@@ -1,0 +1,75 @@
+{
+  "hubspotContactId": "94771925620",
+  "hubspotUrl": "https://app.hubspot.com/contacts/39784316/record/0-1/94771925620",
+
+  "businessName": "Rich's Rainbow Renovations",
+  "businessNameAlternate": "Rich Rainbow Renovations",
+
+  "phone": "(925) 808-8618",
+  "phoneSecondary": null,
+  "email": "richsrainbowrenovations@gmail.com",
+  "website": "https://www.richsrainbowrenovations.com/",
+
+  "streetAddress": "1212 Temple Drive",
+  "city": "Pacheco",
+  "state": "California",
+  "zipCode": "94553",
+  "country": "United States",
+  "serviceArea": "30-mile radius from Pacheco, CA including Martinez, Concord, Walnut Creek, Pleasant Hill, Lafayette, Benicia, and surrounding Contra Costa County communities",
+
+  "shortDescription": "Expert handyman and renovation services for residential and commercial properties. From quick repairs to full kitchen and bathroom remodels. Quality craftsmanship and creative solutions.",
+  "longDescription": "Rich's Rainbow Renovations is your go-to handyman and renovation company for both residential and commercial projects in the Contra Costa County area. Whether you need a quick repair, a full kitchen or bathroom remodel, or specialized refinishing services, our skilled team is here to help. We take pride in delivering top-quality craftsmanship, reliable service, and creative solutions tailored to your needs. Our comprehensive services include home renovations, kitchen and bathroom remodeling, art and antique restoration, plumbing and electrical work, carpentry, debris hauling, garage organization, and concrete and paver work. We offer versatile expertise with attention to detail and a customer-focused approach. Your satisfaction is our priority—we listen, plan, and deliver exactly what you need. Let us transform your space with care and expertise!",
+  "categories": ["General Contractor", "Handyman", "Home Improvement", "Kitchen Remodeler", "Bathroom Remodeler"],
+
+  "businessHours": {
+    "monday": "8:00 AM - 6:00 PM",
+    "tuesday": "8:00 AM - 6:00 PM",
+    "wednesday": "8:00 AM - 6:00 PM",
+    "thursday": "8:00 AM - 6:00 PM",
+    "friday": "8:00 AM - 6:00 PM",
+    "saturday": "By Appointment",
+    "sunday": "Closed"
+  },
+
+  "logo": "public/images/brightlocal/richs-rainbow-renovations/logo.jpg",
+  "images": [],
+  "imagesNote": "No project photos currently on website - business should provide kitchen/bathroom renovation before/after photos",
+
+  "socialMedia": {
+    "facebook": "https://www.facebook.com/61570669509308",
+    "instagram": null,
+    "twitter": null,
+    "linkedin": null,
+    "yelp": null,
+    "tiktok": null
+  },
+
+  "attributes": {
+    "languages": ["English"],
+    "paymentMethods": ["Cash", "Check", "Credit Card", "Venmo"],
+    "accessibility": "Yes",
+    "parking": "Yes",
+    "yearsInBusiness": null,
+    "license": null
+  },
+
+  "services": [
+    "Home Renovations",
+    "Kitchen Renovation",
+    "Bathroom Renovation",
+    "Art & Antique Restoration",
+    "Plumbing Services",
+    "Electrical Work",
+    "Carpentry Services",
+    "Debris Hauling",
+    "Garage Organization",
+    "Concrete & Paver Work"
+  ],
+
+  "certifications": [],
+  "notes": "EVIDENCE LINKING: HubSpot contact ID 94771925620 confirmed via: (1) Phone (925) 808-8618 in HubSpot matches website exactly, (2) Email richsrainbowrenovations@gmail.com in HubSpot matches website contact form, (3) Website URL richsrainbowrenovations.com in HubSpot is the actual business site, (4) Address '1212 Temple Dr, Pacheco, CA 94553' in HubSpot matches website service area. Facebook page facebook.com/61570669509308 links to same website and contact info.",
+
+  "enrichmentDate": "2025-11-28",
+  "enrichmentSources": ["HubSpot CRM", "richsrainbowrenovations.com", "Facebook", "Firecrawl web search"],
+  "dataSource": "hubspot + web enrichment"
+}

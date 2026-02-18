@@ -1,0 +1,76 @@
+{
+  "hubspotContactId": "114794543902",
+  "hubspotUrl": "https://app.hubspot.com/contacts/39784316/record/0-1/114794543902",
+
+  "businessName": "PipeworX Plumbing, Septic, and Drain Cleaning",
+  "businessNameAlternate": "PipeworX Plumbing",
+
+  "phone": "(770) 851-2053",
+  "phoneSecondary": null,
+  "email": "billy.albury@aol.com",
+  "website": "https://www.pipeworxplumbing-ga.com/",
+
+  "streetAddress": "884 Addison Rd",
+  "city": "Buchanan",
+  "state": "Georgia",
+  "zipCode": "30113",
+  "country": "United States",
+  "serviceArea": "35 mile radius - North West Georgia",
+
+  "shortDescription": "Professional plumbing, septic & drain services with 30+ years experience. 24/7 emergency service. FREE estimates. Residential & commercial. Buchanan, GA.",
+  "longDescription": "Founded by Billy Albury, PipeworX was built from the ground up with one mission: to deliver expert-level plumbing with small-town care. With over 30 years of hands-on experience and a reputation for getting the job done right, we've become a trusted name across North West Georgia. We've helped hundreds of local families and businesses through emergencies, upgrades, and everything in between. Every job is personal to us, because our customers are our neighbors—and we take pride in serving our community. Services include pipe repairs and installation, water heater repair/installation/replacement, tankless water heater installation, fixture repair and replacement, drain cleaning with cable machine and hydro jetting, camera inspections, septic system services, and well pump services.",
+  "categories": ["Plumber", "Septic Services", "Drain Cleaning", "Water Heater Services"],
+
+  "businessHours": {
+    "monday": "24 Hours",
+    "tuesday": "24 Hours",
+    "wednesday": "24 Hours",
+    "thursday": "24 Hours",
+    "friday": "24 Hours",
+    "saturday": "24 Hours",
+    "sunday": "24 Hours"
+  },
+
+  "logo": "public/images/brightlocal/pipeworx-plumbing/logo.jpeg",
+  "images": [
+    "public/images/brightlocal/pipeworx-plumbing/image1-plumber.png"
+  ],
+  "imagesNote": null,
+
+  "socialMedia": {
+    "facebook": "https://www.facebook.com/p/Pipeworx-Plumbing-Septic-and-Drain-Cleaning-100057472208385/",
+    "instagram": null,
+    "twitter": null,
+    "linkedin": null,
+    "yelp": null,
+    "tiktok": null
+  },
+
+  "attributes": {
+    "languages": ["English"],
+    "paymentMethods": ["Cash", "Check", "Credit Card"],
+    "accessibility": null,
+    "parking": null,
+    "yearsInBusiness": "30+",
+    "license": null
+  },
+
+  "services": [
+    "Pipe Repairs and Installation",
+    "Water Heater Repair/Installation/Replacement",
+    "Tankless Water Heater Installation",
+    "Fixture Repair and Replacement",
+    "Drain Cleaning",
+    "Hydro Jetting",
+    "Camera Inspections",
+    "Septic System Services",
+    "Well Pump Services"
+  ],
+
+  "certifications": [],
+  "notes": "EVIDENCE LINKING: HubSpot contact ID 114794543902 confirmed via: (1) Phone (770) 851-2053 in HubSpot matches website and Facebook page, (2) Email billy.albury@aol.com in HubSpot matches owner Billy Albury shown on website, (3) Address '884 Addison Rd, Buchanan, GA 30113' in HubSpot matches website service area. Facebook business page @Pipeworx-Plumbing-Septic-and-Drain-Cleaning confirms same contact info. HubSpot had no website but domain pipeworxplumbing-ga.com discovered via web search.",
+
+  "enrichmentDate": "2025-11-28",
+  "enrichmentSources": ["HubSpot CRM", "pipeworxplumbing-ga.com", "Facebook", "Firecrawl web search"],
+  "dataSource": "hubspot + web enrichment"
+}

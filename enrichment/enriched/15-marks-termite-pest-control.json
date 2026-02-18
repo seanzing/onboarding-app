@@ -1,0 +1,119 @@
+{
+  "hubspotContactId": "1054",
+  "hubspotUrl": "https://app.hubspot.com/contacts/46544827/record/0-1/1054",
+  "businessName": "Marks Termite & Pest Control, Inc.",
+  "businessNameAlternate": "The Moisture Man",
+  "phone": "+1 252-940-0300",
+  "phoneSecondary": "+1 252-945-8595",
+  "fax": "+1 252-940-0332",
+  "email": "markstermite@gmail.com",
+  "emailSecondary": "markstermite@aol.com",
+  "website": "https://markstermiteandpestcontrol.net",
+  "streetAddress": "145 P and G Ln",
+  "city": "Washington",
+  "state": "North Carolina",
+  "zipCode": "27889",
+  "country": "United States",
+  "serviceArea": "Washington NC, Greenville NC, and surrounding Eastern North Carolina",
+  "shortDescription": "Professional pest removal and mold remediation specialists serving Eastern North Carolina. Crawl space encapsulation, termite treatment, and moisture control.",
+  "longDescription": "At Marks Termite & Pest Control, Inc. in Washington, North Carolina, we specialize in pest removal and mold remediation so that your home or business is not only pest-free but safe. Mold is also a serious issue in many homes, and most people might not even be aware that mold lurks under your crawl space. We offer the ultimate solution for any damp, musty, moldy crawlspace. Utilizing a revolutionary encapsulation system, we can totally eliminate moisture from your crawl space by creating a vapor barrier. No moisture means goodbye mold and mildew! Our team members are well-trained and use state-of-the-art technology.",
+  "categories": [
+    "Pest Control",
+    "Termite Control",
+    "Mold Remediation",
+    "Crawl Space Encapsulation",
+    "Moisture Control"
+  ],
+  "businessHours": {
+    "monday": "8:00 AM - 5:00 PM",
+    "tuesday": "8:00 AM - 5:00 PM",
+    "wednesday": "8:00 AM - 5:00 PM",
+    "thursday": "8:00 AM - 5:00 PM",
+    "friday": "8:00 AM - 5:00 PM",
+    "saturday": "Closed",
+    "sunday": "Closed"
+  },
+  "logo": "https://markstermiteandpestcontrol.net/wp-content/uploads/2023/02/fav.png",
+  "images": [
+    "https://wcti76252site.wpengine.com/wp-content/uploads/2023/03/IMG_9773-1-1.jpg",
+    "https://markstermiteandpestcontrol.net/wp-content/uploads/2023/07/IMG_9715-scaled.jpg",
+    "https://wcti76252site.wpengine.com/wp-content/uploads/2023/03/6-1.png"
+  ],
+  "imagesNote": "Gallery available at markstermiteandpestcontrol.net/gallery/",
+  "socialMedia": {
+    "facebook": "https://www.facebook.com/moistureman/",
+    "instagram": null,
+    "twitter": null,
+    "youtube": null,
+    "linkedin": null,
+    "nextdoor": "https://nextdoor.com/pages/marks-termite-pest-control-washington-nc/"
+  },
+  "attributes": {
+    "bbbAccredited": true,
+    "financingAvailable": true,
+    "freeQuotes": true,
+    "languages": ["English"],
+    "paymentMethods": ["Cash", "Check", "Credit Card", "Financing"]
+  },
+  "services": [
+    "Pest Control",
+    "Termite Treatment",
+    "Termite Inspection",
+    "Mold Remediation",
+    "Crawl Space Encapsulation",
+    "Moisture Control",
+    "Vapor Barrier Installation",
+    "Dehumidifier Installation",
+    "Sump Pump Installation",
+    "Ant Extermination",
+    "Bedbug Treatment",
+    "Cockroach Control",
+    "Cricket Control",
+    "Earwig Control",
+    "Mosquito Control",
+    "Rodent Control",
+    "Silverfish Control",
+    "Spider Control",
+    "Wood Destroying Insect Treatment"
+  ],
+  "products": [
+    "Termidor",
+    "Bora-Care",
+    "Crawl Space Drains",
+    "Dehumidifiers",
+    "Drainage Products",
+    "Foundation Wall Insulation Board R-13",
+    "Fruit Fly Traps",
+    "Hydro Meters",
+    "Moth Traps",
+    "Sump Pumps"
+  ],
+  "promotions": [
+    {
+      "offer": "$100 off Full Termite Treatment"
+    },
+    {
+      "offer": "$50 off Initial Pest Control"
+    },
+    {
+      "offer": "$250 off Total Encapsulation & Full Moisture Control"
+    }
+  ],
+  "locations": [
+    {
+      "name": "Washington (Main)",
+      "address": "145 P and G Ln, Washington, NC 27889",
+      "phone": "252-940-0300"
+    },
+    {
+      "name": "Greenville",
+      "address": "102 Bramblewood Dr, Greenville, NC 27858",
+      "phone": null
+    }
+  ],
+  "certifications": [],
+  "notes": "HubSpot indicated 'NO' website but business actually has markstermiteandpestcontrol.net. Also known as 'The Moisture Man' on Facebook. BBB accredited with two locations. HubSpot phone (252-945-8595) differs from website (252-940-0300) - may be alternate line. Now offering financing.",
+  "enrichmentDate": "2025-12-07",
+  "enrichmentSources": ["HubSpot", "markstermiteandpestcontrol.net", "BBB", "Yelp", "Facebook", "Nextdoor"],
+  "dataSource": "hubspot + web enrichment via Claude Code MCP"
+}

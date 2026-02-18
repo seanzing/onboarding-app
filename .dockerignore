@@ -1,0 +1,72 @@
+# Dependencies (will be installed fresh in container)
+node_modules
+.pnpm-store
+
+# Build output (will be built fresh in container)
+.next
+out
+
+# Git
+.git
+.gitignore
+
+# Environment files (pass via --env-file or -e flags)
+.env
+.env.*
+.env*.local
+
+# IDE and editor files
+.idea
+.vscode
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Test and development files
+coverage
+.nyc_output
+
+# Documentation (not needed in production image)
+docs
+*.md
+!README.md
+
+# Supabase local development
+supabase/.temp
+
+# TypeScript build info
+*.tsbuildinfo
+
+# Claude plans (development only)
+.claude
+
+# Vercel deployment (not needed in Docker)
+.vercel
+
+# Development scripts (not needed in production)
+scripts
+
+# Data files (enriched business JSON, not needed in production)
+data
+
+# Demo assets and media
+demo-assets
+*.gif
+*.mp4
+
+# Import templates (development only)
+*.csv
+
+# Pipedream workflow definitions (development only)
+pipedream-workflows
+
+# Windows artifacts
+nul

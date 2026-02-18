@@ -1,0 +1,96 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+/dist
+
+# misc
+.DS_Store
+*.pem
+Thumbs.db
+*~
+
+# Large demo files (prevent repo bloat - keep in external storage)
+demo-assets/
+*.gif
+*.mp4
+
+# Backup folders
+backups/
+
+# debug and logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+lerna-debug.log*
+*.log
+
+# env files (can opt-in for committing if needed)
+.env*
+!.env.example
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
+*.temp
+nul
+
+# Data exports and CSV files
+*.csv
+*-results.json
+*-associations.json
+hubspot-*.json
+gbp-*.json
+
+# Google OAuth credentials (contains secrets!)
+client_secret*.json
+
+# Extra documentation (keep CLAUDE.md and README.md)
+ARTISTIC-DESIGN-SPEC.md
+DESIGN_ANALYSIS_REPORT.md
+FRONTEND_REDESIGN_SPEC.md
+GBP-MAPPINGS-DEFINITIVE.md
+HUBSPOT-GBP-PROPERTY-MAPPINGS.md
+
+# Test/debug directories
+.playwright-mcp/
+
+# Package manager locks (using npm, keep package-lock.json)
+pnpm-lock.yaml
+yarn.lock
+
+# Tamagui build cache
+.tamagui/
+supabase/all_migrations.sql
+supabase/remaining_migrations.sql
+supabase/fresh_db_setup.sql

@@ -1,0 +1,77 @@
+{
+  "hubspotContactId": "65417486087",
+  "hubspotUrl": "https://app.hubspot.com/contacts/39784316/record/0-1/65417486087",
+
+  "businessName": "Millman & Associates, Inc.",
+  "businessNameAlternate": "Millman Realty",
+
+  "phone": "(305) 992-6445",
+  "phoneSecondary": "(954) 577-0037",
+  "email": "harrismillman@gmail.com",
+  "website": "https://www.millmanappraisal.com/",
+
+  "streetAddress": "2826 N 34th Avenue",
+  "city": "Hollywood",
+  "state": "Florida",
+  "zipCode": "33021",
+  "country": "United States",
+  "serviceArea": "Southeast Florida - Miami-Dade, Broward, Palm Beach Counties",
+
+  "shortDescription": "Expert real estate appraisals & consulting with 52+ years experience. MAI & SRA certified. Reserve studies, insurance valuations, FEMA consulting.",
+  "longDescription": "Millman & Associates, Inc., led by Harris Millman with over 52 years of real estate expertise since 1972, is a full-service appraisal and consulting firm serving Miami-Dade, Broward, and Palm Beach Counties. Harris holds prestigious MAI and SRA designations from the Appraisal Institute and is a Florida State-Certified General Real Estate Appraiser (RZ1730). Services include comprehensive property appraisals (commercial, residential, industrial), expert witness testimony for legal proceedings and insurance claims, reserve studies for condominium and homeowner associations, insurance appraisals for replacement cost valuations, SIRS/Milestone structural integrity reports, and FEMA 50% Rule appraisal and consulting for flood-zone properties. The firm coordinates with third-party engineering services for structural assessments and ensures regulatory compliance.",
+  "categories": ["Real Estate Appraiser", "Property Appraiser", "Real Estate Consulting", "Reserve Study Services"],
+
+  "businessHours": {
+    "monday": "9:00 AM - 5:00 PM",
+    "tuesday": "9:00 AM - 5:00 PM",
+    "wednesday": "9:00 AM - 5:00 PM",
+    "thursday": "9:00 AM - 5:00 PM",
+    "friday": "9:00 AM - 5:00 PM",
+    "saturday": "By Appointment",
+    "sunday": "By Appointment"
+  },
+
+  "logo": "public/images/brightlocal/millman-realty/logo-new.jpg",
+  "images": [],
+  "imagesNote": "Professional headshot and office images recommended",
+
+  "socialMedia": {
+    "facebook": null,
+    "instagram": null,
+    "twitter": null,
+    "linkedin": "https://www.linkedin.com/in/harris-millman-mai-sra-52b0a427",
+    "yelp": null,
+    "tiktok": null
+  },
+
+  "attributes": {
+    "languages": ["English"],
+    "paymentMethods": ["Check", "Wire Transfer"],
+    "accessibility": null,
+    "parking": null,
+    "yearsInBusiness": "52+",
+    "license": "FL State-Certified General Real Estate Appraiser RZ1730"
+  },
+
+  "services": [
+    "Commercial Property Appraisals",
+    "Residential Property Appraisals",
+    "Industrial Property Appraisals",
+    "Expert Witness Testimony",
+    "Reserve Studies for HOAs/Condos",
+    "Insurance Appraisals",
+    "SIRS/Milestone Structural Reports",
+    "FEMA 50% Rule Consulting"
+  ],
+
+  "certifications": [
+    "MAI (Appraisal Institute)",
+    "SRA (Appraisal Institute)",
+    "Florida State-Certified General Real Estate Appraiser"
+  ],
+  "notes": "EVIDENCE LINKING: HubSpot contact ID 65417486087 confirmed via: (1) Phone (305) 992-6445 in HubSpot matches website contact page, (2) Email harrismillman@gmail.com matches owner Harris Millman shown on LinkedIn profile linkedin.com/in/harris-millman-mai-sra-52b0a427, (3) Address '2826 N 34th Avenue, Hollywood, FL 33021' in HubSpot matches Florida state license records (RZ1730). Appraisal Institute membership confirms MAI/SRA credentials. IMPORTANT: Correct website is millmanappraisal.com - the millmanrealtysouthflorida.com domain shows incorrect template content and should NOT be used.",
+
+  "enrichmentDate": "2025-11-28",
+  "enrichmentSources": ["HubSpot CRM", "millmanappraisal.com", "LinkedIn", "homes.com", "myfloridalicense.com", "Appraisal Institute", "Firecrawl web search"],
+  "dataSource": "hubspot + web enrichment"
+}

@@ -1,0 +1,443 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --animate-shine: shine var(--duration) infinite linear;
+  @keyframes shine {
+  0% {
+    background-position: 0% 0%;
+    }
+  50% {
+    background-position: 100% 100%;
+    }
+  to {
+    background-position: 0% 0%;
+    }
+  }
+  --animate-shimmer-slide: shimmer-slide var(--speed) ease-in-out infinite alternate;
+  --animate-spin-around: spin-around calc(var(--speed) * 2) infinite linear
+;
+  @keyframes shimmer-slide {
+  to {
+    transform: translate(calc(100cqw - 100%), 0);}}
+  @keyframes spin-around {
+  0% {
+    transform: translateZ(0) rotate(0);}
+  15%, 35% {
+    transform: translateZ(0) rotate(90deg);}
+  65%, 85% {
+    transform: translateZ(0) rotate(270deg);}
+  100% {
+    transform: translateZ(0) rotate(360deg);}}
+  --animate-gradient: gradient 8s linear infinite;
+  @keyframes gradient {
+  to {
+    background-position: var(--bg-size, 300%) 0;}}
+  --animate-orbit: orbit calc(var(--duration)*1s) linear infinite;
+  @keyframes orbit {
+  0% {
+    transform: rotate(calc(var(--angle) * 1deg)) translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg));}
+  100% {
+    transform: rotate(calc(var(--angle) * 1deg + 360deg)) translateY(calc(var(--radius) * 1px)) rotate(calc((var(--angle) * -1deg) - 360deg));}}
+  --animate-grid: grid 15s linear infinite;
+  @keyframes grid {
+  0% {
+    transform: translateY(-50%);}
+  100% {
+    transform: translateY(0);}}
+  --animate-rainbow: rainbow var(--speed, 2s) infinite linear;
+  --color-color-5: var(--color-5);
+  --color-color-4: var(--color-4);
+  --color-color-3: var(--color-3);
+  --color-color-2: var(--color-2);
+  --color-color-1: var(--color-1);
+  @keyframes rainbow {
+  0% {
+    background-position: 0%;}
+  100% {
+    background-position: 200%;}}
+  --animate-meteor: meteor 5s linear infinite;
+  @keyframes meteor {
+  0% {
+    transform: rotate(var(--angle)) translateX(0);
+    opacity: 1;}
+  70% {
+    opacity: 1;}
+  100% {
+    transform: rotate(var(--angle)) translateX(-500px);
+    opacity: 0;}}}
+
+/* ===================================
+   ZING DIRECTORY SYNC - PROFESSIONAL THEME
+   Stripe-Inspired Design System
+   Based on: Stripe, Checkout.com, Makelog
+   =================================== */
+
+:root {
+  /* Border Radius - Professional rounded corners */
+  --radius: 0.5rem;
+
+  /* Base Colors - Clean neutral palette (Light Mode) */
+  --background: 255 255 255;    /* Pure white - Clean background */
+  --foreground: 17 24 39;       /* gray-900 - Dark text */
+
+  /* Card Colors */
+  --card: 255 255 255;          /* white - Clean cards */
+  --card-foreground: 31 41 55;  /* gray-800 */
+
+  /* Popover Colors */
+  --popover: 255 255 255;
+  --popover-foreground: 17 24 39;
+
+  /* Primary Colors - Stripe-inspired (#635BFF) */
+  --primary: 99 91 255;         /* #635BFF - Stripe primary */
+  --primary-foreground: 255 255 255;
+
+  /* Secondary Colors - Subtle gray */
+  --secondary: 243 244 246;     /* gray-100 */
+  --secondary-foreground: 31 41 55; /* gray-800 */
+
+  /* Muted Colors */
+  --muted: 243 244 246;         /* gray-100 */
+  --muted-foreground: 75 85 99; /* gray-600 */
+
+  /* Accent Colors - Primary tint */
+  --accent: 224 231 255;        /* Primary-light #E0E7FF */
+  --accent-foreground: 79 70 229; /* Primary-hover #4F46E5 */
+
+  /* Destructive Colors - Professional Red */
+  --destructive: 220 38 38;     /* #DC2626 - Stripe error red */
+  --destructive-foreground: 255 255 255;
+
+  /* Border & Input */
+  --border: 229 231 235;        /* gray-200 #E5E7EB */
+  --input: 229 231 235;         /* gray-200 */
+  --ring: 99 91 255;            /* Primary #635BFF */
+
+  /* Chart Colors - Data Visualization */
+  --chart-1: 99 91 255;         /* Primary #635BFF */
+  --chart-2: 16 185 129;        /* emerald-500 */
+  --chart-3: 245 158 11;        /* amber-500 */
+  --chart-4: 59 130 246;        /* blue-500 */
+  --chart-5: 220 38 38;         /* red-600 */
+
+  /* Sidebar Colors - Makelog-inspired */
+  --sidebar: 255 255 255;
+  --sidebar-foreground: 17 24 39;
+  --sidebar-primary: 99 91 255;
+  --sidebar-primary-foreground: 255 255 255;
+  --sidebar-accent: 249 250 251;  /* gray-50 #F9FAFB */
+  --sidebar-accent-foreground: 31 41 55;
+  --sidebar-border: 229 231 235;  /* gray-200 #E5E7EB */
+  --sidebar-ring: 99 91 255;
+
+  /* Status Colors - Stripe-inspired */
+  --status-success: 22 163 74;  /* #16A34A - green-600 */
+  --status-warning: 245 158 11; /* #F59E0B - amber-500 */
+  --status-error: 220 38 38;    /* #DC2626 - red-600 */
+  --status-neutral: 107 114 128; /* #6B7280 - gray-500 */
+
+  /* Legacy status colors for backward compatibility */
+  --status-synced: 22 163 74;
+  --status-pending: 245 158 11;
+  --status-not-setup: 107 114 128;
+
+  /* Spacing Scale - Consistent spacing system */
+  --spacing-xs: 0.25rem;   /* 4px */
+  --spacing-sm: 0.5rem;    /* 8px */
+  --spacing-md: 1rem;      /* 16px */
+  --spacing-lg: 1.5rem;    /* 24px */
+  --spacing-xl: 2rem;      /* 32px */
+  --spacing-2xl: 3rem;     /* 48px */
+
+  /* Shadow Scale - Professional elevation */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+
+  /* Transition Timings - Smooth animations */
+  --transition-fast: 150ms;
+  --transition-base: 200ms;
+  --transition-slow: 300ms;
+  --transition-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --color-1: oklch(66.2% 0.225 25.9);
+  --color-2: oklch(60.4% 0.26 302);
+  --color-3: oklch(69.6% 0.165 251);
+  --color-4: oklch(80.2% 0.134 225);
+  --color-5: oklch(90.7% 0.231 133);
+}
+
+.dark {
+  /* Base Colors - Dark Mode - Clean like Linear */
+  --background: 9 9 11;         /* zinc-950 - deeper, cleaner black */
+  --foreground: 250 250 250;    /* Almost white */
+
+  /* Card Colors - Subtle elevation */
+  --card: 24 24 27;             /* zinc-900 - subtle card background */
+  --card-foreground: 250 250 250;
+
+  /* Popover Colors */
+  --popover: 24 24 27;
+  --popover-foreground: 250 250 250;
+
+  /* Primary Colors - Clean blue like Linear */
+  --primary: 99 102 241;        /* indigo-500 - vibrant but professional */
+  --primary-foreground: 250 250 250;
+
+  /* Secondary Colors */
+  --secondary: 39 39 42;        /* zinc-800 */
+  --secondary-foreground: 250 250 250;
+
+  /* Muted Colors - Critical for readability */
+  --muted: 39 39 42;            /* zinc-800 */
+  --muted-foreground: 161 161 170; /* zinc-400 - readable gray */
+
+  /* Accent Colors */
+  --accent: 39 39 42;
+  --accent-foreground: 250 250 250;
+
+  /* Destructive Colors */
+  --destructive: 239 68 68;     /* red-500 */
+  --destructive-foreground: 250 250 250;
+
+  /* Border & Input - Subtle but visible */
+  --border: 39 39 42;           /* zinc-800 - subtle borders */
+  --input: 39 39 42;
+  --ring: 99 102 241;
+
+  /* Chart Colors - Dark Mode */
+  --chart-1: 129 140 248;       /* Primary lighter */
+  --chart-2: 52 211 153;        /* emerald-400 */
+  --chart-3: 251 191 36;        /* amber-400 */
+  --chart-4: 96 165 250;        /* blue-400 */
+  --chart-5: 239 68 68;         /* red-500 */
+
+  /* Sidebar Colors */
+  --sidebar: 31 41 55;
+  --sidebar-foreground: 249 250 251;
+  --sidebar-primary: 129 140 248;
+  --sidebar-primary-foreground: 17 24 39;
+  --sidebar-accent: 55 65 81;
+  --sidebar-accent-foreground: 249 250 251;
+  --sidebar-border: 55 65 81;
+  --sidebar-ring: 129 140 248;
+
+  /* Status Colors - Dark Mode */
+  --status-success: 52 211 153;  /* emerald-400 */
+  --status-warning: 251 191 36;  /* amber-400 */
+  --status-error: 239 68 68;     /* red-500 */
+  --status-neutral: 156 163 175; /* gray-400 */
+
+  /* Legacy status colors */
+  --status-synced: 52 211 153;
+  --status-pending: 251 191 36;
+  --status-not-setup: 156 163 175;
+  --color-1: oklch(66.2% 0.225 25.9);
+  --color-2: oklch(60.4% 0.26 302);
+  --color-3: oklch(69.6% 0.165 251);
+  --color-4: oklch(80.2% 0.134 225);
+  --color-5: oklch(90.7% 0.231 133);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  /* Root HTML element - Dark navy background (from screenshots) */
+  html {
+    background-color: #0a0e27;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #0a0e27;
+    color: #F9FAFB;
+  }
+
+  /* Completely hide Next.js error overlay and dev tools notifications */
+  nextjs-portal,
+  [data-nextjs-dialog-overlay],
+  [data-nextjs-toast],
+  [data-nextjs-errors-indicator],
+  [id^="nextjs-"],
+  iframe[name^="__next"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+}
+
+/* ===================================
+   PROFESSIONAL UTILITY CLASSES
+   =================================== */
+
+@layer utilities {
+  /* Remove glass morphism - use solid cards */
+  .professional-card {
+    @apply bg-card border border-border shadow-sm;
+  }
+
+  .professional-card-elevated {
+    @apply bg-card border border-border shadow-md;
+  }
+
+  /* Subtle hover elevation (no 3D transforms) */
+  .hover-lift {
+    @apply transition-all duration-150;
+  }
+
+  .hover-lift:hover {
+    @apply shadow-lg -translate-y-0.5;
+  }
+
+  /* Professional status indicators - Stripe-inspired colors */
+  .status-synced,
+  .status-success {
+    @apply text-green-600 dark:text-green-400;
+  }
+
+  .status-pending,
+  .status-warning {
+    @apply text-amber-500 dark:text-amber-400;
+  }
+
+  .status-error {
+    @apply text-red-600 dark:text-red-500;
+  }
+
+  .status-not-setup,
+  .status-neutral {
+    @apply text-gray-500 dark:text-gray-400;
+  }
+
+  /* Subtle fade animation (keep) */
+  .animate-fade-in {
+    animation: fadeIn 200ms ease-out;
+  }
+
+  /* Subtle slide animation (keep) */
+  .animate-slide-in {
+    animation: slideIn 300ms ease-out;
+  }
+}
+
+/* ===================================
+   MINIMAL PROFESSIONAL ANIMATIONS
+   Remove: glow, shimmer, float, scale, 3D transforms
+   Keep: fade, slide (subtle only)
+   =================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Spin animation for refresh buttons and loading indicators */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===================================
+   PROFESSIONAL TYPOGRAPHY SCALE
+   =================================== */
+
+@layer base {
+  /* Professional Typography Scale - Zing.work inspired (Poppins headings, Nunito Sans body) */
+  h1 {
+    @apply text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-50;
+    font-family: var(--font-heading), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  h2 {
+    @apply text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-50;
+    font-family: var(--font-heading), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  h3 {
+    @apply text-xl font-semibold text-gray-800 dark:text-gray-100;
+    font-family: var(--font-heading), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  h4 {
+    @apply text-lg font-semibold text-gray-700 dark:text-gray-200;
+    font-family: var(--font-heading), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  /* Professional body text */
+  p {
+    @apply text-base text-gray-700 dark:text-gray-300;
+    font-family: var(--font-body), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}

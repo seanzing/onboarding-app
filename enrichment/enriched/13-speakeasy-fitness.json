@@ -1,0 +1,118 @@
+{
+  "hubspotContactId": "1008",
+  "hubspotUrl": "https://app.hubspot.com/contacts/46544827/record/0-1/1008",
+  "businessName": "Speakeasy Fitness",
+  "businessNameAlternate": null,
+  "phone": "+1 818-367-4653",
+  "phoneSecondary": "+1 818-646-4588",
+  "email": "karen@speakeasy-fitness.com",
+  "website": "https://www.speakeasy-fitness.com",
+  "streetAddress": "13640 Foothill Blvd",
+  "city": "Sylmar",
+  "state": "California",
+  "zipCode": "91342",
+  "country": "United States",
+  "serviceArea": "Los Angeles metropolitan area - 7 gym locations",
+  "shortDescription": "Iconic workout experience with nightclub vibes, featuring sauna, steam room, jacuzzi, pool, and basketball courts across 7 Los Angeles locations.",
+  "longDescription": "Speakeasy Fitness gives you an iconic workout experience in Los Angeles. The gym boasts amenities such as sauna, steam room, jacuzzi, warm water pool, and basketball courts. With EDM music and nightclub vibes, Speakeasy offers an electrifying atmosphere for your workout. Affordable price points starting as low as $20.99 monthly with month-to-month options available. Features include the iconic Butt Zone, turf area, Hammer Strength equipment, cardio zones, multiple dumbbell areas, and boxing facilities.",
+  "categories": [
+    "Fitness Center",
+    "Gym",
+    "Health Club",
+    "Personal Training",
+    "Group Fitness Classes"
+  ],
+  "businessHours": {
+    "monday": "5:00 AM - 11:00 PM",
+    "tuesday": "5:00 AM - 11:00 PM",
+    "wednesday": "5:00 AM - 11:00 PM",
+    "thursday": "5:00 AM - 10:00 PM",
+    "friday": "5:00 AM - 8:00 PM",
+    "saturday": "8:00 AM - 7:00 PM",
+    "sunday": "8:00 AM - 7:00 PM",
+    "note": "Hours shown for Sylmar location - hours vary by location"
+  },
+  "logo": "https://static.wixstatic.com/media/7dc7da_aa9d3da18a164bc191a0222a980ff4a2~mv2.png",
+  "images": [
+    "https://static.wixstatic.com/media/7dc7da_9f3920d7b4984d9798e042ace70cc999~mv2.jpg",
+    "https://static.wixstatic.com/media/7dc7da_80733120fa494d3eb6f9d432c49d03ff~mv2.jpg",
+    "https://static.wixstatic.com/media/7dc7da_ca6ca6180d704b53a50158f962bdbc9e~mv2.jpg"
+  ],
+  "imagesNote": "Gallery photos available for each location on website",
+  "socialMedia": {
+    "instagram": "https://www.instagram.com/speakeasy.fit/",
+    "facebook": null,
+    "twitter": null,
+    "youtube": null,
+    "linkedin": null
+  },
+  "attributes": {
+    "multiLocation": true,
+    "totalLocations": 7,
+    "languages": ["English", "Spanish"],
+    "paymentMethods": ["Credit Card", "Debit Card", "Bank Transfer (ACH)"],
+    "ageRequirement": "18+",
+    "dayPassPrice": "$20"
+  },
+  "services": [
+    "Gym Membership",
+    "Personal Training",
+    "Group Fitness Classes",
+    "Zumba Classes",
+    "Cycling Classes",
+    "Boxing",
+    "Sauna",
+    "Steam Room",
+    "Jacuzzi",
+    "Swimming Pool (75 ft warm water)",
+    "Basketball Court",
+    "Free Day Pass (within 2 miles)",
+    "Buddy Pass Program",
+    "ClassPass Integration"
+  ],
+  "locations": [
+    {
+      "name": "Van Nuys",
+      "address": "7869 Van Nuys Blvd, Panorama City, CA",
+      "phone": "818-646-4588"
+    },
+    {
+      "name": "Sylmar",
+      "address": "13640 Foothill Blvd, Sylmar, CA",
+      "phone": "818-367-4653"
+    },
+    {
+      "name": "NoHo",
+      "address": "7500 Lankershim Blvd, North Hollywood, CA",
+      "phone": "818-851-0841"
+    },
+    {
+      "name": "Pasadena",
+      "address": "39 S Altadena Dr, Pasadena, CA",
+      "phone": "626-388-0487"
+    },
+    {
+      "name": "Los Angeles",
+      "address": "1645 S Western Ave, Los Angeles, CA",
+      "phone": "213-505-2642"
+    },
+    {
+      "name": "Canoga Park",
+      "address": "Canoga Park, CA",
+      "phone": null,
+      "note": "Newly opened"
+    }
+  ],
+  "pricing": {
+    "singleClub": "$20.99/month (regularly $29.99)",
+    "allClubAccess": "$27.99/month (regularly $39.99)",
+    "startingFee": "$1 to start",
+    "facilityEnhancementFee": "$39/year",
+    "dayPass": "$20"
+  },
+  "certifications": [],
+  "notes": "Multi-location gym chain with 7 locations across Los Angeles. Known for nightclub vibes with EDM music. HubSpot phone matches Sylmar location. Currently running 30% off promotion with code SAVE. Canoga Park location newly opened.",
+  "enrichmentDate": "2025-12-07",
+  "enrichmentSources": ["HubSpot", "speakeasy-fitness.com", "Yelp", "Instagram"],
+  "dataSource": "hubspot + web enrichment via Claude Code MCP"
+}

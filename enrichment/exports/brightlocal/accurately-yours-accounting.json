@@ -1,0 +1,107 @@
+{
+  "metadata": {
+    "source": "brightlocal",
+    "exportedAt": "2025-11-27T18:00:00.000Z",
+    "exportedBy": "claude-code-automation",
+    "researchSources": ["website", "linkedin", "facebook", "yelp", "bbb", "thumbtack"]
+  },
+  "identifiers": {
+    "brightlocalLocationId": 3914394,
+    "hubspotContactId": "101011128681",
+    "uniqueLocationReference": "HS-101011128681",
+    "brightlocalClientId": 273684
+  },
+  "business": {
+    "name": "Accurately Yours Accounting Solutions",
+    "isServiceAreaBusiness": false,
+    "primaryCategory": "Accountant",
+    "primaryCategoryId": 12,
+    "extraCategories": ["Tax Preparation Service", "Bookkeeping Service"],
+    "extraCategoryIds": [640, 9010],
+    "websiteUrl": "https://www.accuratelyyours.com/",
+    "primaryPhone": "+19163971606",
+    "founded": "1988",
+    "yearsInBusiness": "37+",
+    "shortDescription": "Accurately Yours Accounting Solutions offers accounting, bookkeeping, business and personal tax services, tax preparation, planning, and solutions for unpaid back taxes in Citrus Heights, CA.",
+    "fullDescription": "Founded in 1988 by Cindy Conklin, Accurately Yours Accounting Solutions provides comprehensive accounting services with over 40 years of experience. We specialize in bookkeeping, business tax, personal tax, tax preparation, tax planning, and resolving unpaid back taxes. As a certified Elite QuickBooks ProAdvisor, we ensure clients get the best software deals. Licensed by the IRS and approved by CTEC to prepare taxes, we serve clients in Citrus Heights, CA and the greater Sacramento area."
+  },
+  "address": {
+    "line1": "6381 Auburn Blvd., Ste. C",
+    "line2": null,
+    "city": "Citrus Heights",
+    "state": "California",
+    "stateCode": "CA",
+    "zipCode": "95608",
+    "country": "United States"
+  },
+  "contact": {
+    "firstName": "Cindy",
+    "lastName": "Conklin",
+    "email": "cconklin@accuratelyyours.com",
+    "phone": "+19163971606",
+    "mobilePhone": null,
+    "fax": null,
+    "title": "Owner"
+  },
+  "hours": {
+    "monday": { "open": "08:00", "close": "17:00", "isOpen": true },
+    "tuesday": { "open": "08:00", "close": "17:00", "isOpen": true },
+    "wednesday": { "open": "08:00", "close": "17:00", "isOpen": true },
+    "thursday": { "open": "08:00", "close": "17:00", "isOpen": true },
+    "friday": { "open": "08:00", "close": "17:00", "isOpen": true },
+    "saturday": { "open": null, "close": null, "isOpen": false },
+    "sunday": { "open": null, "close": null, "isOpen": false },
+    "source": "yelp"
+  },
+  "services": [
+    "Accounting",
+    "Bookkeeping",
+    "Business Tax",
+    "Personal Tax",
+    "Tax Preparation",
+    "Tax Planning",
+    "Unpaid Back Taxes",
+    "Non-Filed Tax Returns",
+    "Payroll Tax Solutions",
+    "QuickBooks ProAdvisor"
+  ],
+  "socialMedia": {
+    "facebook": "https://www.facebook.com/accuratelyyours/",
+    "instagram": null,
+    "linkedin": "https://www.linkedin.com/in/accuratelyyours",
+    "twitter": null,
+    "pinterest": null,
+    "youtube": null,
+    "tiktok": null,
+    "yelp": "https://www.yelp.com/biz/accurately-yours-accounting-solutions-cirtus-heights"
+  },
+  "images": {
+    "logo": {
+      "slot": "logo",
+      "sourceUrl": "https://lirp.cdn-website.com/3a95e3a4/dms3rep/multi/opt/Screenshot-2025-02-2..._imresizer-1920w.jpg",
+      "localFile": "public/images/brightlocal/accurately-yours/og-image.jpg",
+      "description": "Accurately Yours Accounting Solutions logo"
+    }
+  },
+  "paymentMethods": {
+    "cash": true,
+    "visa": true,
+    "mastercard": true,
+    "americanExpress": true,
+    "personalCheck": true,
+    "invoice": true,
+    "insurance": false,
+    "atmDebit": true,
+    "travelersChecks": false,
+    "financingAvailable": false,
+    "paypal": false,
+    "discover": true
+  },
+  "certifications": [
+    "IRS Licensed",
+    "CTEC Approved",
+    "Elite QuickBooks ProAdvisor",
+    "BBB Accredited"
+  ],
+  "createdByZing": true
+}

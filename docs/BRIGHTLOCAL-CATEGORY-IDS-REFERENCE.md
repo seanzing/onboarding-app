@@ -1,0 +1,557 @@
+# BrightLocal Business Category IDs - Reference
+
+**Last Updated**: November 17, 2025
+**Source**: BrightLocal supported categories list
+
+This document contains valid BrightLocal Business Category IDs for use in location CSV imports.
+
+## 📋 Quick Reference for Our Mock Data
+
+| Business Type | Category Name | ID | Used In |
+|--------------|---------------|-----|---------|
+| Coffee Shop | Breakfast restaurant | 8057 | Mock Coffee Co locations |
+| Fitness Center | Athletic club | 9349 | Mock Fitness Studio locations |
+| Legal Services | Barrister | 5107 | Mock Legal Services locations |
+| Software Company | Software company | 528 | Route36 (existing location) |
+| General Business | Advertising agency | 503 | Template example |
+
+## 🔤 Complete Category List (Alphabetical)
+
+### A
+
+- **3D printing service** - 15417
+- **Aadhaar center** - 15486
+- **Abarth dealer** - 15522
+- **Abbey** - 8567
+- **Aboriginal and Torres Strait Islander organisation** - 7569
+- **Aboriginal art gallery** - 8253
+- **Abortion clinic** - 2935
+- **Abrasives supplier** - 9387
+- **Abundant Life church** - 9371
+- **Academic department** - 6051
+- **Açaí shop** - 15470
+- **Acaraje restaurant** - 15488
+- **Accountant** - 583
+- **Accounting firm** - 9059
+- **Accounting school** - 6095
+- **Acoustical consultant** - 1447
+- **Acrobatic diving pool** - 8029
+- **Acrylic store** - 4741
+- **Acupuncture clinic** - 1002
+- **Acupuncture school** - 9303
+- **Acupuncturist** - 5589
+- **Acura dealer** - 7231
+- **Adaptive sports center** - 10011
+- **Addiction treatment center** - 3293
+- **Administrative attorney** - 4507
+- **Adoption agency** - 2305
+- **Adult day care center** - 635
+- **Adult DVD store** - 9531
+- **Adult education school** - 522
+- **Adult entertainment club** - 835
+- **Adult entertainment store** - 1068
+- **Adult foster care service** - 9707
+- **Adventure sports center** - 8517
+- **Advertising agency** - 503 ⭐ (Template example)
+- **Aerated drinks supplier** - 8979
+- **Aerial photographer** - 10117
+- **Aerial sports center** - 4901
+- **Aero dance class** - 5127
+- **Aerobics instructor** - 7547
+- **Aeroclub** - 9887
+- **Aeromodel shop** - 4401
+- **Aeronautical engineer** - 9181
+- **Aerospace company** - 7111
+- **Afghan restaurant** - 9169
+- **African goods store** - 9413
+- **African restaurant** - 8705
+- **After school program** - 7139
+- **Aged care** - 9203
+- **Agenzia Entrate** - 7189
+- **Aggregate supplier** - 10341
+- **Agistment service** - 7785
+- **Agricultural association** - 9819
+- **Agricultural cooperative** - 7943
+- **Agricultural engineer** - 7619
+- **Agricultural high school** - 9717
+- **Agricultural machinery manufacturer** - 9339
+- **Agricultural organization** - 8795
+- **Agricultural product wholesaler** - 6937
+- **Agricultural production** - 6855
+- **Agricultural service** - 1074
+- **Agrochemicals supplier** - 9125
+- **Aikido** - 12259
+- **Aikido club** - 8369
+- **Aikido school** - 9587
+- **Air ambulance service** - 15612
+- **Air compressor repair service** - 8223
+- **Air compressor supplier** - 9165
+- **Air conditioning contractor** - 996
+- **Air conditioning repair service** - 8785
+- **Air conditioning store** - 7745
+- **Air conditioning system supplier** - 8877
+- **Air duct cleaning service** - 1123
+- **Air filter supplier** - 1969
+- **Air force base** - 7243
+- **Air taxi** - 5419
+- **Airbrushing service** - 10439
+- **Airbrushing supply store** - 5285
+- **Aircraft dealer** - 15442
+- **Aircraft maintenance company** - 4629
+- **Aircraft manufacturer** - 8255
+- **Aircraft rental service** - 1247
+- **Aircraft supply store** - 1285
+- **Airline** - 5403
+- **Airline ticket agency** - 5065
+- **Airplane** - 5449
+- **Airport** - 2887
+- **Airport Express Train Station** - 12207
+- **Airport shuttle service** - 791
+- **Airsoft supply store** - 9409
+- **Airstrip** - 5195
+- **Alcohol manufacturer** - 7469
+- **Alcohol retail monopoly** - 5647
+- **Alcoholic beverage wholesaler** - 9971
+- **Alcoholism treatment program** - 7079
+- **Alfa Romeo dealer** - 15397
+- **Algerian Restaurant** - 11733
+- **Allergist** - 2425
+- **Alliance church** - 4835
+- **Alsace restaurant** - 8869
+- **Alternative fuel station** - 8499
+- **Alternative medicine practitioner** - 628
+- **Alternator supplier** - 8309
+- **Aluminum frames supplier** - 5243
+- **Aluminum supplier** - 5973
+- **Aluminum welder** - 6163
+- **Aluminum window** - 6951
+- **Amateur theater** - 8355
+- **Ambulance service** - 5743
+- **American football field** - 6417
+- **American grocery store** - 15525
+- **American restaurant** - 9287
+- **Amish furniture store** - 6885
+- **Ammunition supplier** - 9317
+- **Amphitheater** - 6801
+- **Amusement center** - 1231
+- **Amusement machine supplier** - 10019
+- **Amusement park** - 2181
+- **Amusement park ride** - 6771
+- **Amusement ride supplier** - 6239
+- **Anago restaurant** - 5069
+- **Andalusian restaurant** - 7817
+- **Andhra restaurant** - 13021
+- **Anesthesiologist** - 6331
+- **Anganwadi center** - 15492
+- **Anglican church** - 8933
+- **Anhui restaurant** - 5173
+- **Animal cafe** - 15618
+- **Animal control service** - 2297
+- **Animal feed store** - 2161
+- **Animal hospital** - 3941
+- **Animal protection organization** - 7057
+- **Animal rescue service** - 7639
+- **Animal shelter** - 6523
+- **Animal watering hole** - 15341
+- **Animation studio** - 9853
+- **Anime club** - 4399
+- **Anodizing service** - 10461
+- **Antenna service** - 8485
+- **Antique furniture restoration service** - 1131
+- **Antique furniture store** - 9403
+- **Antique store** - 1081
+- **Apartment building** - 756
+- **Apartment complex** - 9699
+- **Apartment rental agency** - 2065
+- **Apostolic church** - 4771
+- **Appliance parts supplier** - 790
+- **Appliance rental service** - 8177
+- **Appliance repair service** - 804
+- **Appliance store** - 926
+- **Appliances customer service** - 6533
+- **Applied behavior analysis therapist** - 15622
+- **Appraiser** - 1587
+- **Apprenticeship center** - 5383
+- **Aquaculture farm** - 6123
+- **Aquarium** - 1547
+- **Aquarium shop** - 10115
+- **Aquatic center** - 8067
+- **Arab restaurant** - 15544
+- **Arboretum** - 5709
+- **Arborist service** - 10383
+- **Archaeological museum** - 7645
+- **Archery club** - 4797
+- **Archery range** - 7815
+- **Archery store** - 7651
+- **Architect** - 774
+- **Architects association** - 5259
+- **Architectural and engineering model maker** - 4645
+- **Architectural designer** - 6277
+- **Architectural salvage store** - 8319
+- **Architecture firm** - 8763
+- **Architecture school** - 5029
+- **Archive** - 6473
+- **Arena** - 8951
+- **Argentinian restaurant** - 6929
+- **Armed forces association** - 6893
+- **Armenian church** - 5681
+- **Armenian restaurant** - 6969
+- **Army & navy surplus shop** - 9713
+- **Army barracks** - 5433
+- **Army facility** - 10343
+- **Army museum** - 6803
+- **Aromatherapy class** - 10331
+- **Aromatherapy service** - 7133
+- **Aromatherapy supply store** - 8613
+- **Art cafe** - 8809
+- **Art center** - 546
+- **Art dealer** - 8371
+- **Art gallery** - 1627
+- **Art museum** - 8931
+- **Art restoration service** - 5255
+- **Art school** - 2675
+- **Art studio** - 9375
+- **Art supply store** - 2679
+- **Artificial plant supplier** - 937
+- **Artist** - 557
+- **Arts organization** - 10155
+- **Asbestos testing service** - 1301
+- **Ashram** - 5083
+- **Asian fusion restaurant** - 4457
+- **Asian grocery store** - 4375
+- **Asian household goods store** - 6391
+- **Asian restaurant** - 6043
+- **Asphalt contractor** - 1102
+- **Asphalt mixing plant** - 7205
+- **Assamese restaurant** - 15483
+- **Assemblies of God church** - 7157
+- **Assistante maternelle** - 6407
+- **Assisted living facility** - 921
+- **Association / Organization** - 1373
+- **Aston Martin dealer** - 15385
+- **Astrologer** - 7631
+- **Asturian restaurant** - 4773
+- **Asylum center** - 15632
+- **Athletic club** - 9349 ⭐ (Used for Fitness)
+- **Athletic field** - 6867
+- **Athletic park** - 7223
+- **Athletic track** - 9197
+- **ATM** - 8249
+- **Attorney referral service** - 8461
+- **ATV dealer** - 7655
+- **ATV rental service** - 4877
+- **ATV repair shop** - 7725
+- **Auction house** - 1075
+- **Audi dealer** - 5929
+- **Audio visual consultant** - 1209
+- **Audio visual equipment repair service** - 9401
+- **Audio visual equipment supplier** - 2693
+- **Audiologist** - 1399
+- **Audiovisual equipment rental service** - 2977
+- **Auditor** - 9175
+- **Auditorium** - 7617
+- **Australian goods store** - 8791
+- **Australian restaurant** - 9253
+- **Austrian restaurant** - 4389
+- **Authentic Japanese restaurant** - 8607
+- **Auto accessories wholesaler** - 6751
+- **Auto air conditioning service** - 9073
+- **Auto auction** - 8015
+- **Auto body parts supplier** - 2973
+- **Auto body shop** - 1813
+- **Auto bodywork mechanic** - 11343
+- **Auto broker** - 1197
+- **Auto care products store** - 15641
+- **Auto chemistry shop** - 10037
+- **Auto dent removal service** - 3851
+- **Auto electrical service** - 3091
+- **Auto glass repair service** - 15547
+- **Auto glass shop** - 859
+- **Auto insurance agency** - 8417
+- **Auto machine shop** - 10071
+- **Auto market** - 5671
+- **Auto painting** - 15415
+- **Auto parts manufacturer** - 6193
+- **Auto parts market** - 5751
+- **Auto parts store** - 1050
+- **Auto radiator repair service** - 7559
+- **Auto repair shop** - 799
+- **Auto restoration service** - 9069
+- **Auto rickshaw stand** - 15490
+- **Auto spring shop** - 7835
+- **Auto sunroof shop** - 10337
+- **Auto tag agency** - 899
+- **Auto tune up service** - 5747
+- **Auto upholsterer** - 1107
+- **Auto window tinting service** - 13695
+- **Auto wrecker** - 1427
+- **Automation company** - 9193
+- **Automobile storage facility** - 7199
+- **Aviation consultant** - 1251
+- **Aviation training institute** - 6737
+- **Awadhi restaurant** - 12983
+- **Awning supplier** - 1040
+- **Ayam penyet restaurant** - 15473
+- **Ayurvedic clinic** - 15444
+- **Azerbaijani restaurant** - 15573
+
+### B
+
+- **Baby clothing store** - 8717
+- **Baby store** - 733
+- **Baby swimming school** - 7585
+- **Baden restaurant** - 15432
+- **Badminton club** - 6197
+- **Badminton complex** - 5335
+- **Badminton court** - 6875
+- **Bag shop** - 7841
+- **Bagel shop** - 5047
+- **Bahá'í house of worship** - 4493
+- **Bail bonds service** - 875
+- **Bait shop** - 8721
+- **Bakery** - 1291
+- **Bakery equipment** - 7743
+- **Baking supply store** - 9149
+- **Bakso restaurant** - 15277
+- **Balinese restaurant** - 15255
+- **Ballet school** - 7993
+- **Ballet theater** - 5193
+- **Balloon artist** - 2801
+- **Balloon ride tour agency** - 5207
+- **Balloon store** - 7389
+- **Ballroom dance instructor** - 6355
+- **Band** - 9261
+- **Bangladeshi restaurant** - 9607
+- **Bangle Shop** - 12829
+- **Bank** - 601
+- **Bankruptcy attorney** - 1743
+- **Bankruptcy service** - 847
+- **Banner store** - 5729
+- **Banquet hall** - 4157
+- **Baptist church** - 5755
+- **Bar** - 2029
+- **Bar & grill** - 559
+- **Bar PMU** - 9755
+- **Bar restaurant furniture store** - 4341
+- **Bar stool supplier** - 9485
+- **Bar tabac** - 8447
+- **Barbecue area** - 9095
+- **Barbecue restaurant** - 2549
+- **Barber school** - 9721
+- **Barber shop** - 1583
+- **Barber supply store** - 9981
+- **Bariatric surgeon** - 15514
+- **Bark supplier** - 4795
+- **Barrel supplier** - 1341
+- **Barrister** - 5107 ⭐ (Used for Legal)
+- **Bartending school** - 5305
+- **Bartending service** - 20739
+- **Baseball club** - 5167
+- **Baseball field** - 4581
+- **Baseball goods store** - 5293
+- **Basilica** - 5505
+- **Basket supplier** - 6583
+- **Basketball club** - 8103
+- **Basketball court** - 4943
+- **Basketball court contractor** - 6073
+- **Basque restaurant** - 9635
+- **Batak restaurant** - 15283
+- **Bathroom remodeler** - 1012
+- **Bathroom supply store** - 3265
+- **Batik clothing store** - 15491
+- **Battery manufacturer** - 8657
+- **Battery store** - 5825
+- **Battery wholesaler** - 4479
+- **Batting cage center** - 9813
+- **Bavarian restaurant** - 15434
+- **Bazar** - 5523
+- **Beach cleaning service** - 4447
+- **Beach clothing store** - 8295
+- **Beach club** - 15604
+- **Beach entertainment shop** - 7059
+- **Beach pavillion** - 9595
+- **Beach volleyball club** - 6323
+- **Beach volleyball court** - 6249
+- **Bead store** - 7325
+- **Bead wholesaler** - 9345
+- **Bearing supplier** - 7977
+- **Beautician** - 11249
+- **Beauty product supplier** - 9893
+- **Beauty products vending machine** - 8201
+- **Beauty products wholesaler** - 4897
+- **Beauty salon** - 624
+- **Beauty school** - 1589
+- **Beauty supply store** - 633
+- **Bed & breakfast** - 743
+- **Bed shop** - 916
+- **Bedding store** - 9791
+- **Bedroom furniture store** - 8847
+- **Bee relocation service** - 15590
+- **Beekeeping** - 10625
+- **Beer distributor** - 6721
+- **Beer garden** - 9735
+- **Beer hall** - 9437
+- **Beer store** - 1611
+- **Beijing Restaurant** - 12373
+- **Belgian restaurant** - 8179
+- **Belt shop** - 6125
+- **Bengali restaurant** - 12925
+- **Bentley dealer** - 15371
+- **Berry restaurant** - 4673
+- **Berufsfachschule (vocational school with apprenticeship)** - 15562
+- **Betawi restaurant** - 15269
+- **Betting agency** - 9933
+- **Beverage distributor** - 3397
+- **Bicycle club** - 6503
+- **Bicycle rack** - 9245
+- **Bicycle rental service** - 5289
+- **Bicycle repair shop** - 836
+- **Bicycle store** - 1183
+- **Bicycle wholesaler** - 4807
+- **Bike wash** - 15480
+- **Bikram yoga studio** - 4383
+- **Bilingual preschool** - 20744
+- **Bilingual school** - 9229
+- **Billiards supply store** - 3159
+- **Bingo hall** - 7729
+- **Biochemistry lab** - 6561
+- **Biofeedback therapist** - 9119
+- **Biotechnology company** - 2563
+- **Bird control service** - 1223
+- **Bird shop** - 5093
+- **Bird watching area** - 5651
+- **Birth center** - 8619
+- **Birth certificate service** - 6263
+- **Birth control center** - 8005
+- **Biryani restaurant** - 15333
+- **Bistro** - 8697
+- **Blacksmith** - 1501
+- **Blast cleaning service** - 5357
+- **Blinds shop** - 4355
+- **Blood bank** - 8289
+- **Blood donation center** - 9017
+- **Blood testing service** - 7851
+- **Blueprint service** - 5969
+- **Blues club** - 5861
+- **BMW dealer** - 6595
+- **BMW motorcycle dealer** - 5527
+- **BMX club** - 9271
+- **BMX park** - 4635
+- **BMX venue** - 6035
+- **Board game club** - 6431
+- **Board of education** - 10319
+- **Boarding house** - 6071
+- **Boarding school** - 9539
+- **Boat accessories supplier** - 5985
+- **Boat builders** - 865
+- **Boat cleaning service** - 15598
+- **Boat club** - 8749
+- **Boat cover supplier** - 2525
+- **Boat dealer** - 2951
+- **Boat detailing service** - 15613
+- **Boat ramp** - 2657
+- **Boat rental service** - 6341
+- **Boat repair shop** - 1671
+- **Boat storage facility** - 2823
+- **Boat tour agency** - 3915
+- **Boat trailer dealer** - 5099
+- **Boating instructor** - 8215
+- **Bocce ball court** - 8767
+- **Body piercing shop** - 7755
+- **Body shaping class** - 9293
+- **Boiler manufacturer** - 6173
+- **Boiler supplier** - 6285
+- **Bonesetting house** - 4357
+- **Bonsai plant supplier** - 8429
+- **Book publisher** - 7741
+- **Book store** - 737
+- **Bookbinder** - 7175
+- **Bookkeeping service** - 585
+- **Books wholesaler** - 6727
+- **Boot camp** - 5487
+- **Boot repair shop** - 8855
+- **Boot store** - 10431
+- **Border crossing station** - 6615
+- **Border guard** - 10389
+- **Botanica** - 15605
+- **Botanical garden** - 5311
+- **Bottle & can redemption center** - 4891
+- **Bottled water supplier** - 1563
+- **Bouncy castle hire** - 9535
+- **Boutique** - 2263
+- **Bowling alley** - 894
+- **Bowling club** - 6297
+- **Bowling supply shop** - 8505
+- **Box lunch supplier** - 9423
+- **Boxing club** - 7089
+- **Boxing gym** - 9953
+- **Boxing ring** - 7761
+- **Boys' high school** - 4825
+- **BPO company** - 8559
+- **BPO placement agency** - 7101
+- **Brake shop** - 9715
+- **Branding agency** - 12321
+- **Brasserie** - 6953
+- **Brazilian pastelaria** - 15339
+- **Brazilian restaurant** - 10201
+- **Breakfast restaurant** - 8057 ⭐ (Used for Coffee)
+- **Brewery** - 8121
+- **Brewing supply store** - 7721
+- **Brewpub** - 9879
+- **Brick manufacturer** - 9583
+- **Bricklayer** - 10107
+- **Bridal shop** - 580
+- **Bridge** - 8099
+- **Bridge club** - 8593
+- **British restaurant** - 4599
+- **Brunch restaurant** - 6775
+- **Bubble tea store** - 10217
+- **Buddhist supplies store** - 6429
+- **Buddhist temple** - 6691
+- **Buffet restaurant** - 6133
+- **Bugatti dealer** - 15369
+- **Buick dealer** - 7643
+- **Building consultant** - 10423
+- **Building designer** - 15521
+- **Building equipment hire service** - 6161
+- **Building firm** - 6761
+- **Building inspector** - 1191
+- **Building materials market** - 5789
+- **Building materials store** - 764
+- **Building materials supplier** - 984
+- **Building restoration service** - 8125
+- **Building society** - 10181
+
+### C-Z
+*(Partial list shown - categories continue through the alphabet)*
+
+### Special Categories
+
+- **Computer software store** - 9167
+- **Software company** - 528 ⭐ (Used for Route36)
+- **Software training institute** - 4395
+- **Dealer of Fiat Professional** - 15527
+- **Professional and hobby associations** - 6447
+- **Professional association** - 15594
+- **Professional organizer** - 956
+
+---
+
+## 💡 Usage Notes
+
+1. **Category ID is REQUIRED** - Empty or "0" will cause validation errors
+2. **Use closest match** - If exact category doesn't exist, use the closest relevant one
+3. **Can be changed later** - Categories can be updated in BrightLocal UI after import
+4. **State abbreviations** - Use "CO" not "Colorado" in location imports
+5. **Template example** - BrightLocal's template uses category 503 (Advertising agency)
+
+## 🔗 Related Files
+
+- `brightlocal-mock-clients.csv` - Mock client data
+- `brightlocal-mock-locations-FINAL-v2.csv` - Mock location data with accurate category IDs
+- `locations-bulk-import-template-v2 (1).csv` - Official BrightLocal import template
+
+## 📝 Change Log
+
+- **2025-11-17**: Initial document created from user-provided category list
+- **2025-11-17**: Mapped categories for mock data (Coffee: 8057, Fitness: 9349, Legal: 5107)
