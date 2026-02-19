@@ -288,7 +288,7 @@ async function fetchCustomerContactsPage(
             {
               propertyName: 'lifecyclestage',
               operator: 'IN',
-              values: ['customer', 'dnc', 'active'],
+              values: ['customer', '946862144', '999377175'], // customer, DNC, Active
             },
           ],
         },

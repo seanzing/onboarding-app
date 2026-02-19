@@ -130,7 +130,7 @@ export async function GET(request: NextRequest) {
         .from('contacts')
         .select('*', { count: 'exact' })
         .eq('user_id', userId)
-        .in('lifecyclestage', ['customer', 'dnc', 'active']) // Active customer lifecycle stages
+        .in('lifecyclestage', ['customer', '946862144', '999377175']) // customer, DNC, Active
         .order('synced_at', { ascending: false, nullsFirst: false })
         .range(from, from + pageSize - 1);
 
