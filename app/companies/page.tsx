@@ -14,6 +14,7 @@ import {
   type CompanyData,
 } from '../components/tamagui'
 import ClientOnly from '../components/ClientOnly'
+import { SyncStatus } from '../components/SyncStatus'
 import { getCompanyDisplayName, getCompanySubtitle } from '../utils/companyNameHelper'
 
 // Force dynamic rendering
@@ -32,7 +33,7 @@ const ITEMS_PER_PAGE = 20
 
 export default function CompaniesPage() {
   const router = useRouter()
-  const { companies, loading, error } = useCompanies()
+  const { companies, loading, error, refetch } = useCompanies()
   const [currentPage, setCurrentPage] = useState(1)
   const [searchQuery, setSearchQuery] = useState('')
   const [navigatingTo, setNavigatingTo] = useState<string | null>(null)
@@ -177,19 +178,7 @@ export default function CompaniesPage() {
                 </YStack>
               </XStack>
             </YStack>
-            <Button
-              size="$4"
-              backgroundColor="rgba(59, 130, 246, 0.2)"
-              borderColor="#3B82F6"
-              borderWidth={1}
-              onPress={() => window.location.reload()}
-              icon={<RefreshCw size={18} color="#3B82F6" />}
-              hoverStyle={{ backgroundColor: 'rgba(59, 130, 246, 0.3)' }}
-            >
-              <Text color="#3B82F6" fontWeight="600">
-                Refresh
-              </Text>
-            </Button>
+            <SyncStatus compact onSyncComplete={() => refetch()} />
           </XStack>
         </YStack>
 
