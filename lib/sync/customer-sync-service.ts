@@ -270,7 +270,7 @@ async function fetchExistingContactIds(
 
 /**
  * Fetch a page of customer contacts from HubSpot
- * Fetches contacts where lifecyclestage='customer' - these are our businesses
+ * Fetches contacts where lifecyclestage is customer, dnc, or active
  */
 async function fetchCustomerContactsPage(
   accessToken: string,
@@ -287,8 +287,8 @@ async function fetchCustomerContactsPage(
           filters: [
             {
               propertyName: 'lifecyclestage',
-              operator: 'EQ',
-              value: 'customer',
+              operator: 'IN',
+              values: ['customer', 'dnc', 'active'],
             },
           ],
         },

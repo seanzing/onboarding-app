@@ -130,7 +130,7 @@ export async function GET(request: NextRequest) {
         .from('contacts')
         .select('*', { count: 'exact' })
         .eq('user_id', userId)
-        .ilike('lifecyclestage', 'customer') // Case-insensitive match for HubSpot values
+        .in('lifecyclestage', ['customer', 'dnc', 'active']) // Active customer lifecycle stages
         .order('synced_at', { ascending: false, nullsFirst: false })
         .range(from, from + pageSize - 1);
 
