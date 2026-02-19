@@ -3,14 +3,18 @@
  *
  * POST /api/onboarding/[contactId]/landing-pages/generate
  * Proxy to landing pages service to generate location pages.
+ * Returns Server-Sent Events (SSE) stream with progress heartbeats.
  */
 
-import { NextResponse, type NextRequest } from 'next/server'
-import { apiSuccess, apiError } from '@/app/types/api'
+import { type NextRequest } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
+export const maxDuration = 300 // Vercel Pro max (5 min)
+
+const SERVICE_TIMEOUT = 360_000 // 6 minutes
+const HEARTBEAT_INTERVAL = 5_000 // 5 seconds
 
 export async function POST(
   request: NextRequest,
@@ -18,46 +22,91 @@ export async function POST(
 ) {
   const { contactId } = await params
 
-  const landingPagesUrl = process.env.LANDING_PAGES_URL
-  if (!landingPagesUrl) {
-    return NextResponse.json(
-      apiError('Landing pages service not configured', 'SERVICE_UNAVAILABLE'),
-      { status: 503 }
+  let body: Record<string, unknown>
+  try {
+    body = await request.json()
+  } catch {
+    return new Response(
+      JSON.stringify({ error: 'Invalid JSON body' }),
+      { status: 400, headers: { 'Content-Type': 'application/json' } }
     )
   }
 
-  try {
-    const body = await request.json()
-    const num_pages = body.num_pages ?? 50
-    const { base_location, duda_site_code, industry, collection_name } = body
+  const { duda_site_code, base_location, industry, collection_name, priority_locations } = body
+  const num_pages = Math.max(1, Math.min(200, Number(body.num_pages) || 50))
 
-    if (!duda_site_code || typeof duda_site_code !== 'string') {
-      return NextResponse.json(
-        apiError('Missing or invalid "duda_site_code" in request body', 'BAD_REQUEST'),
-        { status: 400 }
+  // Validate required fields
+  for (const [field, value] of Object.entries({ duda_site_code, base_location, industry })) {
+    if (!value || typeof value !== 'string') {
+      return new Response(
+        JSON.stringify({ error: `Missing or invalid "${field}" in request body` }),
+        { status: 400, headers: { 'Content-Type': 'application/json' } }
       )
     }
+  }
 
-    if (!base_location || typeof base_location !== 'string') {
-      return NextResponse.json(
-        apiError('Missing or invalid "base_location" in request body', 'BAD_REQUEST'),
-        { status: 400 }
-      )
-    }
+  // Validate priority_locations if provided
+  const priorityList: string[] = Array.isArray(priority_locations)
+    ? priority_locations.filter((l): l is string => typeof l === 'string' && l.trim() !== '')
+    : []
 
-    if (!industry || typeof industry !== 'string') {
-      return NextResponse.json(
-        apiError('Missing or invalid "industry" in request body', 'BAD_REQUEST'),
-        { status: 400 }
-      )
-    }
+  if (priorityList.length > num_pages) {
+    return new Response(
+      JSON.stringify({ error: `priority_locations (${priorityList.length}) cannot exceed num_pages (${num_pages})` }),
+      { status: 400, headers: { 'Content-Type': 'application/json' } }
+    )
+  }
 
-    // Proxy POST to landing pages service
-    // Maps our field names to the service's expected schema (OneOffRequest)
-    const controller = new AbortController()
-    const timeout = setTimeout(() => controller.abort(), 15000)
+  const landingPagesUrl = process.env.LANDING_PAGES_URL
+  if (!landingPagesUrl) {
+    return new Response(
+      JSON.stringify({ error: 'Landing pages service not configured' }),
+      { status: 503, headers: { 'Content-Type': 'application/json' } }
+    )
+  }
 
-    try {
+  const stream = new ReadableStream({
+    async start(controller) {
+      const encoder = new TextEncoder()
+      let heartbeatTimer: ReturnType<typeof setInterval> | null = null
+      let closed = false
+      const startTime = Date.now()
+
+      const send = (data: Record<string, unknown>) => {
+        if (closed) return
+        try {
+          controller.enqueue(encoder.encode(`data: ${JSON.stringify(data)}\n\n`))
+        } catch {
+          closed = true
+        }
+      }
+
+      const close = () => {
+        if (closed) return
+        closed = true
+        if (heartbeatTimer) clearInterval(heartbeatTimer)
+        try {
+          controller.close()
+        } catch {
+          // Already closed
+        }
+      }
+
+      // Send initial event
+      send({ type: 'started', num_pages, priority_locations: priorityList })
+
+      // Start heartbeat
+      heartbeatTimer = setInterval(() => {
+        const elapsed = Math.round((Date.now() - startTime) / 1000)
+        send({
+          type: 'progress',
+          elapsed,
+          num_pages,
+          message: 'Still working...',
+        })
+      }, HEARTBEAT_INTERVAL)
+
+      // Build service payload
       const servicePayload: Record<string, unknown> = {
         site_code: duda_site_code,
         industry,
@@ -65,76 +114,117 @@ export async function POST(
         num_pages,
       }
       if (collection_name) servicePayload.collection_name = collection_name
+      if (priorityList.length > 0) servicePayload.priority_locations = priorityList
 
-      const response = await fetch(`${landingPagesUrl}/generate`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(servicePayload),
-        signal: controller.signal,
-      })
-      clearTimeout(timeout)
+      // Call landing pages service
+      const abortController = new AbortController()
+      const timeout = setTimeout(() => abortController.abort(), SERVICE_TIMEOUT)
 
-      if (!response.ok) {
-        const errorText = await response.text().catch(() => '')
-        console.error(`[Landing Pages Generate] Service returned ${response.status}: ${errorText}`)
-        return NextResponse.json(
-          apiError(`Landing pages service returned ${response.status}`, 'EXTERNAL_API_ERROR'),
-          { status: 502 }
-        )
-      }
+      try {
+        const response = await fetch(`${landingPagesUrl}/generate`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(servicePayload),
+          signal: abortController.signal,
+        })
+        clearTimeout(timeout)
 
-      const result = await response.json()
+        if (!response.ok) {
+          const errorText = await response.text().catch(() => '')
+          console.error(`[Landing Pages Generate] Service returned ${response.status}: ${errorText}`)
 
-      // Upsert onboarding_status for landing_pages
-      const supabase = await createClient()
+          const supabase = await createClient()
+          await supabase.from('onboarding_status').upsert(
+            {
+              hubspot_contact_id: contactId,
+              service: 'landing_pages',
+              status: 'error',
+              last_triggered_at: new Date().toISOString(),
+              metadata: { num_pages, base_location, duda_site_code, industry, priority_locations: priorityList, error: `Service returned ${response.status}` },
+            },
+            { onConflict: 'hubspot_contact_id,service' }
+          )
 
-      const { error: statusError } = await supabase
-        .from('onboarding_status')
-        .upsert(
+          send({ type: 'error', message: `Landing pages service returned ${response.status}` })
+          close()
+          return
+        }
+
+        const result = await response.json()
+
+        // Upsert success status
+        const supabase = await createClient()
+        const { error: statusError } = await supabase.from('onboarding_status').upsert(
           {
             hubspot_contact_id: contactId,
             service: 'landing_pages',
-            status: 'pending',
+            status: 'active',
             last_triggered_at: new Date().toISOString(),
-            metadata: { num_pages, base_location, duda_site_code, industry, collection_name },
+            metadata: {
+              num_pages,
+              base_location,
+              duda_site_code,
+              industry,
+              priority_locations: priorityList,
+              pages_generated: result.pages_generated ?? result.num_pages,
+              pages_sent_to_duda: result.pages_sent_to_duda,
+            },
           },
           { onConflict: 'hubspot_contact_id,service' }
         )
 
-      if (statusError) {
-        console.warn('[Landing Pages Generate] Failed to update onboarding status:', statusError)
-      }
+        if (statusError) {
+          console.warn('[Landing Pages Generate] Failed to update onboarding status:', statusError)
+        }
 
-      console.log(`[Landing Pages Generate] Triggered ${num_pages} pages for site ${duda_site_code} (${industry})`)
+        console.log(`[Landing Pages Generate] Completed ${num_pages} pages for site ${duda_site_code} (${industry})`)
 
-      return NextResponse.json(
-        apiSuccess({
-          contactId,
-          duda_site_code,
-          industry,
-          num_pages,
-          base_location,
+        send({
+          type: 'complete',
           result,
-          status: 'pending',
-          last_triggered_at: new Date().toISOString(),
+          pages_generated: result.pages_generated ?? result.num_pages,
+          pages_sent_to_duda: result.pages_sent_to_duda,
         })
-      )
-    } catch (fetchError: unknown) {
-      clearTimeout(timeout)
-      if (fetchError instanceof Error && fetchError.name === 'AbortError') {
-        return NextResponse.json(
-          apiError('Landing pages service request timed out', 'EXTERNAL_API_ERROR'),
-          { status: 504 }
-        )
+        close()
+      } catch (fetchError: unknown) {
+        clearTimeout(timeout)
+
+        const isTimeout = fetchError instanceof Error && fetchError.name === 'AbortError'
+        const errorMessage = isTimeout
+          ? 'Landing pages service timed out'
+          : fetchError instanceof Error
+            ? fetchError.message
+            : 'Unknown error'
+
+        console.error('[Landing Pages Generate] Error:', errorMessage)
+
+        try {
+          const supabase = await createClient()
+          await supabase.from('onboarding_status').upsert(
+            {
+              hubspot_contact_id: contactId,
+              service: 'landing_pages',
+              status: 'error',
+              last_triggered_at: new Date().toISOString(),
+              metadata: { num_pages, base_location, duda_site_code, industry, priority_locations: priorityList, error: errorMessage },
+            },
+            { onConflict: 'hubspot_contact_id,service' }
+          )
+        } catch (dbError) {
+          console.error('[Landing Pages Generate] Failed to update error status:', dbError)
+        }
+
+        send({ type: 'error', message: errorMessage })
+        close()
       }
-      throw fetchError
-    }
-  } catch (error: unknown) {
-    console.error('[Landing Pages Generate] Unexpected error:', error)
-    const message = error instanceof Error ? error.message : 'Unknown error'
-    return NextResponse.json(
-      apiError(`Failed to generate landing pages: ${message}`, 'INTERNAL_ERROR'),
-      { status: 500 }
-    )
-  }
+    },
+  })
+
+  return new Response(stream, {
+    headers: {
+      'Content-Type': 'text/event-stream',
+      'Cache-Control': 'no-cache',
+      Connection: 'keep-alive',
+    },
+  })
 }

@@ -1,7 +1,7 @@
 // @ts-nocheck
 'use client'
 
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { YStack, XStack, Text, Card, Button, Spinner, Separator } from 'tamagui'
 import { Globe, AlertCircle, AlertTriangle, Play } from 'lucide-react'
 import { toast } from 'sonner'
@@ -15,19 +15,35 @@ interface LandingPagesTabProps {
   onRefresh: () => void
 }
 
+interface ProgressState {
+  elapsed: number
+  message: string
+  numPages: number
+}
+
 export default function LandingPagesTab({ contactId, dudaSiteCode, serviceStatus, onRefresh }: LandingPagesTabProps) {
   const [numPages, setNumPages] = useState(50)
   const [baseLocation, setBaseLocation] = useState('')
   const [industry, setIndustry] = useState('')
+  const [priorityLocations, setPriorityLocations] = useState('')
   const [generating, setGenerating] = useState(false)
+  const [progress, setProgress] = useState<ProgressState | null>(null)
 
   const status = serviceStatus?.status ?? 'not_started'
   const metadata = serviceStatus?.metadata ?? {}
 
-  const handleGenerate = async () => {
+  const handleGenerate = useCallback(async () => {
     if (!dudaSiteCode) return
+    setGenerating(true)
+    setProgress({ elapsed: 0, message: 'Starting...', numPages })
+
+    // Parse comma-separated priority locations
+    const priorityList = priorityLocations
+      .split(',')
+      .map(l => l.trim())
+      .filter(l => l !== '')
+
     try {
-      setGenerating(true)
       const res = await fetch(`/api/onboarding/${contactId}/landing-pages/generate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -36,18 +52,72 @@ export default function LandingPagesTab({ contactId, dudaSiteCode, serviceStatus
           base_location: baseLocation,
           industry,
           duda_site_code: dudaSiteCode,
+          priority_locations: priorityList.length > 0 ? priorityList : undefined,
         }),
       })
-      const data = await res.json()
-      if (!data.success) throw new Error(data.error)
-      toast.success(`Landing page generation started (${numPages} pages)`)
-      invalidateOnboardingStatus(contactId)
-      onRefresh()
+
+      if (!res.body) {
+        throw new Error('No response body')
+      }
+
+      const reader = res.body.getReader()
+      const decoder = new TextDecoder()
+      let buffer = ''
+      let streamDone = false
+
+      while (!streamDone) {
+        const { done, value } = await reader.read()
+        if (done) break
+
+        buffer += decoder.decode(value, { stream: true })
+
+        const lines = buffer.split('\n')
+        buffer = lines.pop() || ''
+
+        for (const line of lines) {
+          if (!line.startsWith('data: ')) continue
+          try {
+            const event = JSON.parse(line.slice(6))
+
+            if (event.type === 'progress') {
+              setProgress(prev => ({ elapsed: event.elapsed, message: event.message, numPages: prev?.numPages ?? numPages }))
+            } else if (event.type === 'started') {
+              setProgress({ elapsed: 0, message: `Generating ${event.num_pages} landing pages...`, numPages: event.num_pages })
+            } else if (event.type === 'complete') {
+              const count = event.pages_generated ?? 0
+              toast.success(`Generated ${count} landing pages`)
+              invalidateOnboardingStatus(contactId)
+              onRefresh()
+              streamDone = true
+              break
+            } else if (event.type === 'error') {
+              toast.error(event.message || 'Landing page generation failed')
+              streamDone = true
+              break
+            }
+          } catch {
+            // Ignore malformed JSON lines
+          }
+        }
+      }
+
+      reader.cancel().catch(() => {})
     } catch (err: any) {
       toast.error(err.message || 'Failed to generate landing pages')
     } finally {
       setGenerating(false)
+      setProgress(null)
     }
+  }, [contactId, dudaSiteCode, baseLocation, industry, numPages, priorityLocations, onRefresh])
+
+  const inputStyle = {
+    padding: '10px 14px',
+    borderRadius: 8,
+    border: '1px solid rgba(0,0,0,0.15)',
+    fontSize: 14,
+    background: 'transparent',
+    color: 'inherit',
+    width: '100%',
   }
 
   return (
@@ -102,8 +172,29 @@ export default function LandingPagesTab({ contactId, dudaSiteCode, serviceStatus
         </Card>
       )}
 
+      {/* Live progress card */}
+      {generating && progress && (
+        <Card backgroundColor="$background" borderRadius="$5" borderWidth={2} borderColor="rgba(16,185,129,0.3)" padding="$6">
+          <YStack alignItems="center" gap="$4">
+            <Spinner size="large" color="#10B981" />
+            <Text fontSize="$5" fontWeight="700" color="$color">
+              Generating {progress.numPages} landing pages...
+            </Text>
+            <Text fontSize="$4" color="$color" opacity={0.7}>
+              {progress.elapsed}s elapsed
+            </Text>
+            <Text fontSize="$3" color="$color" opacity={0.5}>
+              {progress.message}
+            </Text>
+            <Text fontSize="$2" color="$color" opacity={0.4}>
+              This may take several minutes. Do not close this tab.
+            </Text>
+          </YStack>
+        </Card>
+      )}
+
       {/* Ready to generate */}
-      {dudaSiteCode && (status === 'not_started' || status === 'active') && (
+      {dudaSiteCode && !generating && (status === 'not_started' || status === 'active') && (
         <Card backgroundColor="$background" borderRadius="$5" borderWidth={1} borderColor="$borderColor" padding="$6">
           <YStack gap="$5">
             <Text fontSize="$5" fontWeight="700" color="$color">Generate Landing Pages</Text>
@@ -130,15 +221,7 @@ export default function LandingPagesTab({ contactId, dudaSiteCode, serviceStatus
                     value={industry}
                     onChange={(e) => setIndustry(e.target.value)}
                     placeholder="e.g. Plumbing, Accounting, Dog Training"
-                    style={{
-                      padding: '10px 14px',
-                      borderRadius: 8,
-                      border: '1px solid rgba(0,0,0,0.15)',
-                      fontSize: 14,
-                      background: 'transparent',
-                      color: 'inherit',
-                      width: '100%',
-                    }}
+                    style={inputStyle}
                   />
                 </YStack>
                 <YStack flex={1} gap="$1">
@@ -148,18 +231,23 @@ export default function LandingPagesTab({ contactId, dudaSiteCode, serviceStatus
                     value={baseLocation}
                     onChange={(e) => setBaseLocation(e.target.value)}
                     placeholder="e.g. Denver, CO"
-                    style={{
-                      padding: '10px 14px',
-                      borderRadius: 8,
-                      border: '1px solid rgba(0,0,0,0.15)',
-                      fontSize: 14,
-                      background: 'transparent',
-                      color: 'inherit',
-                      width: '100%',
-                    }}
+                    style={inputStyle}
                   />
                 </YStack>
               </XStack>
+              <YStack gap="$1">
+                <Text fontSize={12} color="$color" opacity={0.5} fontWeight="500">Priority Locations</Text>
+                <input
+                  type="text"
+                  value={priorityLocations}
+                  onChange={(e) => setPriorityLocations(e.target.value)}
+                  placeholder="e.g. Boulder CO, Fort Collins CO, Aurora CO"
+                  style={inputStyle}
+                />
+                <Text fontSize={11} color="$color" opacity={0.4}>
+                  Comma-separated cities to include first. Remaining slots filled automatically.
+                </Text>
+              </YStack>
               <YStack gap="$1">
                 <Text fontSize={12} color="$color" opacity={0.5} fontWeight="500">Number of Pages</Text>
                 <input
@@ -168,16 +256,7 @@ export default function LandingPagesTab({ contactId, dudaSiteCode, serviceStatus
                   onChange={(e) => setNumPages(Math.max(1, parseInt(e.target.value) || 1))}
                   min={1}
                   max={200}
-                  style={{
-                    padding: '10px 14px',
-                    borderRadius: 8,
-                    border: '1px solid rgba(0,0,0,0.15)',
-                    fontSize: 14,
-                    background: 'transparent',
-                    color: 'inherit',
-                    width: '100%',
-                    maxWidth: 200,
-                  }}
+                  style={{ ...inputStyle, maxWidth: 120 }}
                 />
               </YStack>
             </YStack>
@@ -186,19 +265,17 @@ export default function LandingPagesTab({ contactId, dudaSiteCode, serviceStatus
               size="$4"
               backgroundColor="#10B981"
               onPress={handleGenerate}
-              disabled={generating || !industry || !baseLocation}
-              icon={generating ? <Spinner size="small" color="white" /> : <Play size={16} color="white" />}
+              disabled={!industry || !baseLocation}
+              icon={<Play size={16} color="white" />}
             >
-              <Text color="white" fontWeight="700">
-                {generating ? 'Generating...' : `Generate ${numPages} Landing Pages`}
-              </Text>
+              <Text color="white" fontWeight="700">Generate {numPages} Landing Pages</Text>
             </Button>
           </YStack>
         </Card>
       )}
 
-      {/* Pending state */}
-      {status === 'pending' && (
+      {/* Pending state (from DB, not active generation) */}
+      {!generating && status === 'pending' && (
         <Card backgroundColor="$background" borderRadius="$5" borderWidth={1} borderColor="rgba(245,158,11,0.3)" padding="$6">
           <YStack alignItems="center" gap="$4">
             <Spinner size="large" color="#10B981" />
@@ -211,7 +288,7 @@ export default function LandingPagesTab({ contactId, dudaSiteCode, serviceStatus
       )}
 
       {/* Error state */}
-      {status === 'error' && (
+      {!generating && status === 'error' && (
         <Card backgroundColor="$background" borderRadius="$5" borderWidth={2} borderColor="rgba(239,68,68,0.3)" padding="$6">
           <YStack gap="$3" alignItems="center">
             <AlertCircle size={32} color="#EF4444" />
@@ -224,7 +301,7 @@ export default function LandingPagesTab({ contactId, dudaSiteCode, serviceStatus
               backgroundColor="#10B981"
               marginTop="$2"
               onPress={handleGenerate}
-              disabled={generating || !dudaSiteCode}
+              disabled={!dudaSiteCode}
             >
               <Text color="white" fontWeight="700">Retry</Text>
             </Button>
