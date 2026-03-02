@@ -12,11 +12,12 @@ import { invalidateOnboardingStatus } from '@/lib/cache/invalidate'
 interface ChatbotTabProps {
   contactId: string
   chatbotSlug: string | null
+  company: any
   serviceStatus: OnboardingServiceStatus | undefined
   onRefresh: () => void
 }
 
-export default function ChatbotTab({ contactId, chatbotSlug, serviceStatus, onRefresh }: ChatbotTabProps) {
+export default function ChatbotTab({ contactId, chatbotSlug, company, serviceStatus, onRefresh }: ChatbotTabProps) {
   const { chatbot, loading: chatbotLoading, refetch: refetchChatbot } = useChatbotStatus(chatbotSlug ? contactId : undefined)
   const [slugInput, setSlugInput] = useState('')
   const [provisioning, setProvisioning] = useState(false)
@@ -31,7 +32,17 @@ export default function ChatbotTab({ contactId, chatbotSlug, serviceStatus, onRe
       const res = await fetch(`/api/onboarding/${contactId}/chatbot/provision`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ slug: slugInput.trim() }),
+        body: JSON.stringify({
+          slug: slugInput.trim(),
+          name: company?.properties?.company || company?.properties?.firstname || '',
+          company_info: {
+            website: company?.properties?.website || '',
+            phone: company?.properties?.phone || '',
+            location: [company?.properties?.city, company?.properties?.state].filter(Boolean).join(', '),
+          },
+          branding: {},
+          support_email: company?.properties?.email || '',
+        }),
       })
       const data = await res.json()
       if (!data.success) throw new Error(data.error)

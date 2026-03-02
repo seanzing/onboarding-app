@@ -20,7 +20,7 @@ export async function POST(
 
   try {
     const body = await request.json()
-    const { slug } = body
+    const { slug, name, company_info, branding, support_email } = body
 
     if (!slug || typeof slug !== 'string') {
       return NextResponse.json(
@@ -45,6 +45,39 @@ export async function POST(
         apiError('Failed to update identity map', 'INTERNAL_ERROR'),
         { status: 500 }
       )
+    }
+
+    // Create client in chatbot backend
+    const chatbotBackendUrl = process.env.CHATBOT_BACKEND_URL
+    if (chatbotBackendUrl) {
+      try {
+        const createRes = await fetch(`${chatbotBackendUrl}/${slug}/admin/create`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: name || '',
+            company_info: company_info || {},
+            branding: branding || {},
+            support_email: support_email || '',
+          }),
+        })
+
+        if (!createRes.ok) {
+          console.error(`[Chatbot Provision] Backend create returned ${createRes.status}`)
+          return NextResponse.json(
+            apiError('Failed to create client in chatbot backend', 'EXTERNAL_API_ERROR'),
+            { status: 502 }
+          )
+        }
+
+        console.log(`[Chatbot Provision] Created client in chatbot backend for slug "${slug}"`)
+      } catch (err) {
+        console.error('[Chatbot Provision] Backend create fetch error:', err)
+        return NextResponse.json(
+          apiError('Chatbot backend unreachable', 'EXTERNAL_API_ERROR'),
+          { status: 502 }
+        )
+      }
     }
 
     // Upsert onboarding_status for chatbot

@@ -324,6 +324,7 @@ export default function CompanyDetailPage({ params }: CompanyDetailPageProps) {
               <ChatbotTab
                 contactId={hubspotObjectId}
                 chatbotSlug={onboarding?.identity?.chatbot_slug ?? null}
+                company={company}
                 serviceStatus={onboarding?.services?.chatbot}
                 onRefresh={refetchOnboarding}
               />
