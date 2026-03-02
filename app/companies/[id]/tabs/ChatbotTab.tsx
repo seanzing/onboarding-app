@@ -3,7 +3,7 @@
 
 import { useState } from 'react'
 import { YStack, XStack, Text, Card, Button, Spinner, Separator } from 'tamagui'
-import { Bot, RefreshCw, CheckCircle2, AlertCircle, AlertTriangle, Zap } from 'lucide-react'
+import { Bot, RefreshCw, CheckCircle2, AlertCircle, AlertTriangle, Zap, Power, Trash2 } from 'lucide-react'
 import { toast } from 'sonner'
 import { useChatbotStatus } from '@/app/hooks/useChatbotStatus'
 import type { OnboardingServiceStatus } from '@/app/types/onboarding'
@@ -24,6 +24,9 @@ export default function ChatbotTab({ contactId, chatbotSlug, dudaSiteCode, compa
   const [websiteUrl, setWebsiteUrl] = useState('')
   const [provisioning, setProvisioning] = useState(false)
   const [regenerating, setRegenerating] = useState(false)
+  const [disabling, setDisabling] = useState(false)
+  const [deleting, setDeleting] = useState(false)
+  const [confirmDelete, setConfirmDelete] = useState(false)
 
   const status = serviceStatus?.status ?? 'not_started'
 
@@ -74,6 +77,44 @@ export default function ChatbotTab({ contactId, chatbotSlug, dudaSiteCode, compa
       toast.error(err.message || 'Failed to regenerate knowledge base')
     } finally {
       setRegenerating(false)
+    }
+  }
+
+  const handleDisable = async () => {
+    try {
+      setDisabling(true)
+      const res = await fetch(`/api/onboarding/${contactId}/chatbot/disable`, {
+        method: 'POST',
+      })
+      const data = await res.json()
+      if (!data.success) throw new Error(data.error)
+      toast.success('Chatbot disabled')
+      invalidateOnboardingStatus(contactId)
+      onRefresh()
+      refetchChatbot()
+    } catch (err: any) {
+      toast.error(err.message || 'Failed to disable chatbot')
+    } finally {
+      setDisabling(false)
+    }
+  }
+
+  const handleDelete = async () => {
+    try {
+      setDeleting(true)
+      const res = await fetch(`/api/onboarding/${contactId}/chatbot/delete`, {
+        method: 'DELETE',
+      })
+      const data = await res.json()
+      if (!data.success) throw new Error(data.error)
+      toast.success('Chatbot deleted permanently')
+      setConfirmDelete(false)
+      invalidateOnboardingStatus(contactId)
+      onRefresh()
+    } catch (err: any) {
+      toast.error(err.message || 'Failed to delete chatbot')
+    } finally {
+      setDeleting(false)
     }
   }
 
@@ -246,6 +287,55 @@ export default function ChatbotTab({ contactId, chatbotSlug, dudaSiteCode, compa
                 {regenerating ? 'Regenerating...' : 'Regenerate Knowledge Base'}
               </Text>
             </Button>
+
+            <Separator borderColor="$borderColor" />
+
+            <XStack gap={12}>
+              <Button
+                size="$4"
+                flex={1}
+                backgroundColor="$background"
+                borderWidth={1}
+                borderColor="rgba(245,158,11,0.3)"
+                onPress={handleDisable}
+                disabled={disabling || deleting}
+                icon={disabling ? <Spinner size="small" color="#F59E0B" /> : <Power size={16} color="#F59E0B" />}
+              >
+                <Text color="#F59E0B" fontWeight="700">
+                  {disabling ? 'Disabling...' : 'Disable'}
+                </Text>
+              </Button>
+
+              {!confirmDelete ? (
+                <Button
+                  size="$4"
+                  flex={1}
+                  backgroundColor="$background"
+                  borderWidth={1}
+                  borderColor="rgba(239,68,68,0.3)"
+                  onPress={() => setConfirmDelete(true)}
+                  disabled={disabling || deleting}
+                  icon={<Trash2 size={16} color="#EF4444" />}
+                >
+                  <Text color="#EF4444" fontWeight="700">Delete</Text>
+                </Button>
+              ) : (
+                <Button
+                  size="$4"
+                  flex={1}
+                  backgroundColor="rgba(239,68,68,0.1)"
+                  borderWidth={2}
+                  borderColor="#EF4444"
+                  onPress={handleDelete}
+                  disabled={deleting}
+                  icon={deleting ? <Spinner size="small" color="#EF4444" /> : <Trash2 size={16} color="#EF4444" />}
+                >
+                  <Text color="#EF4444" fontWeight="700">
+                    {deleting ? 'Deleting...' : 'Confirm Delete'}
+                  </Text>
+                </Button>
+              )}
+            </XStack>
           </YStack>
         </Card>
       )}
