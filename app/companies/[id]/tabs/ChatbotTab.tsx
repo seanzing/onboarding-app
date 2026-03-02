@@ -3,7 +3,7 @@
 
 import { useState } from 'react'
 import { YStack, XStack, Text, Card, Button, Spinner, Separator } from 'tamagui'
-import { Bot, RefreshCw, CheckCircle2, AlertCircle, Zap } from 'lucide-react'
+import { Bot, RefreshCw, CheckCircle2, AlertCircle, AlertTriangle, Zap } from 'lucide-react'
 import { toast } from 'sonner'
 import { useChatbotStatus } from '@/app/hooks/useChatbotStatus'
 import type { OnboardingServiceStatus } from '@/app/types/onboarding'
@@ -12,21 +12,23 @@ import { invalidateOnboardingStatus } from '@/lib/cache/invalidate'
 interface ChatbotTabProps {
   contactId: string
   chatbotSlug: string | null
+  dudaSiteCode: string | null
   company: any
   serviceStatus: OnboardingServiceStatus | undefined
   onRefresh: () => void
 }
 
-export default function ChatbotTab({ contactId, chatbotSlug, company, serviceStatus, onRefresh }: ChatbotTabProps) {
+export default function ChatbotTab({ contactId, chatbotSlug, dudaSiteCode, company, serviceStatus, onRefresh }: ChatbotTabProps) {
   const { chatbot, loading: chatbotLoading, refetch: refetchChatbot } = useChatbotStatus(chatbotSlug ? contactId : undefined)
   const [slugInput, setSlugInput] = useState('')
+  const [websiteUrl, setWebsiteUrl] = useState('')
   const [provisioning, setProvisioning] = useState(false)
   const [regenerating, setRegenerating] = useState(false)
 
   const status = serviceStatus?.status ?? 'not_started'
 
   const handleSetSlug = async () => {
-    if (!slugInput.trim()) return
+    if (!slugInput.trim() || !websiteUrl.trim()) return
     try {
       setProvisioning(true)
       const res = await fetch(`/api/onboarding/${contactId}/chatbot/provision`, {
@@ -36,7 +38,7 @@ export default function ChatbotTab({ contactId, chatbotSlug, company, serviceSta
           slug: slugInput.trim(),
           name: company?.properties?.company || company?.properties?.firstname || '',
           company_info: {
-            website: company?.properties?.website || '',
+            website: websiteUrl.trim(),
             phone: company?.properties?.phone || '',
             location: [company?.properties?.city, company?.properties?.state].filter(Boolean).join(', '),
           },
@@ -112,16 +114,31 @@ export default function ChatbotTab({ contactId, chatbotSlug, company, serviceSta
         </XStack>
       </Card>
 
+      {/* No Duda site code warning */}
+      {!dudaSiteCode && !chatbotSlug && (
+        <Card backgroundColor="$background" borderRadius="$5" borderWidth={2} borderColor="rgba(245,158,11,0.3)" padding="$6">
+          <XStack gap={12} alignItems="center">
+            <AlertTriangle size={24} color="#F59E0B" />
+            <YStack flex={1}>
+              <Text fontSize="$5" fontWeight="700" color="$color">Duda Site Code Required</Text>
+              <Text fontSize="$4" color="$color" opacity={0.6}>
+                Set the Duda site code in the Overview tab before provisioning the chatbot.
+              </Text>
+            </YStack>
+          </XStack>
+        </Card>
+      )}
+
       {/* No slug — input to set one */}
-      {!chatbotSlug && status === 'not_started' && (
+      {dudaSiteCode && !chatbotSlug && status === 'not_started' && (
         <Card backgroundColor="$background" borderRadius="$5" borderWidth={1} borderColor="$borderColor" padding="$6">
           <YStack gap="$4">
-            <Text fontSize="$5" fontWeight="700" color="$color">Set Chatbot Slug</Text>
+            <Text fontSize="$5" fontWeight="700" color="$color">Provision Chatbot</Text>
             <Text fontSize="$4" color="$color" opacity={0.6}>
-              Enter the chatbot slug to provision this customer's AI chatbot.
+              Enter the chatbot slug and website URL to provision this customer's AI chatbot.
             </Text>
-            <XStack gap={12} alignItems="flex-end">
-              <YStack flex={1} gap="$1">
+            <YStack gap="$3">
+              <YStack gap="$1">
                 <Text fontSize={12} color="$color" opacity={0.5} fontWeight="500">Slug</Text>
                 <input
                   type="text"
@@ -139,16 +156,34 @@ export default function ChatbotTab({ contactId, chatbotSlug, company, serviceSta
                   }}
                 />
               </YStack>
-              <Button
-                size="$4"
-                backgroundColor="#00AEFF"
-                onPress={handleSetSlug}
-                disabled={provisioning || !slugInput.trim()}
-                icon={provisioning ? <Spinner size="small" color="white" /> : <Zap size={16} color="white" />}
-              >
-                <Text color="white" fontWeight="700">Provision</Text>
-              </Button>
-            </XStack>
+              <YStack gap="$1">
+                <Text fontSize={12} color="$color" opacity={0.5} fontWeight="500">Website URL</Text>
+                <input
+                  type="url"
+                  value={websiteUrl}
+                  onChange={(e) => setWebsiteUrl(e.target.value)}
+                  placeholder="e.g. https://mybusiness.com"
+                  style={{
+                    padding: '10px 14px',
+                    borderRadius: 8,
+                    border: '1px solid rgba(0,0,0,0.15)',
+                    fontSize: 14,
+                    background: 'transparent',
+                    color: 'inherit',
+                    width: '100%',
+                  }}
+                />
+              </YStack>
+            </YStack>
+            <Button
+              size="$4"
+              backgroundColor="#00AEFF"
+              onPress={handleSetSlug}
+              disabled={provisioning || !slugInput.trim() || !websiteUrl.trim()}
+              icon={provisioning ? <Spinner size="small" color="white" /> : <Zap size={16} color="white" />}
+            >
+              <Text color="white" fontWeight="700">Provision</Text>
+            </Button>
           </YStack>
         </Card>
       )}
