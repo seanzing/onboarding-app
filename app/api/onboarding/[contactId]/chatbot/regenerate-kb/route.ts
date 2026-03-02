@@ -54,7 +54,7 @@ export async function POST(
 
     // Proxy POST to chatbot backend
     const controller = new AbortController()
-    const timeout = setTimeout(() => controller.abort(), 15000)
+    const timeout = setTimeout(() => controller.abort(), 120000)
 
     try {
       const response = await fetch(
