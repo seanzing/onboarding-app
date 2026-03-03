@@ -3,7 +3,7 @@
 
 import { useState } from 'react'
 import { YStack, XStack, Text, Card, Button, Spinner, Separator } from 'tamagui'
-import { Bot, RefreshCw, CheckCircle2, AlertCircle, AlertTriangle, Zap, Power, Trash2 } from 'lucide-react'
+import { Bot, RefreshCw, CheckCircle2, AlertCircle, AlertTriangle, Zap, Power, Trash2, Globe, X } from 'lucide-react'
 import { toast } from 'sonner'
 import { useChatbotStatus } from '@/app/hooks/useChatbotStatus'
 import type { OnboardingServiceStatus } from '@/app/types/onboarding'
@@ -13,12 +13,13 @@ interface ChatbotTabProps {
   contactId: string
   chatbotSlug: string | null
   dudaSiteCode: string | null
+  dudaSnippetId: string | null
   company: any
   serviceStatus: OnboardingServiceStatus | undefined
   onRefresh: () => void
 }
 
-export default function ChatbotTab({ contactId, chatbotSlug, dudaSiteCode, company, serviceStatus, onRefresh }: ChatbotTabProps) {
+export default function ChatbotTab({ contactId, chatbotSlug, dudaSiteCode, dudaSnippetId, company, serviceStatus, onRefresh }: ChatbotTabProps) {
   const { chatbot, loading: chatbotLoading, refetch: refetchChatbot } = useChatbotStatus(chatbotSlug ? contactId : undefined)
   const [slugInput, setSlugInput] = useState('')
   const [websiteUrl, setWebsiteUrl] = useState('')
@@ -27,6 +28,8 @@ export default function ChatbotTab({ contactId, chatbotSlug, dudaSiteCode, compa
   const [disabling, setDisabling] = useState(false)
   const [deleting, setDeleting] = useState(false)
   const [confirmDelete, setConfirmDelete] = useState(false)
+  const [deployingWidget, setDeployingWidget] = useState(false)
+  const [removingWidget, setRemovingWidget] = useState(false)
 
   const status = serviceStatus?.status ?? 'not_started'
 
@@ -96,6 +99,42 @@ export default function ChatbotTab({ contactId, chatbotSlug, dudaSiteCode, compa
       toast.error(err.message || 'Failed to disable chatbot')
     } finally {
       setDisabling(false)
+    }
+  }
+
+  const handleDeployWidget = async () => {
+    try {
+      setDeployingWidget(true)
+      const res = await fetch(`/api/onboarding/${contactId}/chatbot/deploy-widget`, {
+        method: 'POST',
+      })
+      const data = await res.json()
+      if (!data.success) throw new Error(data.error)
+      toast.success('Widget deployed to Duda site')
+      invalidateOnboardingStatus(contactId)
+      onRefresh()
+    } catch (err: any) {
+      toast.error(err.message || 'Failed to deploy widget')
+    } finally {
+      setDeployingWidget(false)
+    }
+  }
+
+  const handleRemoveWidget = async () => {
+    try {
+      setRemovingWidget(true)
+      const res = await fetch(`/api/onboarding/${contactId}/chatbot/deploy-widget`, {
+        method: 'DELETE',
+      })
+      const data = await res.json()
+      if (!data.success) throw new Error(data.error)
+      toast.success('Widget removed from Duda site')
+      invalidateOnboardingStatus(contactId)
+      onRefresh()
+    } catch (err: any) {
+      toast.error(err.message || 'Failed to remove widget')
+    } finally {
+      setRemovingWidget(false)
     }
   }
 
@@ -287,6 +326,45 @@ export default function ChatbotTab({ contactId, chatbotSlug, dudaSiteCode, compa
                 {regenerating ? 'Regenerating...' : 'Regenerate Knowledge Base'}
               </Text>
             </Button>
+
+            <Separator borderColor="$borderColor" />
+
+            {/* Widget Deployment */}
+            {dudaSnippetId ? (
+              <XStack gap={12} alignItems="center">
+                <XStack flex={1} backgroundColor="rgba(16,185,129,0.08)" paddingHorizontal="$3" paddingVertical="$2.5" borderRadius="$3" alignItems="center" gap={8}>
+                  <Globe size={16} color="#10B981" />
+                  <Text fontSize={13} fontWeight="700" color="#10B981">Widget Deployed</Text>
+                </XStack>
+                <Button
+                  size="$4"
+                  backgroundColor="$background"
+                  borderWidth={1}
+                  borderColor="rgba(239,68,68,0.3)"
+                  onPress={handleRemoveWidget}
+                  disabled={removingWidget}
+                  icon={removingWidget ? <Spinner size="small" color="#EF4444" /> : <X size={16} color="#EF4444" />}
+                >
+                  <Text color="#EF4444" fontWeight="700">
+                    {removingWidget ? 'Removing...' : 'Remove Widget'}
+                  </Text>
+                </Button>
+              </XStack>
+            ) : (
+              <Button
+                size="$4"
+                backgroundColor="rgba(16,185,129,0.08)"
+                borderWidth={1}
+                borderColor="rgba(16,185,129,0.3)"
+                onPress={handleDeployWidget}
+                disabled={deployingWidget || !dudaSiteCode}
+                icon={deployingWidget ? <Spinner size="small" color="#10B981" /> : <Globe size={16} color="#10B981" />}
+              >
+                <Text color="#10B981" fontWeight="700">
+                  {deployingWidget ? 'Deploying...' : 'Deploy Widget'}
+                </Text>
+              </Button>
+            )}
 
             <Separator borderColor="$borderColor" />
 

@@ -325,6 +325,7 @@ export default function CompanyDetailPage({ params }: CompanyDetailPageProps) {
                 contactId={hubspotObjectId}
                 chatbotSlug={onboarding?.identity?.chatbot_slug ?? null}
                 dudaSiteCode={onboarding?.identity?.duda_site_code ?? null}
+                dudaSnippetId={onboarding?.identity?.duda_snippet_id ?? null}
                 company={company}
                 serviceStatus={onboarding?.services?.chatbot}
                 onRefresh={refetchOnboarding}
