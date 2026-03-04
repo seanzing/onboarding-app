@@ -63,6 +63,8 @@ interface SyncStats {
   alreadyExists: number
   newlyInserted: number
   failed: number
+  dealBasedFetched: number
+  dealBasedInserted: number
   startTime: number
 }
 
@@ -117,6 +119,196 @@ async function fetchCompanyAssociations(
   return companyMap
 }
 
+// ============================================================
+// DEAL-BASED SYNC FUNCTIONS
+// ============================================================
+
+interface DealsResponse {
+  results: Array<{ id: string; properties: Record<string, string> }>
+  paging?: {
+    next?: {
+      after: string
+    }
+  }
+}
+
+/**
+ * Fetch a page of ALL deals from HubSpot search API
+ * Filters out deals where the name contains "Publishing Fee" (case-insensitive)
+ */
+async function fetchAllDealsPage(
+  accessToken: string,
+  after?: string
+): Promise<DealsResponse> {
+  return retryWithBackoff(async () => {
+    const url = 'https://api.hubapi.com/crm/v3/objects/deals/search'
+
+    const payload: any = {
+      limit: HUBSPOT_BATCH_SIZE,
+      properties: ['dealname'],
+      filterGroups: [],
+      sorts: [{ propertyName: 'createdate', direction: 'ASCENDING' }],
+    }
+
+    if (after) {
+      payload.after = after
+    }
+
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    })
+
+    if (response.status === 429) {
+      const retryAfter = response.headers.get('Retry-After')
+      const waitTime = retryAfter ? parseInt(retryAfter) * 1000 : 5000
+      await sleep(waitTime)
+      throw new Error('Rate limited - will retry')
+    }
+
+    if (!response.ok) {
+      const errorText = await response.text()
+      throw new Error(`HubSpot Deals API Error ${response.status}: ${errorText}`)
+    }
+
+    const data: DealsResponse = await response.json()
+
+    // Filter out "Publishing Fee" deals
+    data.results = data.results.filter((deal) => {
+      const name = deal.properties?.dealname || ''
+      return !name.toLowerCase().includes('publishing fee')
+    })
+
+    return data
+  })
+}
+
+/**
+ * Batch fetch deal→contact associations using CRM v4 Associations API
+ * Returns a map of dealId → contactId[]
+ */
+async function fetchDealContactAssociationsBatch(
+  accessToken: string,
+  dealIds: string[]
+): Promise<Map<string, string[]>> {
+  const dealContactMap = new Map<string, string[]>()
+
+  if (dealIds.length === 0) return dealContactMap
+
+  // Process in batches of 100 (API limit)
+  for (let i = 0; i < dealIds.length; i += HUBSPOT_BATCH_SIZE) {
+    const batch = dealIds.slice(i, i + HUBSPOT_BATCH_SIZE)
+
+    try {
+      const url = 'https://api.hubapi.com/crm/v4/associations/deals/contacts/batch/read'
+
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          inputs: batch.map(id => ({ id })),
+        }),
+      })
+
+      if (!response.ok) {
+        console.warn('[Sync] Failed to fetch deal→contact associations:', response.status)
+        continue
+      }
+
+      const data = await response.json()
+
+      for (const result of data.results || []) {
+        const dealId = result.from?.id
+        const contacts = result.to || []
+        if (dealId && contacts.length > 0) {
+          dealContactMap.set(
+            dealId,
+            contacts.map((c: any) => c.toObjectId)
+          )
+        }
+      }
+    } catch (error) {
+      console.warn('[Sync] Error fetching deal→contact associations batch:', error)
+    }
+
+    // Rate limiting between batches
+    if (i + HUBSPOT_BATCH_SIZE < dealIds.length) {
+      await sleep(REQUEST_DELAY_MS)
+    }
+  }
+
+  return dealContactMap
+}
+
+/**
+ * Batch fetch full contact details by IDs using HubSpot batch read API
+ */
+async function fetchContactsBatch(
+  accessToken: string,
+  contactIds: string[]
+): Promise<HubSpotContactType[]> {
+  const allContacts: HubSpotContactType[] = []
+
+  if (contactIds.length === 0) return allContacts
+
+  // Process in batches of 100 (API limit)
+  for (let i = 0; i < contactIds.length; i += HUBSPOT_BATCH_SIZE) {
+    const batch = contactIds.slice(i, i + HUBSPOT_BATCH_SIZE)
+
+    try {
+      const result = await retryWithBackoff(async () => {
+        const url = 'https://api.hubapi.com/crm/v3/objects/contacts/batch/read'
+
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            inputs: batch.map(id => ({ id })),
+            properties: CONTACT_PROPERTIES,
+          }),
+        })
+
+        if (response.status === 429) {
+          const retryAfter = response.headers.get('Retry-After')
+          const waitTime = retryAfter ? parseInt(retryAfter) * 1000 : 5000
+          await sleep(waitTime)
+          throw new Error('Rate limited - will retry')
+        }
+
+        if (!response.ok) {
+          const errorText = await response.text()
+          throw new Error(`HubSpot Batch Read Error ${response.status}: ${errorText}`)
+        }
+
+        return await response.json()
+      })
+
+      if (result.results) {
+        allContacts.push(...result.results)
+      }
+    } catch (error) {
+      console.error('[Sync] Error fetching contacts batch:', error)
+    }
+
+    // Rate limiting between batches
+    if (i + HUBSPOT_BATCH_SIZE < contactIds.length) {
+      await sleep(REQUEST_DELAY_MS)
+    }
+  }
+
+  return allContacts
+}
+
 /**
  * Main sync function - syncs active customers from HubSpot to Supabase
  */
@@ -133,6 +325,8 @@ export async function syncHubSpotCustomers(
     alreadyExists: 0,
     newlyInserted: 0,
     failed: 0,
+    dealBasedFetched: 0,
+    dealBasedInserted: 0,
     startTime,
   }
 
@@ -194,23 +388,95 @@ export async function syncHubSpotCustomers(
       await sleep(REQUEST_DELAY_MS)
     }
 
+    // ============================================================
+    // PASS 2: Deal-based sync — catch contacts with deals but wrong lifecycle stage
+    // ============================================================
+    console.log('[Sync] Starting deal-based sync pass...')
+
+    let dealAfter: string | undefined
+    let dealPageCount = 0
+    const allDealIds: string[] = []
+
+    // Step 1: Fetch all deals (paginated)
+    while (dealPageCount < maxPages) {
+      const dealsResponse = await fetchAllDealsPage(hubspotAccessToken, dealAfter)
+      const deals = dealsResponse.results
+
+      if (!deals || deals.length === 0) break
+
+      allDealIds.push(...deals.map(d => d.id))
+
+      if (!dealsResponse.paging?.next?.after) break
+      dealAfter = dealsResponse.paging.next.after
+      dealPageCount++
+      await sleep(REQUEST_DELAY_MS)
+    }
+
+    console.log(`[Sync] Fetched ${allDealIds.length} deals (excluding Publishing Fee)`)
+
+    if (allDealIds.length > 0) {
+      // Step 2: Batch-fetch deal→contact associations
+      const dealContactMap = await fetchDealContactAssociationsBatch(hubspotAccessToken, allDealIds)
+
+      // Step 3: Collect unique contact IDs not already in Supabase
+      const allContactIdsFromDeals = new Set<string>()
+      for (const contactIds of Array.from(dealContactMap.values())) {
+        for (const cid of contactIds) {
+          if (!existingIds.has(cid)) {
+            allContactIdsFromDeals.add(cid)
+          }
+        }
+      }
+
+      stats.dealBasedFetched = allContactIdsFromDeals.size
+      console.log(`[Sync] Found ${allContactIdsFromDeals.size} new contacts via deals`)
+
+      if (allContactIdsFromDeals.size > 0) {
+        // Step 4: Batch-fetch full contact details
+        const contactIdArray = Array.from(allContactIdsFromDeals)
+        const dealContacts = await fetchContactsBatch(hubspotAccessToken, contactIdArray)
+
+        // Step 5: Fetch company associations and upsert
+        // Process in batches for company associations
+        for (let i = 0; i < dealContacts.length; i += HUBSPOT_BATCH_SIZE) {
+          const batch = dealContacts.slice(i, i + HUBSPOT_BATCH_SIZE)
+          const batchIds = batch.map(c => c.id)
+          const companyAssociations = await fetchCompanyAssociations(hubspotAccessToken, batchIds)
+          const supabaseContacts = processContactsForSupabase(batch, userId, companyAssociations)
+          const { inserted, failed } = await insertNewContacts(supabase, supabaseContacts)
+
+          stats.dealBasedInserted += inserted
+          stats.failed += failed
+
+          // Track inserted IDs to avoid duplicates
+          batch.forEach(c => existingIds.add(c.id))
+        }
+      }
+    }
+
+    console.log(`[Sync] Deal-based sync complete: ${stats.dealBasedInserted} new contacts inserted`)
+
     // Calculate duration
     const duration = formatDuration(Date.now() - startTime)
+
+    const totalSynced = stats.newlyInserted + stats.dealBasedInserted
 
     // Log sync to database (customer_sync_logs table)
     await logSync(supabase, {
       sync_type: 'manual',
       status: 'success',
-      contacts_synced: stats.newlyInserted,
+      contacts_synced: totalSynced,
       contacts_skipped: stats.alreadyExists,
       errors: stats.failed,
       duration_ms: Date.now() - startTime,
       triggered_by: userEmail,
     })
 
+    console.log(`[Sync] Summary — lifecycle: ${stats.newlyInserted}, deal-based: ${stats.dealBasedInserted}, skipped: ${stats.alreadyExists}, errors: ${stats.failed}`)
+
     return {
       success: true,
-      synced: stats.newlyInserted,
+      synced: totalSynced,
       skipped: stats.alreadyExists,
       errors: stats.failed,
       duration,
