@@ -64,14 +64,16 @@ export default function CompaniesPage() {
 
       return {
         id: company.id,
-        name: getCompanyDisplayName(
-          company.properties.company,
-          company.properties.website,
-          company.id,
-          company.properties.firstname,
-          company.properties.lastname,
-          company.properties.email
-        ),
+        name: company.properties.dealname
+          ? company.properties.dealname
+          : getCompanyDisplayName(
+              company.properties.company,
+              company.properties.website,
+              company.id,
+              company.properties.firstname,
+              company.properties.lastname,
+              company.properties.email
+            ),
         location: getCompanySubtitle(
           company.properties.website,
           company.properties.city,

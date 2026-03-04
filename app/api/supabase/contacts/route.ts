@@ -54,6 +54,7 @@ interface SupabaseContact {
   business_type?: string;
   business_category_type?: string;
   business_hours?: string;
+  dealname?: string;
   current_website?: string;
   website?: string;
   website_status?: string;
@@ -130,7 +131,6 @@ export async function GET(request: NextRequest) {
         .from('contacts')
         .select('*', { count: 'exact' })
         .eq('user_id', userId)
-        .in('lifecyclestage', ['customer', '946862144', '999377175']) // customer, DNC, Active
         .order('synced_at', { ascending: false, nullsFirst: false })
         .range(from, from + pageSize - 1);
 
@@ -167,6 +167,7 @@ export async function GET(request: NextRequest) {
         lastname: contact.lastname || null,
         phone: contact.phone || contact.mobilephone || null,
         company: contact.company || null,
+        dealname: contact.dealname || null,
         website: contact.website || contact.current_website || null,
         address: contact.address || null,
         city: contact.city || null,

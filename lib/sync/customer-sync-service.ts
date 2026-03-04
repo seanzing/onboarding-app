@@ -395,16 +395,19 @@ export async function syncHubSpotCustomers(
 
     let dealAfter: string | undefined
     let dealPageCount = 0
-    const allDealIds: string[] = []
+    // Store deal id + name for building contactId→dealName map
+    const allDeals: Array<{ id: string; dealname: string }> = []
 
-    // Step 1: Fetch all deals (paginated)
+    // Step 1: Fetch all deals (paginated), keep deal names
     while (dealPageCount < maxPages) {
       const dealsResponse = await fetchAllDealsPage(hubspotAccessToken, dealAfter)
       const deals = dealsResponse.results
 
       if (!deals || deals.length === 0) break
 
-      allDealIds.push(...deals.map(d => d.id))
+      for (const d of deals) {
+        allDeals.push({ id: d.id, dealname: d.properties?.dealname || '' })
+      }
 
       if (!dealsResponse.paging?.next?.after) break
       dealAfter = dealsResponse.paging.next.after
@@ -412,44 +415,87 @@ export async function syncHubSpotCustomers(
       await sleep(REQUEST_DELAY_MS)
     }
 
-    console.log(`[Sync] Fetched ${allDealIds.length} deals (excluding Publishing Fee)`)
+    console.log(`[Sync] Fetched ${allDeals.length} deals (excluding Publishing Fee)`)
 
-    if (allDealIds.length > 0) {
+    if (allDeals.length > 0) {
+      const allDealIds = allDeals.map(d => d.id)
+      // Build dealId→dealName lookup
+      const dealNameMap = new Map<string, string>()
+      for (const d of allDeals) {
+        if (d.dealname) dealNameMap.set(d.id, d.dealname)
+      }
+
       // Step 2: Batch-fetch deal→contact associations
       const dealContactMap = await fetchDealContactAssociationsBatch(hubspotAccessToken, allDealIds)
 
-      // Step 3: Collect unique contact IDs not already in Supabase
-      const allContactIdsFromDeals = new Set<string>()
-      for (const contactIds of Array.from(dealContactMap.values())) {
+      // Step 3: Build contactId→dealName map (use first deal name found per contact)
+      const contactDealNameMap = new Map<string, string>()
+      for (const [dealId, contactIds] of Array.from(dealContactMap.entries())) {
+        const dname = dealNameMap.get(dealId)
+        if (!dname) continue
         for (const cid of contactIds) {
-          if (!existingIds.has(cid)) {
-            allContactIdsFromDeals.add(cid)
+          if (!contactDealNameMap.has(cid)) {
+            contactDealNameMap.set(cid, dname)
           }
         }
       }
 
-      stats.dealBasedFetched = allContactIdsFromDeals.size
-      console.log(`[Sync] Found ${allContactIdsFromDeals.size} new contacts via deals`)
+      console.log(`[Sync] Mapped ${contactDealNameMap.size} contacts to deal names`)
 
-      if (allContactIdsFromDeals.size > 0) {
-        // Step 4: Batch-fetch full contact details
-        const contactIdArray = Array.from(allContactIdsFromDeals)
+      // Step 4: Collect new contact IDs not already in Supabase
+      const newContactIdsFromDeals = new Set<string>()
+      for (const contactIds of Array.from(dealContactMap.values())) {
+        for (const cid of contactIds) {
+          if (!existingIds.has(cid)) {
+            newContactIdsFromDeals.add(cid)
+          }
+        }
+      }
+
+      stats.dealBasedFetched = newContactIdsFromDeals.size
+      console.log(`[Sync] Found ${newContactIdsFromDeals.size} new contacts via deals`)
+
+      // Step 5: Insert new contacts with deal names
+      if (newContactIdsFromDeals.size > 0) {
+        const contactIdArray = Array.from(newContactIdsFromDeals)
         const dealContacts = await fetchContactsBatch(hubspotAccessToken, contactIdArray)
 
-        // Step 5: Fetch company associations and upsert
-        // Process in batches for company associations
         for (let i = 0; i < dealContacts.length; i += HUBSPOT_BATCH_SIZE) {
           const batch = dealContacts.slice(i, i + HUBSPOT_BATCH_SIZE)
           const batchIds = batch.map(c => c.id)
           const companyAssociations = await fetchCompanyAssociations(hubspotAccessToken, batchIds)
           const supabaseContacts = processContactsForSupabase(batch, userId, companyAssociations)
-          const { inserted, failed } = await insertNewContacts(supabase, supabaseContacts)
 
+          // Attach deal names to new contacts
+          for (const sc of supabaseContacts) {
+            const dname = contactDealNameMap.get(sc.id)
+            if (dname) sc.dealname = dname
+          }
+
+          const { inserted, failed } = await insertNewContacts(supabase, supabaseContacts)
           stats.dealBasedInserted += inserted
           stats.failed += failed
-
-          // Track inserted IDs to avoid duplicates
           batch.forEach(c => existingIds.add(c.id))
+        }
+      }
+
+      // Step 6: Update existing contacts with deal names (batch update)
+      const existingContactsToUpdate = Array.from(contactDealNameMap.entries())
+        .filter(([cid]) => existingIds.has(cid))
+      if (existingContactsToUpdate.length > 0) {
+        console.log(`[Sync] Updating ${existingContactsToUpdate.length} existing contacts with deal names`)
+        for (let i = 0; i < existingContactsToUpdate.length; i += SUPABASE_BATCH_SIZE) {
+          const batch = existingContactsToUpdate.slice(i, i + SUPABASE_BATCH_SIZE)
+          for (const [contactId, dealname] of batch) {
+            try {
+              await supabase
+                .from('contacts')
+                .update({ dealname })
+                .eq('id', contactId)
+            } catch (error) {
+              console.warn(`[Sync] Failed to update dealname for contact ${contactId}:`, error)
+            }
+          }
         }
       }
     }

@@ -129,14 +129,16 @@ export default function CompanyDetailPage({ params }: CompanyDetailPageProps) {
     )
   }
 
-  const displayName = getCompanyDisplayName(
-    company.properties.company,
-    company.properties.website,
-    company.id,
-    company.properties.firstname,
-    company.properties.lastname,
-    company.properties.email
-  )
+  const displayName = company.properties.dealname
+    ? company.properties.dealname
+    : getCompanyDisplayName(
+        company.properties.company,
+        company.properties.website,
+        company.id,
+        company.properties.firstname,
+        company.properties.lastname,
+        company.properties.email
+      )
 
   return (
     <ClientOnly>
