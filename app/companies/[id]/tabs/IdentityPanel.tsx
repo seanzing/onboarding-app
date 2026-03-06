@@ -17,7 +17,6 @@ export default function IdentityPanel({ contactId, identity, onUpdate }: Identit
   const [editing, setEditing] = useState(false)
   const [saving, setSaving] = useState(false)
   const [dudaSiteCode, setDudaSiteCode] = useState(identity?.duda_site_code || '')
-  const [chatbotSlug, setChatbotSlug] = useState(identity?.chatbot_slug || '')
 
   const handleSave = async () => {
     try {
@@ -27,7 +26,6 @@ export default function IdentityPanel({ contactId, identity, onUpdate }: Identit
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           duda_site_code: dudaSiteCode || null,
-          chatbot_slug: chatbotSlug || null,
         }),
       })
       const data = await res.json()
@@ -79,23 +77,6 @@ export default function IdentityPanel({ contactId, identity, onUpdate }: Identit
                 value={dudaSiteCode}
                 onChange={(e) => setDudaSiteCode(e.target.value)}
                 placeholder="e.g. abc123"
-                style={{
-                  padding: '8px 12px',
-                  borderRadius: 8,
-                  border: '1px solid rgba(0,0,0,0.15)',
-                  fontSize: 14,
-                  background: 'transparent',
-                  color: 'inherit',
-                }}
-              />
-            </YStack>
-            <YStack gap="$1">
-              <Text fontSize={12} color="$color" opacity={0.6} fontWeight="500">Chatbot Slug</Text>
-              <input
-                type="text"
-                value={chatbotSlug}
-                onChange={(e) => setChatbotSlug(e.target.value)}
-                placeholder="e.g. my-business"
                 style={{
                   padding: '8px 12px',
                   borderRadius: 8,

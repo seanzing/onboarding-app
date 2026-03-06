@@ -63,12 +63,18 @@ export async function DELETE(
       })
       clearTimeout(timeout)
 
-      if (!res.ok) {
+      if (!res.ok && res.status !== 404) {
+        // 404 means client never existed on the backend (e.g. provision failed)
+        // — still clean up local state so the user can retry
         console.error(`[Chatbot Delete] Backend returned ${res.status}`)
         return NextResponse.json(
           apiError(`Chatbot backend returned ${res.status}`, 'EXTERNAL_API_ERROR'),
           { status: 502 }
         )
+      }
+
+      if (res.status === 404) {
+        console.log(`[Chatbot Delete] Backend returned 404 for "${slug}" — cleaning up local state only`)
       }
     } catch (fetchError: unknown) {
       clearTimeout(timeout)

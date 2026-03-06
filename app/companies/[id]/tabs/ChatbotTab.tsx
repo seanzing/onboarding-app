@@ -30,6 +30,7 @@ export default function ChatbotTab({ contactId, chatbotSlug, dudaSiteCode, dudaS
   const [confirmDelete, setConfirmDelete] = useState(false)
   const [deployingWidget, setDeployingWidget] = useState(false)
   const [removingWidget, setRemovingWidget] = useState(false)
+  const [retrying, setRetrying] = useState(false)
 
   const status = serviceStatus?.status ?? 'not_started'
 
@@ -62,6 +63,38 @@ export default function ChatbotTab({ contactId, chatbotSlug, dudaSiteCode, dudaS
       toast.error(err.message || 'Failed to provision chatbot')
     } finally {
       setProvisioning(false)
+    }
+  }
+
+  const handleRetryProvision = async () => {
+    if (!chatbotSlug) return
+    try {
+      setRetrying(true)
+      const res = await fetch(`/api/onboarding/${contactId}/chatbot/provision`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          slug: chatbotSlug,
+          name: company?.properties?.company || company?.properties?.firstname || '',
+          company_info: {
+            website: company?.properties?.website || '',
+            phone: company?.properties?.phone || '',
+            location: [company?.properties?.city, company?.properties?.state].filter(Boolean).join(', '),
+          },
+          branding: {},
+          support_email: company?.properties?.email || '',
+        }),
+      })
+      const data = await res.json()
+      if (!data.success) throw new Error(data.error)
+      toast.success('Chatbot provisioned successfully')
+      invalidateOnboardingStatus(contactId)
+      onRefresh()
+      refetchChatbot()
+    } catch (err: any) {
+      toast.error(err.message || 'Failed to retry provision')
+    } finally {
+      setRetrying(false)
     }
   }
 
@@ -305,10 +338,25 @@ export default function ChatbotTab({ contactId, chatbotSlug, dudaSiteCode, dudaS
                 )}
               </YStack>
             ) : (
-              <XStack gap={8} alignItems="center">
-                <AlertCircle size={16} color="#F59E0B" />
-                <Text fontSize="$4" color="$color" opacity={0.7}>Could not reach chatbot backend</Text>
-              </XStack>
+              <YStack gap="$3">
+                <XStack gap={8} alignItems="center">
+                  <AlertCircle size={16} color="#F59E0B" />
+                  <Text fontSize="$4" color="$color" opacity={0.7}>Could not reach chatbot backend</Text>
+                </XStack>
+                <Button
+                  size="$3"
+                  backgroundColor="rgba(0,174,255,0.08)"
+                  borderWidth={1}
+                  borderColor="rgba(0,174,255,0.3)"
+                  onPress={handleRetryProvision}
+                  disabled={retrying}
+                  icon={retrying ? <Spinner size="small" color="#00AEFF" /> : <RefreshCw size={14} color="#00AEFF" />}
+                >
+                  <Text color="#00AEFF" fontWeight="700" fontSize={13}>
+                    {retrying ? 'Retrying...' : 'Retry Provision'}
+                  </Text>
+                </Button>
+              </YStack>
             )}
 
             <Separator borderColor="$borderColor" />
