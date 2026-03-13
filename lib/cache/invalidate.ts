@@ -16,6 +16,7 @@ export const CACHE_KEYS = {
   GBP_REVIEWS: '/api/gbp/reviews',
   GBP_LOCATIONS: '/api/gbp/location',
   ONBOARDING_STATUS: (contactId: string) => `/api/onboarding/${contactId}/status`,
+  FOURSQUARE_DETAILS: (contactId: string) => `/api/onboarding/${contactId}/foursquare/details`,
 } as const;
 
 /**
@@ -72,6 +73,15 @@ export function invalidatePlacesSearch(query: string) {
 export function invalidateOnboardingStatus(contactId: string) {
   console.log(`[Cache] Invalidating onboarding status for ${contactId}`);
   mutate(CACHE_KEYS.ONBOARDING_STATUS(contactId));
+}
+
+/**
+ * Invalidate Foursquare venue details cache for a contact
+ * Call after linking or updating a venue
+ */
+export function invalidateFoursquareDetails(contactId: string) {
+  console.log(`[Cache] Invalidating Foursquare details for ${contactId}`);
+  mutate(CACHE_KEYS.FOURSQUARE_DETAILS(contactId));
 }
 
 /**

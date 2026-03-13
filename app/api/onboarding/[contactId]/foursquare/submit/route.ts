@@ -20,7 +20,7 @@ export async function POST(
 
   try {
     const body = await request.json()
-    const { name, address, city, state, zip, lat, lng, categories } = body
+    const { name, address, city, state, zip, lat, lng, categories, fsq_id } = body
 
     if (!name || typeof name !== 'string') {
       return NextResponse.json(
@@ -30,7 +30,50 @@ export async function POST(
     }
 
     const supabase = await createClient()
-    const foursquareApiKey = process.env.FOURSQUARE_API_KEY
+
+    // If fsq_id is provided, link an existing venue instead of creating one
+    if (fsq_id && typeof fsq_id === 'string') {
+      const { error: identityError } = await supabase
+        .from('service_identity_map')
+        .upsert(
+          { hubspot_contact_id: contactId, foursquare_venue_id: fsq_id },
+          { onConflict: 'hubspot_contact_id' }
+        )
+
+      if (identityError) {
+        console.warn('[Foursquare Submit] Failed to update identity map:', identityError)
+      }
+
+      const { error: statusError } = await supabase
+        .from('onboarding_status')
+        .upsert(
+          {
+            hubspot_contact_id: contactId,
+            service: 'foursquare',
+            status: 'active',
+            provisioned_at: new Date().toISOString(),
+            metadata: { venue_id: fsq_id, venue_name: name, linked: true },
+          },
+          { onConflict: 'hubspot_contact_id,service' }
+        )
+
+      if (statusError) {
+        console.warn('[Foursquare Submit] Failed to update onboarding status:', statusError)
+      }
+
+      console.log(`[Foursquare Submit] Linked existing venue "${name}" (${fsq_id}) for contact ${contactId}`)
+
+      return NextResponse.json(
+        apiSuccess({
+          contactId,
+          venue_id: fsq_id,
+          status: 'active',
+          linked: true,
+        })
+      )
+    }
+
+    const foursquareApiKey = process.env.FOURSQUARE_SERVICE_ACCOUNT_KEY || process.env.FOURSQUARE_API_KEY
 
     if (foursquareApiKey) {
       // Attempt to create venue via Foursquare API
@@ -50,11 +93,12 @@ export async function POST(
         const controller = new AbortController()
         const timeout = setTimeout(() => controller.abort(), 15000)
 
-        const response = await fetch('https://api.foursquare.com/v3/places', {
+        const response = await fetch('https://places-api.foursquare.com/places', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            Authorization: foursquareApiKey,
+            Authorization: `Bearer ${foursquareApiKey}`,
+            'X-Places-Api-Version': '2025-06-17',
           },
           body: JSON.stringify(venuePayload),
           signal: controller.signal,
@@ -71,7 +115,7 @@ export async function POST(
         }
 
         const venue = await response.json()
-        const venueId = venue.fsq_id || venue.id
+        const venueId = venue.fsq_place_id || venue.fsq_id || venue.id
 
         // Update service_identity_map with venue ID
         const { error: identityError } = await supabase

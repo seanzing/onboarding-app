@@ -59,3 +59,42 @@ export const STATUS_COLORS: Record<ServiceStatus, string> = {
   error: '#EF4444',
   paused: '#8B5CF6',
 }
+
+export interface FoursquarePlace {
+  fsq_place_id?: string
+  fsq_id?: string // legacy field, prefer fsq_place_id
+  name: string
+  location?: {
+    address?: string
+    locality?: string
+    region?: string
+    postcode?: string
+    country?: string
+    formatted_address?: string
+  }
+  categories?: Array<{
+    fsq_category_id?: string
+    id?: number
+    name: string
+    short_name?: string
+    icon?: { prefix: string; suffix: string }
+  }>
+  tel?: string
+  website?: string
+  hours?: {
+    display?: string
+    regular?: Array<{ day: number; open: string; close: string }>
+  }
+  photos?: Array<{
+    id: string
+    prefix: string
+    suffix: string
+    width: number
+    height: number
+  }>
+}
+
+export interface FoursquareSearchResult {
+  match: FoursquarePlace | null
+  results: FoursquarePlace[]
+}
