@@ -147,11 +147,25 @@ export async function GET(
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
     console.log('[API] Using Supabase service role for server-side sync');
 
-    // Step 2: Resolve IDs - convert Supabase UUID to HubSpot ID if needed
+    // Step 2: Authenticate to get the correct user_id (must match what bulk sync uses)
+    const testEmail = process.env.TEST_EMAIL;
+    const testPassword = process.env.TEST_PASSWORD;
+    let authenticatedUserId: string | null = null;
+
+    if (testEmail && testPassword) {
+      const { data: authData } = await supabase.auth.signInWithPassword({
+        email: testEmail,
+        password: testPassword,
+      });
+      authenticatedUserId = authData?.user?.id || null;
+      console.log(`[API] Authenticated as ${testEmail}, user_id=${authenticatedUserId}`);
+    }
+
+    // Step 3: Resolve IDs - convert Supabase UUID to HubSpot ID if needed
     const { supabaseId, hubspotId } = await resolveContactIds(providedId, supabase);
     console.log(`[API] ID Resolution: supabaseId=${supabaseId || '(new)'}, hubspotId=${hubspotId}`);
 
-    // Step 3: Fetch from HubSpot API using the NUMERIC HubSpot ID
+    // Step 4: Fetch from HubSpot API using the NUMERIC HubSpot ID
     console.log(`[API] Fetching contact ${hubspotId} from HubSpot...`);
     const hubspotUrl = `https://api.hubapi.com/crm/v3/objects/contacts/${hubspotId}`;
     const hubspotParams = new URLSearchParams({
@@ -175,10 +189,10 @@ export async function GET(
     const contact: HubSpotContact = await hubspotResponse.json();
     console.log(`[API] Fetched contact from HubSpot: ${contact.properties.firstname} ${contact.properties.lastname}`);
 
-    // For now, use a default system user ID for synced records
-    const systemUserId = process.env.SYSTEM_USER_ID || '00000000-0000-0000-0000-000000000000';
+    // Use authenticated user_id (matching bulk sync), fall back to SYSTEM_USER_ID
+    const fallbackUserId = process.env.SYSTEM_USER_ID || '00000000-0000-0000-0000-000000000000';
 
-    // Step 4: Check if contact already exists in Supabase (by UUID or hs_object_id)
+    // Step 5: Check if contact already exists in Supabase (by UUID or hs_object_id)
     console.log('[API] Checking if contact exists in Supabase...');
     const lookupField = supabaseId ? 'id' : 'hs_object_id';
     const lookupValue = supabaseId || hubspotId;
@@ -199,9 +213,9 @@ export async function GET(
 
     console.log(`[API] Lifecyclestage: existing="${existingContact?.lifecyclestage}", hubspot="${contact.properties.lifecyclestage}", using="${lifecyclestage}"`);
 
-    // Step 5: Transform and upsert to Supabase
-    // Preserve existing user_id if contact exists, otherwise use system user
-    const userId = existingContact?.user_id || systemUserId;
+    // Step 6: Transform and upsert to Supabase
+    // Preserve existing user_id if contact exists, otherwise use authenticated user
+    const userId = existingContact?.user_id || authenticatedUserId || fallbackUserId;
     console.log(`[API] Upserting to Supabase (id: ${finalSupabaseId}, hs_object_id: ${hubspotId}, user_id: ${userId})...`);
 
     // CRITICAL: id is Supabase UUID, hs_object_id is HubSpot numeric ID
@@ -355,11 +369,25 @@ export async function POST(
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
     console.log('[API POST] Using Supabase service role for server-side sync');
 
-    // Step 2: Resolve IDs - convert Supabase UUID to HubSpot ID if needed
+    // Step 2: Authenticate to get the correct user_id (must match what bulk sync uses)
+    const testEmail = process.env.TEST_EMAIL;
+    const testPassword = process.env.TEST_PASSWORD;
+    let authenticatedUserId: string | null = null;
+
+    if (testEmail && testPassword) {
+      const { data: authData } = await supabase.auth.signInWithPassword({
+        email: testEmail,
+        password: testPassword,
+      });
+      authenticatedUserId = authData?.user?.id || null;
+      console.log(`[API POST] Authenticated as ${testEmail}, user_id=${authenticatedUserId}`);
+    }
+
+    // Step 3: Resolve IDs - convert Supabase UUID to HubSpot ID if needed
     const { supabaseId, hubspotId } = await resolveContactIds(providedId, supabase);
     console.log(`[API POST] ID Resolution: supabaseId=${supabaseId || '(new)'}, hubspotId=${hubspotId}`);
 
-    // Step 3: Fetch fresh data from HubSpot using NUMERIC HubSpot ID
+    // Step 4: Fetch fresh data from HubSpot using NUMERIC HubSpot ID
     console.log(`[API POST] Fetching contact ${hubspotId} from HubSpot...`);
     const hubspotUrl = `https://api.hubapi.com/crm/v3/objects/contacts/${hubspotId}`;
     const hubspotParams = new URLSearchParams({
@@ -383,9 +411,9 @@ export async function POST(
     const contact: HubSpotContact = await hubspotResponse.json();
     console.log(`[API POST] Fetched: ${contact.properties.firstname} ${contact.properties.lastname}`);
 
-    const systemUserId = process.env.SYSTEM_USER_ID || '00000000-0000-0000-0000-000000000000';
+    const fallbackUserId = process.env.SYSTEM_USER_ID || '00000000-0000-0000-0000-000000000000';
 
-    // Step 4: Check existing contact using resolved Supabase ID or hs_object_id
+    // Step 5: Check existing contact using resolved Supabase ID or hs_object_id
     const lookupField = supabaseId ? 'id' : 'hs_object_id';
     const lookupValue = supabaseId || hubspotId;
 
@@ -402,7 +430,7 @@ export async function POST(
       ? 'customer'
       : (contact.properties.lifecyclestage || null);
 
-    const userId = existingContact?.user_id || systemUserId;
+    const userId = existingContact?.user_id || authenticatedUserId || fallbackUserId;
 
     console.log(`[API POST] Lifecyclestage: existing="${existingContact?.lifecyclestage}", hubspot="${contact.properties.lifecyclestage}", using="${lifecyclestage}"`);
 
