@@ -4,7 +4,7 @@
 import { useState, useMemo, useEffect, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import { YStack, XStack, Text, Button, Input } from 'tamagui'
-import { ChevronLeft, ChevronRight, Database, RefreshCw } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Database, RefreshCw, Plus } from 'lucide-react'
 import { useCompanies } from '../hooks/useCompanies'
 import {
   CompaniesTable,
@@ -15,6 +15,7 @@ import {
 } from '../components/tamagui'
 import ClientOnly from '../components/ClientOnly'
 import { SyncStatus } from '../components/SyncStatus'
+import { AddBusinessModal } from '../components/AddBusinessModal'
 import { getCompanyDisplayName, getCompanySubtitle } from '../utils/companyNameHelper'
 
 // Force dynamic rendering
@@ -37,6 +38,7 @@ export default function CompaniesPage() {
   const [currentPage, setCurrentPage] = useState(1)
   const [searchQuery, setSearchQuery] = useState('')
   const [navigatingTo, setNavigatingTo] = useState<string | null>(null)
+  const [showAddModal, setShowAddModal] = useState(false)
 
   // Reset to page 1 when search changes
   useEffect(() => {
@@ -180,7 +182,37 @@ export default function CompaniesPage() {
                 </YStack>
               </XStack>
             </YStack>
-            <SyncStatus compact onSyncComplete={() => refetch()} />
+            <XStack alignItems="flex-start" gap="$3" flexWrap="wrap">
+              <Button
+                size="$3"
+                onPress={() => setShowAddModal(true)}
+                backgroundColor="rgba(59, 130, 246, 0.15)"
+                borderRadius="$3"
+                borderWidth={1}
+                borderColor="rgba(59, 130, 246, 0.3)"
+                paddingHorizontal="$4"
+                paddingVertical="$2.5"
+                hoverStyle={{
+                  backgroundColor: 'rgba(59, 130, 246, 0.25)',
+                  borderColor: 'rgba(59, 130, 246, 0.5)',
+                  y: -1,
+                }}
+                pressStyle={{
+                  y: 0,
+                  backgroundColor: 'rgba(59, 130, 246, 0.3)',
+                }}
+                animation="smooth"
+                cursor="pointer"
+              >
+                <XStack space="$2" alignItems="center">
+                  <Plus size={16} color="#3B82F6" strokeWidth={2.5} />
+                  <Text color="$zingBlue" fontWeight="600" fontSize="$3" letterSpacing={0.2}>
+                    Add Business
+                  </Text>
+                </XStack>
+              </Button>
+              <SyncStatus compact onSyncComplete={() => refetch()} />
+            </XStack>
           </XStack>
         </YStack>
 
@@ -348,6 +380,12 @@ export default function CompaniesPage() {
             }
           />
         )}
+        {/* Add Business Modal */}
+        <AddBusinessModal
+          open={showAddModal}
+          onOpenChange={setShowAddModal}
+          onAdded={() => refetch()}
+        />
       </YStack>
     </ClientOnly>
   )
