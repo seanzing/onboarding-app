@@ -14,6 +14,43 @@ export interface ServiceIdentity {
   duda_site_code: string | null
   chatbot_slug: string | null
   foursquare_venue_id: string | null
+  google_place_id: string | null
+}
+
+export interface GooglePlaceData {
+  placeId: string
+  name: string
+  address: string
+  addressComponents?: {
+    streetNumber?: string
+    street?: string
+    city?: string
+    state?: string
+    zipCode?: string
+    country?: string
+  }
+  location: { latitude: number; longitude: number }
+  rating?: number
+  totalReviews?: number
+  phone?: string
+  website?: string
+  businessStatus?: string
+  category?: string
+  types?: string[]
+  googleMapsUrl?: string
+  hours?: string[]
+  hoursPeriods?: Array<{
+    open: { day: number; hour: number; minute: number }
+    close: { day: number; hour: number; minute: number }
+  }>
+  isOpenNow?: boolean
+  photos?: Array<{
+    name: string
+    width: number
+    height: number
+    url: string
+    thumbnail: string
+  }>
 }
 
 export interface OnboardingServiceStatus {

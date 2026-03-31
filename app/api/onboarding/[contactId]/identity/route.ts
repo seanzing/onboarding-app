@@ -20,7 +20,7 @@ export async function PATCH(
 
   try {
     const body = await request.json()
-    const { duda_site_code, chatbot_slug, foursquare_venue_id } = body
+    const { duda_site_code, chatbot_slug, foursquare_venue_id, google_place_id } = body
 
     // Build update payload with only provided fields
     const upsertData: Record<string, unknown> = {
@@ -30,6 +30,7 @@ export async function PATCH(
     if (duda_site_code !== undefined) upsertData.duda_site_code = duda_site_code
     if (chatbot_slug !== undefined) upsertData.chatbot_slug = chatbot_slug
     if (foursquare_venue_id !== undefined) upsertData.foursquare_venue_id = foursquare_venue_id
+    if (google_place_id !== undefined) upsertData.google_place_id = google_place_id
 
     const supabase = await createClient()
 

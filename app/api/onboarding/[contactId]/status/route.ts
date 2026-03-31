@@ -17,6 +17,7 @@ const DEFAULT_IDENTITY = {
   duda_site_code: null,
   chatbot_slug: null,
   foursquare_venue_id: null,
+  google_place_id: null,
 }
 
 const DEFAULT_SERVICE_STATUS = {
