@@ -8,10 +8,13 @@ ADD COLUMN IF NOT EXISTS google_place_id TEXT;
 COMMENT ON COLUMN service_identity_map.google_place_id IS 'Google Places API place ID for pulling public business data (hours, lat/lng, categories)';
 
 -- Update the v_customer_onboarding view to include google_place_id
-CREATE OR REPLACE VIEW v_customer_onboarding AS
+-- Must DROP first because CREATE OR REPLACE cannot rename existing columns
+DROP VIEW IF EXISTS v_customer_onboarding;
+
+CREATE VIEW v_customer_onboarding AS
 SELECT
-  c.id,
-  c.hs_object_id,
+  c.id AS contact_uuid,
+  c.hs_object_id AS hubspot_contact_id,
   c.company,
   c.firstname,
   c.lastname,
