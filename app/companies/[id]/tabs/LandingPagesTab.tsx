@@ -193,8 +193,8 @@ export default function LandingPagesTab({ contactId, dudaSiteCode, serviceStatus
         </Card>
       )}
 
-      {/* Ready to generate */}
-      {dudaSiteCode && !generating && (status === 'not_started' || status === 'active') && (
+      {/* Ready to generate (also shown on error so user can fix fields and retry) */}
+      {dudaSiteCode && !generating && (status === 'not_started' || status === 'active' || status === 'error') && (
         <Card backgroundColor="$background" borderRadius="$5" borderWidth={1} borderColor="$borderColor" padding="$6">
           <YStack gap="$5">
             <Text fontSize="$5" fontWeight="700" color="$color">Generate Landing Pages</Text>
@@ -287,25 +287,18 @@ export default function LandingPagesTab({ contactId, dudaSiteCode, serviceStatus
         </Card>
       )}
 
-      {/* Error state */}
+      {/* Error state — form is shown above for retry, so just show the error message */}
       {!generating && status === 'error' && (
         <Card backgroundColor="$background" borderRadius="$5" borderWidth={2} borderColor="rgba(239,68,68,0.3)" padding="$6">
-          <YStack gap="$3" alignItems="center">
-            <AlertCircle size={32} color="#EF4444" />
-            <Text fontSize="$5" fontWeight="700" color="$color">Landing Page Generation Error</Text>
-            <Text fontSize="$4" color="$color" opacity={0.6} textAlign="center">
-              {serviceStatus?.notes || 'An error occurred during landing page generation'}
-            </Text>
-            <Button
-              size="$4"
-              backgroundColor="#10B981"
-              marginTop="$2"
-              onPress={handleGenerate}
-              disabled={!dudaSiteCode}
-            >
-              <Text color="white" fontWeight="700">Retry</Text>
-            </Button>
-          </YStack>
+          <XStack gap={12} alignItems="center">
+            <AlertCircle size={24} color="#EF4444" />
+            <YStack flex={1}>
+              <Text fontSize="$5" fontWeight="700" color="$color">Previous Generation Failed</Text>
+              <Text fontSize="$3" color="$color" opacity={0.6}>
+                {serviceStatus?.notes || metadata.error || 'An error occurred during landing page generation'}
+              </Text>
+            </YStack>
+          </XStack>
         </Card>
       )}
     </YStack>
